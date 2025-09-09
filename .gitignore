@@ -1,3 +1,7 @@
+# Sensitive data
+secrets.json
+uploads/*
+
 # Logs
 logs
 *.log

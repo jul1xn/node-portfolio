@@ -1,0 +1,29 @@
+// General colors
+$primary: #6c00b4;
+
+// Header
+$body-tertiary-bg: #5e009c;
+$navbar-padding-y: 1.2rem;
+$navbar-light-color: #ffffff;
+$navbar-light-hover-color: #ffffff;
+$navbar-light-active-color: #ffffff;
+$navbar-light-disabled-color: #ffffff;
+
+// Header logo
+$navbar-brand-margin-end: 1rem;
+
+// Header links
+$navbar-nav-link-padding-x: 2rem;
+
+// Does not work atm
+.btn {
+    &:disabled,
+    &.disabled,
+    fieldset:disabled & {
+      cursor: not-allowed;
+      pointer-events: unset;
+    }
+}
+
+// import bootstrap
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
