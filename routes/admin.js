@@ -32,7 +32,7 @@ router.route('/upload_project')
             name = "",
             short_description = "",
             long_description = "",
-            download_link = "#",
+            download_link = "",
             languages = "",
             link_names = "",
             link_urls = "",
@@ -87,7 +87,7 @@ router.route('/upload_project')
                     });
                 }
 
-                if (link_names && link_urls) {
+                if (link_names.count > 0 && link_urls.count > 0) {
                     const names = Array.isArray(link_names) ? link_names : [link_names];
                     const urls = Array.isArray(link_urls) ? link_urls : [link_urls];
                     names.forEach((linkName, index) => {
