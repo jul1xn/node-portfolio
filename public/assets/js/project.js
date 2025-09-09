@@ -38,6 +38,7 @@ fetch(`/projecten/api/${projectName}`)
     return response.json();
   })
 .then(data => {
+    document.title = `Prowser - ${data.name}`;
     projectDataName.textContent = data.name;
     fetchDescription(data.long_description);
     if (data.download_link !== "") {
