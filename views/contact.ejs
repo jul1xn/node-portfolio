@@ -41,27 +41,27 @@
                 </div>
             </div>
         </header>
-        <main class="container mx-auto pt-4" id="project-container">    
+        <main class="container mx-auto pt-4">    
             <h1 class="text-center">Contact</h1>
-            <form method="POST" action="/contact/">
+            <form method="POST" action="/contact/" class="contact-form">
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Your name</label>
-                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="John Doe" name="name">
+                    <label for="formNameField">Uw naam</label>
+                    <input type="text" class="form-control" id="formNameField" placeholder="John Doe" name="name">
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Your Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="example@example.com" name="email">
+                    <label for="formEmailField">Uw Email adres</label>
+                    <input type="email" class="form-control" id="formEmailField" placeholder="example@example.com" name="email">
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Your message</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="message"></textarea>
+                    <label for="formMessageArea">Uw bericht</label>
+                    <textarea class="form-control" id="formMessageArea" rows="6" name="message"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Verzend</button>
                 </div>
                 <% if (typeof success !== 'undefined' && success) { %>
                     <div class="alert alert-success" role="alert">
-                        Your message has been sent successfully!
+                        Uw bericht is verzonden, ik neem zo snel mogelijk contact met u op!
                     </div>
                 <% } %>
             </form>
