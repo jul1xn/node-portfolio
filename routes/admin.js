@@ -24,19 +24,19 @@ router.route('/upload_project')
     })
     .post(upload.fields([
         { name: 'thumbnail', maxCount: 1 },
-        { name: 'long_description', maxCount: 1 },
         { name: 'images[]' }
     ]), (req, res) => {
         const {
-          key = "",
-          internal_name = "",
-          name = "",
-          short_description = "",
-          download_link = "",
-          languages = "",
-          link_names = "",
-          link_urls = "",
-          image_descriptions = ""
+            key,
+            internal_name = "",
+            name = "",
+            short_description = "",
+            long_description = "",
+            download_link = "#",
+            languages = "",
+            link_names = "",
+            link_urls = "",
+            image_descriptions = ""
         } = req.body;
         if (key !== secrets.getAdminKey()) {
             return res.status(403).json({ error: 'Forbidden' });
@@ -54,14 +54,11 @@ router.route('/upload_project')
             });
         }
 
-        let longDescriptionFileName = "";
         let thumbnailFileName = "";
+        let longDescriptionFileName = "description.html";
 
-        if (req.files['long_description'] && req.files['long_description'][0]) {
-            const file = req.files['long_description'][0];
-            longDescriptionFileName = 'description.' + file.originalname.split('.')[1];
-            const newPath = `${parentDirectory}/${longDescriptionFileName}`;
-            fs.renameSync(file.path, newPath);
+        if (long_description) {
+            fs.writeFileSync(`${parentDirectory}/${longDescriptionFileName}`, long_description, 'utf8');
         }
 
         if (req.files['thumbnail'] && req.files['thumbnail'][0]) {
@@ -72,7 +69,7 @@ router.route('/upload_project')
         }
 
         connection.query('INSERT INTO `projects` (`internal_name`, `name`, `short_description`, `long_description`, `thumbnail`, `download_link`) VALUES (?, ?, ?, ?, ?, ?)',
-            [internal_name, name, short_description, longDescriptionFileName, thumbnailFileName, download_link || null],
+            [internal_name, name, short_description, longDescriptionFileName, thumbnailFileName, download_link],
             (err, results) => {
                 if (err) {
                     console.error(err);
