@@ -6,6 +6,14 @@ const fs = require('fs');
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 
+router.get('/', (req, res) => {
+    const { key } = req.query;
+    if (key !== secrets.getAdminKey()) {
+        return res.status(403).json({ error: 'Forbidden' });
+    }
+    return res.render('admin/links', {key: key});
+});
+
 router.route('/upload_project')
     .get((req, res) => {
         const { key } = req.query;
