@@ -11,4 +11,14 @@ function getMysqlCredentials() {
     return secrets.mysql_credentials;
 }
 
-module.exports = { getAdminKey, getMysqlCredentials };
+function getEmailCredentials() {
+    const secrets = JSON.parse(fs.readFileSync('./secrets.json', 'utf8'));
+    return secrets.email_credentials;
+}
+
+function getEmailTarget() {
+    const secrets = JSON.parse(fs.readFileSync('./secrets.json', 'utf8'));
+    return secrets.email_target;
+}
+
+module.exports = { getAdminKey, getMysqlCredentials, getEmailCredentials, getEmailTarget };
