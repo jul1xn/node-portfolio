@@ -8,6 +8,7 @@ const transporter = nodemailer.createTransport(emailCredentials);
 async function sendContactEmail(name, email, message) {
     const info = await transporter.sendMail({
         from: '"Prowser API" <noreply@prowser.nl>',
+        cc: email,
         to: emailTarget,
         subject: "Contact formulier bericht van " + name,
         html: `
