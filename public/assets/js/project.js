@@ -49,6 +49,10 @@ fetch(`/projecten/api/${projectName}`)
         addLinkBtn(link.url, link.name);
     });
 
+    if (projectDataLinks.children.length === 1) {
+        projectDataLinks.remove();
+    }
+
     data.images.forEach(image => {
         const imageCard = document.createElement('div');
         imageCard.className = 'card image-card my-3';
