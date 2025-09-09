@@ -2,14 +2,15 @@ const express = require('express');
 const router = express.Router();
 const projects = require('../projects');
 const path = require('path');
+const { links } = require('../links');
 
 router.get('/', (req, res) => {
-  res.render('projects');
+  res.render('projects', {links: links});
 });
 
 router.get('/:name', (req, res) => {
   const projectName = req.params.name;
-  return res.render('project', { name: projectName });
+  return res.render('project', { name: projectName, links: links });
 });
 
 router.get('/api/all', async (req, res) => {

@@ -22,24 +22,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Over mij</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/projecten">Projecten</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Ervaring</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">CV</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
+                    <% locals.links.forEach(link => { %>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<%= link.url %>"><%= link.name %></a>
+                        </li>
+                    <% }) %>
                 </ul>
             </div>
         </div>
