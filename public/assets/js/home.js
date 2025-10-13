@@ -1,5 +1,6 @@
 const stats = document.getElementById('statistics');
-const totalNumberTime = 1500; // In milliseconds
+const totalNumberTime = 1500;
+const fadeDownDelay = 500;
 
 if (stats) {
     stats.childNodes.forEach((child) => {
@@ -32,4 +33,26 @@ function fadeNumber(targetElement, targetNumber) {
         }
     }
     requestAnimationFrame(animate);
+}
+
+const homePage_row1 = document.getElementById('homePage_row1');
+if (homePage_row1) {
+    homePage_row1.style.opacity = '0';
+}
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            console.log('Row is visible, starting animation');
+            // Fade in the row
+            entry.target.parentElement.style.opacity = '1';
++           entry.target.parentElement.classList.add('animate__animated', 'animate__fadeIn', 'animate__faster');
+            observer.unobserve(entry.target);
+        }
+    });
+});
+
+// Observe the row, not the card
+if (homePage_row1) {
+    observer.observe(homePage_row1.querySelector('.talenCard'));
 }
