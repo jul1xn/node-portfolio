@@ -45,8 +45,8 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             console.log('Row is visible, starting animation');
             // Fade in the row
-            entry.target.parentElement.style.opacity = '1';
-+           entry.target.parentElement.classList.add('animate__animated', 'animate__fadeIn', 'animate__faster');
+            homePage_row1.style.opacity = '1';
++           homePage_row1.classList.add('animate__animated', 'animate__fadeIn', 'animate__faster');
             observer.unobserve(entry.target);
         }
     });
@@ -54,5 +54,5 @@ const observer = new IntersectionObserver((entries) => {
 
 // Observe the row, not the card
 if (homePage_row1) {
-    observer.observe(homePage_row1.querySelector('.talenCard'));
+    observer.observe(homePage_row1.querySelector('div button'));
 }
