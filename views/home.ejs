@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Prowser</title>
+    <title><%= locals.page %> - Prowser</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon" />
@@ -23,9 +23,15 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <% locals.links.forEach(link => { %>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<%= link.url %>"><%= link.name %></a>
-                        </li>
+                        <% if (locals.page == link.name) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"  href="<%= link.url %>"><%= link.name %></a>
+                            </li>
+                        <% } else { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= link.url %>"><%= link.name %></a>
+                            </li>
+                        <% } %>
                     <% }) %>
                 </ul>
             </div>
@@ -67,16 +73,37 @@
             </div>
         </div>
         <div class="row py-5" style="gap: 2rem;" id="homePage_row1">
-            <h2 class="text-center my-3">Programmeer talen</h2>
-            <div class="container text-center">
-                <button class="btn btn-primary">Javascript</button>
-                <button class="btn btn-primary">C#</button>
-                <button class="btn btn-primary">HTML</button>
-                <button class="btn btn-primary">CSS</button>
-                <button class="btn btn-primary">Lua</button>
-                <button class="btn btn-primary">CSS</button>
-                <button class="btn btn-primary">CSS</button>
-                <button class="btn btn-primary">CSS</button>
+            <h2 class="text-center my-3">Bekende technieken</h2>
+            <div class="container text-center d-flex flex-wrap justify-content-center" style="gap: 2rem;">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Frontend talen</h4>
+                        <button class="btn btn-primary">Javascript</button>
+                        <button class="btn btn-primary">HTML</button>
+                        <button class="btn btn-primary">CSS</button>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Backend talen</h4>
+                        <button class="btn btn-primary">Node.js</button>
+                        <button class="btn btn-primary">Lua</button>
+                        <button class="btn btn-primary">C#</button>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Database</h4>
+                        <button class="btn btn-primary">MySQL</button>
+                    </div>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body p-4">
+                        <h4 class="card-title mb-4">Apps</h4>
+                        <button class="btn btn-primary">.NET</button>
+                        <button class="btn btn-primary"></button>
+                    </div>
+                </div>
             </div>
     </main>
     <script src="/assets/js/utils.js"></script>

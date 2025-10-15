@@ -1,7 +1,6 @@
 # Sensitive data
 secrets.json
 uploads/*
-projecten/*
 
 # Logs
 logs

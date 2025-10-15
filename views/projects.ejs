@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>Prowser - Projecten</title>
+        <title><%= locals.page %> - Prowser</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/assets/img/favicon.png" type="image/x-icon" />
@@ -9,25 +9,32 @@
         <link rel="stylesheet" href="/assets/css/styles.css"/>
     </head>
     <body>
-        <header class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">
-                    <img src="/assets/img/full_logo.png" alt="Bootstrap" width="60" height="54">
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <% locals.links.forEach(link => { %>
+    <header class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/assets/img/full_logo.png" alt="Bootstrap" width="60" height="54">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <% locals.links.forEach(link => { %>
+                        <% if (locals.page == link.name) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"  href="<%= link.url %>"><%= link.name %></a>
+                            </li>
+                        <% } else { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="<%= link.url %>"><%= link.name %></a>
                             </li>
-                        <% }) %>
-                    </ul>
-                </div>
+                        <% } %>
+                    <% }) %>
+                </ul>
             </div>
-        </header>
+        </div>
+    </header>
         <main class="container mx-auto pt-4">
             <h1 class="text-center mb-5">Projecten</h1>
             <div id="project-container">

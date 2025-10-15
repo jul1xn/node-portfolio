@@ -1,9 +1,9 @@
 const projectName = document.getElementById('pproject-container').getAttribute('data-project-name');
-
 const projectDataName = document.getElementById('project-data-name');
 const projectDataDescription = document.getElementById('project-data-description');
 const projectDataImagesParent = document.getElementById('project-data-images-parent');
 const projectDataLinks = document.getElementById('project-data-links');
+document.title = "Laden... - Prowser";
 
 function fetchDescription(descriptionPath) {
     fetch("/projecten/api/" + projectName + "/" + descriptionPath)
@@ -38,7 +38,7 @@ fetch(`/projecten/api/${projectName}`)
     return response.json();
   })
 .then(data => {
-    document.title = `Prowser - ${data.name}`;
+    document.title = `${data.name} - Prowser`;
     projectDataName.textContent = data.name;
     fetchDescription(data.long_description);
     if (data.download_link !== "") {

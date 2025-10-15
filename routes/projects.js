@@ -5,7 +5,7 @@ const path = require('path');
 const { links } = require('../links');
 
 router.get('/', (req, res) => {
-  res.render('projects', {links: links});
+  res.render('projects', {links: links, page: 'Projecten' });
 });
 
 router.get('/:name', (req, res) => {
