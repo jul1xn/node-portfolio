@@ -6,6 +6,9 @@ app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+const generalRoutes = require('./routes/general');
+app.use('/', generalRoutes);
+
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
 });
