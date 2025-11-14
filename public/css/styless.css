@@ -2,3 +2,12 @@
     font-size: 1.3rem;
     margin-right: 2rem;
 }
+
+.icon-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a {
+    transition: color .25s ease-in-out, background-color .25s ease-in-out, border-color .25s ease-in-out !important;
+}
