@@ -23,3 +23,7 @@ a {
 .tech-list {
     gap: 0.5rem;
 }
+
+footer div div ul {
+    list-style-type: none;
+}
