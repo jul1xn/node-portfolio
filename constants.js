@@ -15,7 +15,21 @@ const constants = {
         { name: "Contact", url: "/contact" }
     ],
     WEBSITE_NAME: "Portfolio - Julian Verwoerd",
-    SHORT_NAME: "Prowser"
+    SHORT_NAME: "Prowser",
+    PROJECTEN_PAGE_AANTAL: 9,
+    PROJECTEN_AVAILABLE_TECH: [
+        "Node.js",
+        "Express",
+        "Javascript",
+        "HTML",
+        "CSS",
+        "Bootstrap",
+        "MySQL",
+        "Python",
+        "C#",
+        "WinForms",
+        "PHP"
+    ]
 }
 
 module.exports = constants;

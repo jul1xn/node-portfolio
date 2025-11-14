@@ -26,7 +26,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav d-flex ms-auto">
                     <% links.forEach(link=> { %>
-                        <% if (link.name===title) { %>
+                        <% if (link.name==="Projecten") { %>
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="<%= link.url %>">
                                     <%= link.name %>
@@ -39,38 +39,34 @@
                                     </a>
                                 </li>
                                 <% } %>
-                                    <% }) %>
+                            <% }) %>
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container mt-4 align-items-center">
         <div class="row">
-            <h1 class="text-center">Projecten</h1>
-            <div class="my-2 d-flex justify-content-center flex-wrap tech-list">
-                <% available_tech.forEach(tech => { %>
-                    <% if (filter && filter.toLowerCase() === tech.toLowerCase()) { %>
-                        <a href="/projecten?page=<%= current_page %>&filter=<%= tech %>" class="btn btn-sm btn-secondary me-1 mb-1">
-                            <%= tech %>
-                        </a>
-                    <% } else { %>
-                        <a href="/projecten?page=<%= current_page %>&filter=<%= tech %>" class="btn btn-sm btn-outline-secondary me-1 mb-1">
-                            <%= tech %>
-                        </a>
+            <div class="col text-start">
+                <h1><%= data.title %></h1>
+                <div class="mt-2" id="description" url="/projecten/api/<%= project %>/<%= data.longHtml %>"></div>
+                <div class="mt-2">
+                    <% data.links.forEach(link => { %>
+                        <a class="btn btn-primary" href="<%= link.url %>" target="_blank"><%= link.name %></a>
+                    <% }) %>
+                </div>
+            </div>
+            <div class="col d-flex flex-column align-items-end">
+                <% data.images.forEach(img => { %>
+                 <div class="card" style="width: 75%;">
+                    <img src="/projecten/api/<%= project %>/<%= img.url %>" class="card-img-top">
+                    <% if (img.description && img.description.trim() !== "") { %>
+                        <div class="card-body text-start">
+                            <p class="card-text"><%= img.description %></p>
+                        </div>
                     <% } %>
+                </div>
                 <% }) %>
             </div>
-        </div>
-        <div class="row mt-2 d-flex justify-content-center">
-            <div class="container" id="projecten-container">
-                <!-- Projecten zullen hier dynamisch worden geladen -->
-            </div>
-        </div>
-        <div class="row mt-4 d-flex justify-content-center">
-            <nav aria-label="...">
-                <ul class="pagination justify-content-center" id="pagination">
-                </ul>
-            </nav>
         </div>
     </div>
     <footer class="bg-body-tertiary text-center py-3 mt-auto pt-4">
@@ -121,7 +117,7 @@
             </div>
         </div>
     </footer>
-    <script src="/js/projecten.js"></script>
+    <script src="/js/project.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
