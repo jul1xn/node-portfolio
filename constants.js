@@ -14,7 +14,8 @@ const constants = {
         { name: "CV", url: "/cv" },
         { name: "Contact", url: "/contact" }
     ],
-    WEBSITE_NAME: "Portfolio - Julian Verwoerd"
+    WEBSITE_NAME: "Portfolio - Julian Verwoerd",
+    SHORT_NAME: "Prowser"
 }
 
 module.exports = constants;
