@@ -44,7 +44,6 @@ router.get('/api/:name', async (req, res) => {
 
 router.get('/api/:name/short', async (req, res) => {
   const projectName = req.params.name;
-  console.log(projectName);
   const projectData = await projects.getProjectShort(projectName);
   if (projectData) {
     res.json(projectData);
