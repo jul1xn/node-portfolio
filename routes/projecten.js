@@ -7,12 +7,12 @@ const path = require('path');
 router.get('/', (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const filter = req.query.filter || null;
-    res.render('general/projecten', { title: 'Projecten', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, available_tech: constants.PROJECTEN_AVAILABLE_TECH, current_page: page, filter: filter });
+    res.render('projecten/projecten', { title: 'Projecten', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, available_tech: constants.PROJECTEN_AVAILABLE_TECH, current_page: page, filter: filter });
 });
 
 router.get('/:project', (req, res) => {
     const projectData = getProject(req.params.project);
-    res.render('general/project', { title: projectData.title, links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, project: req.params.project, data: projectData });
+    res.render('projecten/project', { title: projectData.title, links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, project: req.params.project, data: projectData });
 });
 
 router.get('/api/all', (req, res) => {
