@@ -45,7 +45,29 @@
         </div>
     </nav>
     <div class="container mt-4">
-        <h1 class="text-center">Hello world</h1>
+        <h1 class="text-center">Contact</h1>
+        <form action="/contact" method="post" class="mx-auto my-4" style="max-width: 70%;">
+            <div class="mb-3">
+                <label for="name" class="form-label">Naam</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="John Doe" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="example@example.com" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Bericht</label>
+                <textarea class="form-control" id="message" name="message" rows="7" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary px-4">Verzenden</button>
+            <% if (sent) { %>
+                <div class="alert alert-success text-center my-3 mx-auto" role="alert" style="max-width: 67%;">
+                    Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.
+                </div>
+            <% } else { %>
+                <div class="alert alert-success text-center my-3 mx-auto" role="alert" style="opacity: 0">.</div>
+            <% } %>
+        </form>
     </div>
     <footer class="bg-body-tertiary text-center py-3 mt-auto pt-4">
         <div class="container">

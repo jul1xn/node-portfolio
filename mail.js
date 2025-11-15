@@ -1,15 +1,14 @@
 const nodemailer = require("nodemailer");
-const { getEmailCredentials, getEmailTarget } = require("./secret");
-const emailCredentials = getEmailCredentials();
-const emailTarget = getEmailTarget();
+const constants = require("./constants");
 
-const transporter = nodemailer.createTransport(emailCredentials);
+const transporter = nodemailer.createTransport(constants.EMAIL_CREDENTIALS);
 
 async function sendContactEmail(name, email, message) {
+    console.log('Preparing to send contact email from:', name, email, ' to :', constants.EMAIL_TARGET);
     const info = await transporter.sendMail({
         from: '"Prowser API" <noreply@prowser.nl>',
         cc: email,
-        to: emailTarget,
+        to: constants.EMAIL_TARGET,
         subject: "Contact formulier bericht van " + name,
         html: `
         <h2>Nieuw bericht van het contact formulier</h2>
