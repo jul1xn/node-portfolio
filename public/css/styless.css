@@ -27,3 +27,7 @@ a {
 footer div div ul {
     list-style-type: none;
 }
+
+.homepage div {
+    margin-bottom: 2rem;
+}

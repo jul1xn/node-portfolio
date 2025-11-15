@@ -27,25 +27,69 @@
                 <ul class="navbar-nav d-flex ms-auto">
                     <% links.forEach(link=> { %>
                         <% if (link.name===title) { %>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="<%= link.url %>">
-                            <%= link.name %>
-                        </a>
-                    </li>
-                        <% } else { %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="<%= link.url %>">
-                            <%= link.name %>
-                        </a>
-                    </li>
-                        <% } %>
-                    <% }) %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="<%= link.url %>">
+                                    <%= link.name %>
+                                </a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%= link.url %>">
+                                        <%= link.name %>
+                                    </a>
+                                </li>
+                                <% } %>
+                                    <% }) %>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container mt-4">
-        <h1 class="text-center">Hello world</h1>
+    <div class="container mt-4 mb-3 homepage">
+        <div class="row">
+            <div class="col-7 text-start">
+                <h1 class="my-5 display-3">Hey! &#128075;</h1>
+                <p>
+                    Mijn naam is Julian Verwoerd, ik ben 16 jaar en tweedejaars student Software Developer. Ik ben erg
+                    geïnteresseerd in technologie, design en programmeren. Tijdens mijn opleiding werk ik aan
+                    verschillende projecten en leer ik hoe je van een idee een goed werkende app maakt.
+                </p>
+                <p>
+                    Het is voor mij belangrijk om niet alleen te coderen, maar ook te snappen hoe een app
+                    gebruiksvriendelijk en efficiënt kan zijn. Ik vind het leuk om uitdagingen aan te gaan, nieuwe
+                    dingen te leren en creatieve oplossingen te bedenken voor technische problemen.
+                </p>
+                <p>
+                    Op deze website deel ik mijn projecten, vaardigheden en mijn groei als beginnende Developer. Neem
+                    gerust een kijkje en ontdek waar ik momenteel mee bezig ben!
+                </p>
+            </div>
+            <div class="col-5 text-end">
+                <img src="/img/myself_stock.jpg" alt="Foto van Julian Verwoerd" class="img-fluid rounded mt-4"
+                    width="350" height="auto">
+            </div>
+        </div>
+        <div class="row text-center" id="counter-container">
+            <div class="col counter">
+                <p class="display-5 mb-1" id="number">9</p>
+                <p id="text">Bekende talen</p>
+            </div>
+            <div class="col counter">
+                <p class="display-5 mb-1" id="number">
+                    <%= new Date().getFullYear() - 2017 %>
+                </p>
+                <p id="text">Jaren ervaring</p>
+            </div>
+            <div class="col counter">
+                <p class="display-5 mb-1" id="number">1000</p>
+                <p id="text">Lijnen geschreven</p>
+            </div>
+        </div>
+        <div class="row text-center">
+            <h2 class="mb-4">Recente projecten</h2>
+        </div>
+        <div class="row" id="projecten-container">
+            <!-- Projecten worden hier geladen via home.js -->
+        </div>
     </div>
     <footer class="bg-body-tertiary text-center py-3 mt-auto pt-4">
         <div class="container">
@@ -70,15 +114,17 @@
                             <i class="fa-brands fa-github fa-lg"></i>
                         </a>
                     </div>
-                </div>  
+                </div>
                 <div class="col text-center">
                     <h3 class="mb-3">Navigatie</h3>
                     <ul>
                         <% links.forEach(link=> { %>
                             <li>
-                                <a href="<%= link.url %>"><%= link.name %></a>
+                                <a href="<%= link.url %>">
+                                    <%= link.name %>
+                                </a>
                             </li>
-                        <% }) %>
+                            <% }) %>
                     </ul>
                 </div>
             </div>
@@ -86,12 +132,14 @@
             <div class="row">
                 <div class="col">
                     <span class="text-muted">
-                        &copy; <%= new Date().getFullYear() %> <%= name %>
+                        &copy; <%= new Date().getFullYear() %>
+                            <%= name %>
                     </span>
                 </div>
             </div>
         </div>
     </footer>
+    <script src="/js/home.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
