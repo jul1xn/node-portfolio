@@ -1,4 +1,5 @@
 const projectenContainer = document.getElementById('projecten-container');
+const projectenCarousel = document.getElementById('projectenCarousel');
 const countersParents = document.getElementById('counter-container');
 const counters = countersParents.querySelectorAll('.counter');
 const totalNumberTime = 1500;
@@ -59,5 +60,19 @@ fetch('/projecten/api/all?limit=3')
                     `;
                     projectenContainer.appendChild(projectCard);
                 });
+        });
+    });
+
+fetch('/projecten/api/carousel')
+    .then(response => response.json())
+    .then(images => {
+        const carouselInner = projectenCarousel.querySelector('.carousel-inner');
+        images.forEach((image, index) => {
+            const carouselItem = document.createElement('div');
+            carouselItem.className = 'carousel-item' + (index === 0 ? ' active' : '');
+            carouselItem.innerHTML = `
+                <img src="${image}" class="d-block w-100" alt="...">
+            `;
+            carouselInner.appendChild(carouselItem);
         });
     });

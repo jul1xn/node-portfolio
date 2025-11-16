@@ -29,7 +29,7 @@ footer div div ul {
     padding-left: 0;
 }
 
-.homepage div:not([class*="card"]) {
+.homepage div.row {
     margin-bottom: 2rem;
 }
 
@@ -81,4 +81,8 @@ footer div div ul {
     to {
         transform: translateX(-100%);
     }
+}
+
+#projectenCarousel div.carousel-item img {
+    border-radius: 1rem;
 }
