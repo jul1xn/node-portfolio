@@ -29,6 +29,22 @@ footer div div ul {
     padding-left: 0;
 }
 
-.homepage div {
+.homepage div:not([class*="card"]) {
     margin-bottom: 2rem;
+}
+
+.btn.big-btn {
+    transition: 
+        transform .2s ease-in-out,
+        color .15s ease-in-out,
+        background-color .15s ease-in-out,
+        border-color .15s ease-in-out,
+        box-shadow .15s ease-in-out 
+        !important;
+
+    padding: .6rem 1rem;
+}
+
+.btn.big-btn:hover {
+    transform: scale(1.025);
 }
