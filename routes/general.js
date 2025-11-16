@@ -11,15 +11,6 @@ router.get('/over-mij', (req, res) => {
     res.render('general/overmij', { title: 'Over mij', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME  });
 });
 
-router.get('/ervaring', (req, res) => {
-    res.render('general/ervaring', { title: 'Ervaring', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME  });
-});
-
-router.get('/cv', (req, res) => {
-    res.render('general/cv', { title: 'CV', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME  });
-});
-
-
 router.route('/contact')
     .get((req, res) => {
         const sent = req.query.sent === 'true';
