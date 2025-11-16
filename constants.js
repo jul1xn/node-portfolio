@@ -16,17 +16,17 @@ const constants = {
     SHORT_NAME: "Prowser",
     PROJECTEN_PAGE_AANTAL: 9,
     PROJECTEN_AVAILABLE_TECH: [
-        "Node.js",
-        "Express",
-        "Javascript",
-        "HTML",
-        "CSS",
-        "Bootstrap",
-        "MySQL",
-        "Python",
+        "Arduino",
         "C#",
-        "WinForms",
-        "PHP"
+        "CSS",
+        "HTML",
+        "Javascript",
+        "Lua",
+        "MySQL",
+        "Node.js",
+        "PHP",
+        "Python",
+        "Unity",
     ]
 }
 

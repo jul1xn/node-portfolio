@@ -2,7 +2,7 @@
   {
     "title": "Mijn Portfolio",
     "shortDescription": "Een persoonlijke website gebouwd in Node.js",
-    "tech": ["Node.js", "Express", "Javascript", "HTML", "CSS"],
+    "tech": ["Node.js", "Javascript", "HTML", "CSS"],
     "links": [
       { "name": "demo", "url": "https://example.com" },
       { "name": "github", "url": "https://github.com/me/project" }
