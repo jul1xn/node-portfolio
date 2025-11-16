@@ -43,7 +43,7 @@ fetch('/projecten/api/all?limit=3')
                     const projectCard = document.createElement('div');
                     projectCard.className = 'col';
                     projectCard.innerHTML = `
-                <div class="card projectCard">
+                <div class="card">
                     <img src="/projecten/api/${project}/${data.thumbnail}" class="card-img-top"
                         alt="Preview van ${data.title}">
                     <div class="card-body">
