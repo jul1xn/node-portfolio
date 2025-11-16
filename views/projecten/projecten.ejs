@@ -46,8 +46,8 @@
     </nav>
     <div class="container mt-4 align-items-center">
         <div class="row">
-            <h1 class="text-center">Projecten</h1>
-            <div class="my-2 d-flex justify-content-center flex-wrap tech-list">
+            <h1 class="text-center display-5">Projecten</h1>
+            <div class="mt-3 mb-4 d-flex justify-content-center flex-wrap tech-list">
                 <% available_tech.forEach(tech => { %>
                     <% if (filter && filter.toLowerCase() === tech.toLowerCase()) { %>
                         <a href="/projecten?page=<%= current_page %>&filter=<%= tech %>" class="btn btn-sm btn-secondary me-1 mb-1">
