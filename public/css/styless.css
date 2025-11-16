@@ -48,3 +48,37 @@ footer div div ul {
 .btn.big-btn:hover {
     transform: scale(1.025);
 }
+
+.scroll-wrapper {
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+}
+
+.scroll-track {
+    display: flex;
+    align-items: center;
+    animation: scroll-left 35s linear infinite;
+}
+
+.scroll-track img {
+    height: 120px;     /* <-- required so height doesn't collapse */
+    width: auto;
+    margin-right: 30px;
+    flex-shrink: 0;    /* <-- prevents shrinking/overlapping */
+}
+
+.scroll-track img.img-fluid {
+    max-width: none !important;
+}
+
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
