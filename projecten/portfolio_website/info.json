@@ -1,14 +1,14 @@
 [
   {
     "title": "Mijn Portfolio",
-    "shortDescription": "Een persoonlijke website gebouwd in Node.js",
+    "shortDescription": "Een persoonlijke portfolio website gebouwd in Node.js",
     "tech": ["Node.js", "Javascript", "HTML", "CSS"],
     "links": [
       { "name": "demo", "url": "https://example.com" },
       { "name": "github", "url": "https://github.com/me/project" }
     ],
     "images": [
-      { "url": "1.png", "description": "Dit is de home pagina."}
+      { "url": "1.png", "description": "De home pagina van de website"}
     ],
     "thumbnail": "1.png",
     "longHtml": "description.html"

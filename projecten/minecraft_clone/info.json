@@ -1,0 +1,19 @@
+[
+  {
+    "title": "Better MC (Minecraft Clone)",
+    "shortDescription": "Een geavanceerde Minecraft kloon volledig gebouwd met Unity.",
+    "tech": ["Unity", "C#"],
+    "links": [
+      { "name": "Download", "url": "https://example.com" },
+      { "name": "Github", "url": "https://github.com/jul1xn/better-mc" }
+    ],
+    "images": [
+      { "url": "Screenshot_1.png", "description": ""},
+      { "url": "Screenshot_2.png", "description": ""},
+      { "url": "Screenshot_3.png", "description": ""},
+      { "url": "Screenshot_4.png", "description": ""}
+    ],
+    "thumbnail": "Screenshot_2.png",
+    "longHtml": "description.html"
+  }
+]
