@@ -4,13 +4,6 @@ const countersParents = document.getElementById('counter-container');
 const counters = countersParents.querySelectorAll('.counter');
 const totalNumberTime = 1500;
 
-counters.forEach((counter) => {
-    const numberElement = counter.querySelector('#number');
-    const targetNumberText = numberElement.textContent.trim();
-    const targetNumber = parseInt(targetNumberText, 10);
-    fadeNumber(numberElement, targetNumber);
-});
-
 function fadeNumber(targetElement, targetNumber) {
     let startTime = null;
     const duration = totalNumberTime;
@@ -76,3 +69,22 @@ fetch('/projecten/api/carousel')
             carouselInner.appendChild(carouselItem);
         });
     });
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            console.log('Row is visible, starting animation');
+            counters.forEach((counter) => {
+                const numberElement = counter.querySelector('#number');
+                const targetNumberText = numberElement.textContent.trim();
+                const targetNumber = parseInt(targetNumberText, 10);
+                fadeNumber(numberElement, targetNumber);
+            });
+        }
+    });
+});
+
+// Observe the row, not the card
+if (countersParents) {
+    observer.observe(countersParents);
+}
