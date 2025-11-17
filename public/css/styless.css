@@ -50,7 +50,6 @@ footer div div ul {
 }
 
 .scroll-wrapper {
-    pointer-events: none;
     white-space: nowrap;
     overflow: hidden;
     display: flex;

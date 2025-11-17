@@ -80,6 +80,7 @@ const observer = new IntersectionObserver((entries) => {
                 const targetNumber = parseInt(targetNumberText, 10);
                 fadeNumber(numberElement, targetNumber);
             });
+            observer.unobserve(countersParents); // Stop observing after animation
         }
     });
 });
