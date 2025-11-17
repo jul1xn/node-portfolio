@@ -2,7 +2,7 @@
   {
     "title": "Space Platformer",
     "shortDescription": "Een 2D platformer game gemaakt met Unity",
-    "tech": ["Unity", "C-Sharp"],
+    "tech": ["Unity", "C#"],
     "links": [
       { "name": "Download", "url": "https://github.com/jul1xn/school-game-examen-lj1/releases/download/v1.0.0/Space.Shooter.zip" },
       { "name": "Github", "url": "https://github.com/jul1xn/school-game-examen-lj1" }

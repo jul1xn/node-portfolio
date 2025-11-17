@@ -17,7 +17,7 @@ const constants = {
     PROJECTEN_PAGE_AANTAL: 9,
     PROJECTEN_AVAILABLE_TECH: [
         "Arduino",
-        "C-Sharp",
+        "C#",
         "CSS",
         "HTML",
         "Javascript",

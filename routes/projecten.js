@@ -16,7 +16,8 @@ router.get('/:project', (req, res) => {
 });
 
 router.get('/api/all', (req, res) => {
-    const filter = req.query.filter || null; // string
+    let filter = req.query.filter || null; // string
+    if (filter === "C") { filter = "C#"; } // special case for C#
     const limit = parseInt(req.query.limit) || constants.PROJECTEN_PAGE_AANTAL;
     const page = parseInt(req.query.page) - 1 || 0;
     const offset = page * limit;
