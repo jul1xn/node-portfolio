@@ -86,3 +86,22 @@ footer div div ul {
 #projectenCarousel div.carousel-item img {
     border-radius: 1rem;
 }
+
+#projecten-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+#project-images .card {
+    margin-bottom: 2rem;
+}
+
+#project-images .card:last-child {
+    margin-bottom: 4rem;
+}
+
+#project-images .card img:hover {
+    cursor: zoom-in;
+}
