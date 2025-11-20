@@ -18,6 +18,7 @@ const constants = {
     PROJECTEN_AVAILABLE_TECH: [
         "Arduino",
         "C#",
+        "WinForms",
         "CSS",
         "HTML",
         "Javascript",
