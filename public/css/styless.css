@@ -257,6 +257,12 @@ footer div div ul {
     }
 }
 
+@media screen and (max-width: 420px) {
+    .navbar-brand .brand-text {
+        display: none;
+    }
+}
+
 .projecten-title {
     text-decoration: none;
 }
