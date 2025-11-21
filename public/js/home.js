@@ -27,9 +27,10 @@ function fadeNumber(targetElement, targetNumber) {
     requestAnimationFrame(animate);
 }
 
-fetch('/projecten/api/all?limit=3')
+fetch('/projecten/api/homepage')
     .then(response => response.json())
     .then(projecten => {
+
         projecten.forEach(project => {
             fetch(`/projecten/api/${project}`)
                 .then(response => response.json())
@@ -37,25 +38,25 @@ fetch('/projecten/api/all?limit=3')
                     const projectCard = document.createElement('div');
                     projectCard.className = 'col';
                     projectCard.innerHTML = `
-                <div class="card">
-                    <img src="/projecten/api/${project}/${data.thumbnail}" class="card-img-top"
-                        alt="Preview van ${data.title}">
-                    <div class="card-body">
-                        <h5 class="card-title">${data.title}</h5>
-                        <p class="card-text mb-2">${data.shortDescription}</p>
-                        <div class="mb-2">
-                            ${data.tech.map(tag => `<a href="/projecten?filter=${tag}"
-                                class="badge rounded-pill bg-secondary me-1 tech">${tag}</a>`).join('')}
-                        </div>
-                        <a href="/projecten/${project}" class="btn btn-primary">Bekijk project</a>
-                    </div>
+            <div class="card">
+            <img src="/projecten/api/${project}/${data.thumbnail}" class="card-img-top"
+            alt="Preview van ${data.title}">
+            <div class="card-body">
+            <h5 class="card-title">${data.title}</h5>
+            <p class="card-text mb-2">${data.shortDescription}</p>
+            <div class="mb-2">
+            ${data.tech.map(tag => `<a href="/projecten?filter=${tag}"
+                class="badge rounded-pill bg-secondary me-1 tech">${tag}</a>`).join('')}
                 </div>
-                    `;
+                <a href="/projecten/${project}" class="btn btn-primary">Bekijk project</a>
+                </div>
+                </div>
+                `;
                     projectenContainer.appendChild(projectCard);
                 });
         });
-    });
 
+    });
 fetch('/projecten/api/carousel')
     .then(response => response.json())
     .then(images => {

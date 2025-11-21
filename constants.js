@@ -28,6 +28,9 @@ const constants = {
         "PHP",
         "Python",
         "Unity",
+    ],
+    HOMEPAGE_PROJECTEN: [
+        "minecraft_clone", "portfolio_website", "school_examen_game"
     ]
 }
 

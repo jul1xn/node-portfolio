@@ -104,6 +104,10 @@ router.get('/api/carousel', (req, res) => {
     }
 });
 
+router.get('/api/homepage', (req, res) => {
+    return res.json(constants.HOMEPAGE_PROJECTEN); // Altijd dezelfde projecten
+});
+
 router.get('/api/pagination', (req, res) => {
     return res.json({ itemsPerPage: constants.PROJECTEN_PAGE_AANTAL });
 });
