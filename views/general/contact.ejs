@@ -60,12 +60,18 @@
                 <label for="message" class="form-label">Bericht</label>
                 <textarea class="form-control" id="message" name="message" rows="7" required></textarea>
             </div>
+            <div class="cf-turnstile" data-sitekey="<%= site_key %>"></div>
             <div class="text-center">
                 <button type="submit" class="btn big-btn btn-primary px-4 fs-4 my-3">Verzenden <i class="fa-regular fa-envelope"></i></button>
             </div>
             <% if (sent) { %>
                 <div class="alert alert-success text-center my-3 mx-auto" role="alert" style="max-width: 67%;">
                     Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.
+                </div>
+            <% } %>
+            <% if (error) { %>
+                <div class="alert alert-danger text-center my-3 mx-auto" role="alert" style="max-width: 67%;">
+                    Fout tijdens het versturen: <%= error %>
                 </div>
             <% } %>
         </form>
@@ -119,6 +125,7 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/632e967be3.js" crossorigin="anonymous"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </body>
 
 </html>
