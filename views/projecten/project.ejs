@@ -59,7 +59,7 @@
             <div class="col d-flex flex-column align-items-end" id="project-images">
                 <% data.images.forEach(img => { %>
                  <div class="card" style="width: 75%;">
-                    <img src="/projecten/api/<%= project %>/<%= img.url %>" class="card-img-top" alt="<%= img.description %>">
+                    <img src="/projecten/api/<%= project %>/<%= img.url %>" id="project-image" class="card-img-top" alt="<%= img.description %>">
                     <% if (img.description && img.description.trim() !== "") { %>
                         <div class="card-body text-start">
                             <p class="card-text"><%= img.description %></p>

@@ -6,3 +6,9 @@ fetch(descriptionUrl)
     .then(data => {
         descriptionParent.innerHTML = data;
     });
+
+document.querySelectorAll('#project-image').forEach(img => {
+    img.addEventListener('click', () => {
+        window.open(img.src, '_blank');
+    });
+});
