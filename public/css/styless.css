@@ -256,3 +256,7 @@ footer div div ul {
         width: 100% !important;
     }
 }
+
+.projecten-title {
+    text-decoration: none;
+}
