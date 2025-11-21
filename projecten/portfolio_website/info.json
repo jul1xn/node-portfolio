@@ -1,7 +1,7 @@
 [
   {
-    "title": "Mijn Portfolio",
-    "shortDescription": "Een persoonlijke portfolio website gebouwd in Node.js",
+    "title": "Portfolio Website",
+    "shortDescription": "Mijn persoonlijke portfolio website gebouwd in Node.js",
     "tech": ["Node.js", "Javascript", "HTML", "CSS"],
     "links": [
       { "name": "demo", "url": "https://example.com" },
