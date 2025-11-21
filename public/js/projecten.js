@@ -32,9 +32,9 @@ fetch('/projecten/api/all?' + queryParams.toString())
                     projectCard.innerHTML = `
                     <img src="/projecten/api/${project}/${data.thumbnail}" class="card-img-top" alt="Preview van ${data.title}">
                     <div class="card-body">
-                        <h5 class="card-title">${data.title}</h5>
-                        <p class="card-text mb-2">${data.shortDescription}</p>
-                        <div class="mb-2">
+                        <h5 class="card-title mb-2">${data.title}</h5>
+                        <p class="card-text my-2">${data.shortDescription}</p>
+                        <div class="mb-3">
                             ${data.tech.map(tag => `<a href="/projecten?page=${currentPage}&filter=${tag}" class="badge rounded-pill bg-secondary me-1 tech" >${tag}</a>`).join('')}
                         </div>
                         <a href="/projecten/${project}" class="btn btn-primary">Meer informatie</a>
