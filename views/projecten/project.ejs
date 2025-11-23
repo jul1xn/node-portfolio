@@ -49,6 +49,11 @@
         <div class="row">
             <div class="col text-start">
                 <h1 class="display-4"><%= data.title %></h1>
+                <div class="mt-3">
+                    <% data.tech.forEach(tech => { %>
+                       <a href="/projecten?&filter=<%= tech %>" class="badge rounded-pill bg-secondary me-1 tech fs-6" ><%= tech %></a>
+                    <% }) %>
+                </div>
                 <div class="my-4" id="description" url="/projecten/api/<%= project %>/<%= data.longHtml %>"></div>
                 <div class="mt-2">
                     <% data.links.forEach(link => { %>
