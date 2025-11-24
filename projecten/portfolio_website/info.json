@@ -4,8 +4,8 @@
     "shortDescription": "Mijn persoonlijke portfolio website gebouwd in Node.js",
     "tech": ["Node.js", "Javascript", "HTML", "CSS"],
     "links": [
-      { "name": "demo", "url": "https://example.com" },
-      { "name": "github", "url": "https://github.com/me/project" }
+      { "name": "Bekijk site", "url": "https://portfolio.prowser.nl" },
+      { "name": "Github", "url": "https://github.com/jul1xn/node-portfolio" }
     ],
     "images": [
       { "url": "1.png", "description": "De home pagina van de website"}
