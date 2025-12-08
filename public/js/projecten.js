@@ -40,6 +40,11 @@ fetch('/projecten/api/all?' + queryParams.toString())
                         <a href="/projecten/${project}" class="btn btn-primary">Meer informatie</a>
                     </div>
                     `;
+                    projectCard.querySelectorAll('*').forEach(e => {
+                        e.addEventListener('click', (event) => {
+                            window.location.href = `/projecten/${project}`;
+                        });
+                    });
                     projectenContainer.appendChild(projectCard);
                 });
         });
