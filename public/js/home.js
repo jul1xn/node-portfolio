@@ -38,7 +38,7 @@ fetch('/projecten/api/homepage')
                     const projectCard = document.createElement('div');
                     projectCard.className = 'col';
                     projectCard.innerHTML = `
-            <div class="card">
+            <div class="card" style="min-height: 27rem;">
             <img src="/projecten/api/${project}/${data.thumbnail}" class="card-img-top"
             alt="Preview van ${data.title}">
             <div class="card-body">
@@ -52,6 +52,11 @@ fetch('/projecten/api/homepage')
                 </div>
                 </div>
                 `;
+                    projectCard.querySelectorAll("*").forEach(e => {
+                        e.addEventListener('click', () => {
+                            window.location.href = `/projecten/${project}`;
+                        });
+                    });
                     projectenContainer.appendChild(projectCard);
                 });
         });

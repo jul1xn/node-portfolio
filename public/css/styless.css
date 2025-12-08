@@ -186,7 +186,7 @@ footer div div ul {
     }
 }
 
-@media screen and (max-width: 770px) {
+@media screen and (max-width: 990px) {
     .homepage #projecten-container {
         display: inline-block !important;
     }
