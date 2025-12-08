@@ -1,19 +1,29 @@
 const express = require('express');
+const compression = require('compression');
 const app = express();
 
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+app.use(
+  express.static('public', {
+    maxAge: 2592000000,
+    setHeaders: function (res, path) {
+      res.setHeader(
+        "Expires",
+        new Date(Date.now() + 2592000000).toUTCString() 
+      );
+    }
+  })
+);
+
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
-
-const projectRoutes = require('./routes/projects');
-app.use('/projecten', projectRoutes);
-
-const adminRoutes = require('./routes/admin');
-app.use('/admin', adminRoutes);
+app.use(compression());
 
 const generalRoutes = require('./routes/general');
 app.use('/', generalRoutes);
+
+const projectenRoutes = require('./routes/projecten');
+app.use('/projecten', projectenRoutes);
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');

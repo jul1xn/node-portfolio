@@ -1,0 +1,16 @@
+[
+  {
+    "title": "ESP32 Home Assistant Temperatuursensor",
+    "shortDescription": "Een ESP32 die de temperatuur meet en deze naar Home Assistant stuurt via MQTT.",
+    "tech": ["Arduino"],
+    "links": [
+      { "name": "Download", "url": "https://gist.github.com/jul1xn/bb9d8211d16f1024e90f6ac80ec4c6a8/archive/7005dd2d4f1d743d7fbc56ee904daa2e474147ac.zip" },
+      { "name": "Gist Code", "url": "https://gist.github.com/jul1xn/bb9d8211d16f1024e90f6ac80ec4c6a8" }
+    ],
+    "images": [
+      { "url": "20251121_145827.jpg", "description": "De PCB met de ESP32 en temperatuursensor."}
+    ],
+    "thumbnail": "20251121_145827.jpg",
+    "longHtml": "description.html"
+  }
+]

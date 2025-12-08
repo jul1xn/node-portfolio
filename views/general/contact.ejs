@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/img/logo_80.png">
+    <title>
+        <%= short %> - <%= title %>
+    </title>
+    <link href="/css/styles.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/styless.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/img/logo_80.png" alt="Logo" width="auto" height="45"
+                    class="d-inline-block align-text-center">
+                <span class="brand-text"><%= name %></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex ms-auto">
+                    <% links.forEach(link=> { %>
+                        <% if (link.name===title) { %>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="<%= link.url %>">
+                            <%= link.name %>
+                        </a>
+                    </li>
+                        <% } else { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= link.url %>">
+                            <%= link.name %>
+                        </a>
+                    </li>
+                        <% } %>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h1 class="text-center display-5">Contact</h1>
+        <form action="/contact" method="post" class="mx-auto my-4 contact-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Naam</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="message" class="form-label">Bericht</label>
+                <textarea class="form-control" id="message" name="message" rows="7" required></textarea>
+            </div>
+            <div class="cf-turnstile" data-sitekey="<%= site_key %>"></div>
+            <div class="text-center">
+                <button type="submit" class="btn big-btn btn-primary px-4 fs-4 my-3">Verzenden <i class="fa-regular fa-envelope"></i></button>
+            </div>
+            <% if (sent) { %>
+                <div class="alert alert-success text-center my-3 mx-auto" role="alert" style="max-width: 67%;">
+                    Bedankt voor uw bericht! We nemen zo snel mogelijk contact met u op.
+                </div>
+            <% } %>
+            <% if (error) { %>
+                <div class="alert alert-danger text-center my-3 mx-auto" role="alert" style="max-width: 67%;">
+                    Fout tijdens het versturen: <%= error %>
+                </div>
+            <% } %>
+        </form>
+    </div>
+    <footer class="bg-body-tertiary text-center py-3 mt-auto pt-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col text-center">
+                    <img src="/img/logo_80.png" alt="Logo" width="auto" height="100">
+                </div>
+                <div class="col text-center">
+                    <h3 class="mb-3">Contact</h3>
+                    <p class="mb-1">Julian Verwoerd</p>
+                    <p class="mb-1">
+                        <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&colon;&#x6a;&#x75;&#x6c;&#x69;&#x61;&#x6e;&period;&#x76;&#x65;&#x72;&#x77;&#x6f;&#x65;&#x72;&#x64;&commat;&#x70;&#x61;&#x6e;&#x74;&#x72;&#x6f;&#x6e;&#x69;&#x63;&period;&#x6e;&#x6c;">&#x6a;&#x75;&#x6c;&#x69;&#x61;&#x6e;&period;&#x76;&#x65;&#x72;&#x77;&#x6f;&#x65;&#x72;&#x64;&commat;&#x70;&#x61;&#x6e;&#x74;&#x72;&#x6f;&#x6e;&#x69;&#x63;&period;&#x6e;&#x6c;</a>
+                    </p>
+                    <p class="mb-3">
+                        <a href="&#x74;&#x65;&#x6c;&colon;&plus;&#x33;&#x31;&#x36;&#x32;&#x34;&#x37;&#x39;&#x39;&#x38;&#x37;&#x36;">&#x30;&#x36;&#x2d;&#x32;&#x34;&#x37;&#x39;&#x39;&#x38;&#x37;&#x36;</a>
+                    </p>
+                    <div class="d-inline-block">
+                        <a class="icon-link" href="https://www.linkedin.com/in/julian-v-84a02a356/" target="_blank">
+                            <i class="fa-brands fa-linkedin fa-lg"></i>
+                        </a>
+                        <a class="icon-link" href="https://github.com/jul1xn" target="_blank">
+                            <i class="fa-brands fa-github fa-lg"></i>
+                        </a>
+                    </div>
+                </div>  
+                <div class="col text-center">
+                    <h3 class="mb-3">Navigatie</h3>
+                    <ul>
+                        <% links.forEach(link=> { %>
+                            <li>
+                                <a href="<%= link.url %>"><%= link.name %></a>
+                            </li>
+                        <% }) %>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <span class="text-muted">
+                        &copy; <%= new Date().getFullYear() %> <%= name %>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/632e967be3.js" crossorigin="anonymous"></script>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+</body>
+
+</html>

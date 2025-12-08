@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="/img/logo_80.png">
+    <title>
+        <%= short %> - <%= title %>
+    </title>
+    <link href="/css/styles.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="/css/styless.css" rel="stylesheet" crossorigin="anonymous">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">
+                <img src="/img/logo_80.png" alt="Logo" width="auto" height="45"
+                    class="d-inline-block align-text-center">
+                <span class="brand-text"><%= name %></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav d-flex ms-auto">
+                    <% links.forEach(link=> { %>
+                        <% if (link.name===title) { %>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="<%= link.url %>">
+                                    <%= link.name %>
+                                </a>
+                            </li>
+                            <% } else { %>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<%= link.url %>">
+                                        <%= link.name %>
+                                    </a>
+                                </li>
+                                <% } %>
+                                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4 mb-3 homepage">
+        <div class="row">
+            <div class="col-7 text-start pe-5">
+                <h1 class="my-5 display-3">Hallo!</h1>
+                <p>
+                    Mijn naam is Julian Verwoerd, ik ben 16 jaar en tweedejaars student Software Developer. Ik ben erg
+                    geïnteresseerd in technologie, design en programmeren. Tijdens mijn opleiding werk ik aan
+                    verschillende projecten en leer ik hoe je van een idee een goed werkende app maakt.
+                </p>
+                <p>
+                    Het is voor mij belangrijk om niet alleen te coderen, maar ook te snappen hoe een app
+                    gebruiksvriendelijk en efficiënt kan zijn. Ik vind het leuk om uitdagingen aan te gaan, nieuwe
+                    dingen te leren en creatieve oplossingen te bedenken voor technische problemen.
+                </p>
+                <p>
+                    Op deze website deel ik mijn projecten, vaardigheden en mijn groei als beginnende Developer. Neem
+                    gerust een kijkje en ontdek waar ik momenteel mee bezig ben!
+                </p>
+
+                <a class="btn big-btn btn-primary fs-4 mt-5" href="/over-mij">Lees meer over mij <i
+                        class="fa-solid fa-link"></i></a>
+            </div>
+            <div class="col-5 text-end align-items-center justify-content-center d-flex">
+                <div id="projectenCarousel" class="carousel slide mt-5" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Carousel items worden hier geladen via home.js -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="my-5">
+        <div class="row text-center" id="counter-container">
+            <div class="col counter">
+                <p class="display-5 mb-1 text-primary-emphasis" id="number">9</p>
+                <p id="text">Bekende talen</p>
+            </div>
+            <div class="col counter">
+                <p class="display-5 mb-1 text-primary-emphasis" id="number">
+                    <%= new Date().getFullYear() - 2017 %>
+                </p>
+                <p id="text">Jaren ervaring</p>
+            </div>
+            <div class="col counter">
+                <p class="display-5 mb-1 text-primary-emphasis" id="number">1000</p>
+                <p id="text">Lijnen geschreven</p>
+            </div>
+        </div>
+        <hr class="mb-5">
+        <div class="row text-center">
+            <h2 class="mb-4">Recente projecten</h2>
+        </div>
+        <div class="row" id="projecten-container">
+            <!-- Projecten worden hier geladen via home.js -->
+        </div>
+        <div class="row mx-5">
+            <div class="text-center">
+                <a class="btn big-btn btn-primary fs-5" href="/projecten">Bekijk alle projecten</a>
+            </div>
+        </div>
+        <hr class="my-5">
+        <div class="row mx-5 mb-5">
+            <h2 class="text-center mb-5">Tools en talen die ik gebruik</h2>
+            <div class="scroll-wrapper d-flex overflow-hidden">
+                <% for( let index=0; index < 2; index++ ) { %>
+                    <div class="scroll-track d-flex">
+                        <a href="https://dotnet.microsoft.com/en-us/languages/csharp" target="_blank">
+                            <img src="/img/slideshow/csharp.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.python.org/" target="_blank">
+                            <img src="/img/slideshow/python.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.javascript.com/" target="_blank">
+                            <img src="/img/slideshow/javascript.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://nl.wikipedia.org/wiki/HyperText_Markup_Language" target="_blank">
+                            <img src="/img/slideshow/html.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank"> 
+                            <img src="/img/slideshow/css.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.lua.org" target="_blank">
+                            <img src="/img/slideshow/lua.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.php.net" target="_blank">
+                            <img src="/img/slideshow/php.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.mysql.com" target="_blank">
+                            <img src="/img/slideshow/mysql.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://nodejs.org/en" target="_blank">
+                            <img src="/img/slideshow/nodejs.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://www.arduino.cc" target="_blank">
+                            <img src="/img/slideshow/arduino.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://github.com" target="_blank">
+                            <img src="/img/slideshow/github.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://unity.com" target="_blank">
+                            <img src="/img/slideshow/unity.png" class="mx-3 img-fluid" />
+                        </a>
+                        <a href="https://code.visualstudio.com" target="_blank">
+                            <img src="/img/slideshow/vscode.png" class="mx-3 img-fluid" />
+                        </a>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-body-tertiary text-center py-3 mt-auto pt-4">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col text-center">
+                    <img src="/img/logo_80.png" alt="Logo" width="auto" height="100">
+                </div>
+                <div class="col text-center">
+                    <h3 class="mb-3">Contact</h3>
+                    <p class="mb-1">Julian Verwoerd</p>
+                    <p class="mb-1">
+                        <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#x6f;&colon;&#x6a;&#x75;&#x6c;&#x69;&#x61;&#x6e;&period;&#x76;&#x65;&#x72;&#x77;&#x6f;&#x65;&#x72;&#x64;&commat;&#x70;&#x61;&#x6e;&#x74;&#x72;&#x6f;&#x6e;&#x69;&#x63;&period;&#x6e;&#x6c;">&#x6a;&#x75;&#x6c;&#x69;&#x61;&#x6e;&period;&#x76;&#x65;&#x72;&#x77;&#x6f;&#x65;&#x72;&#x64;&commat;&#x70;&#x61;&#x6e;&#x74;&#x72;&#x6f;&#x6e;&#x69;&#x63;&period;&#x6e;&#x6c;</a>
+                    </p>
+                    <p class="mb-3">
+                        <a href="&#x74;&#x65;&#x6c;&colon;&plus;&#x33;&#x31;&#x36;&#x32;&#x34;&#x37;&#x39;&#x39;&#x38;&#x37;&#x36;">&#x30;&#x36;&#x2d;&#x32;&#x34;&#x37;&#x39;&#x39;&#x38;&#x37;&#x36;</a>
+                    </p>
+                    <div class="d-inline-block">
+                        <a class="icon-link" href="https://www.linkedin.com/in/julian-v-84a02a356/" target="_blank">
+                            <i class="fa-brands fa-linkedin fa-lg"></i>
+                        </a>
+                        <a class="icon-link" href="https://github.com/jul1xn" target="_blank">
+                            <i class="fa-brands fa-github fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <h3 class="mb-3">Navigatie</h3>
+                    <ul>
+                        <% links.forEach(link=> { %>
+                            <li>
+                                <a href="<%= link.url %>">
+                                    <%= link.name %>
+                                </a>
+                            </li>
+                            <% }) %>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <span class="text-muted">
+                        &copy; <%= new Date().getFullYear() %>
+                            <%= name %>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="/js/home.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/632e967be3.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
