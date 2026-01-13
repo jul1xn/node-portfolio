@@ -24,6 +24,7 @@ const constants = {
         "HTML",
         "Javascript",
         "Lua",
+        "Java",
         "MySQL",
         "Node.js",
         "PHP",
