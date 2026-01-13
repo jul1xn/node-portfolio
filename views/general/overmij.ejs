@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 
+<%
+const birth = new Date("2008-12-19");
+const today = new Date();
+
+let age = today.getFullYear() - birth.getFullYear();
+const hasHadBirthday =
+    today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+
+if (!hasHadBirthday) age--;
+%>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,7 +63,7 @@
                 <h1 class="mb-4 display-5">Over mij</h1>
                 <div class="mb-5">
                     <p>
-                        Hoi! Ik ben Julian Verwoerd, 16 jaar en ik woon in Veenendaal. Ik zit op het mbo als Software
+                        Hoi! Ik ben Julian Verwoerd, <%= age %> jaar en ik woon in Veenendaal. Ik zit op het mbo als Software
                         Developer
                         en ben al vroeg begonnen met programmeren. Doordat ik autodidact ben heb ik veel dingen zelf
                         geleerd
