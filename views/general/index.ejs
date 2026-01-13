@@ -1,6 +1,18 @@
 <!doctype html>
 <html lang="en" data-bs-theme="dark">
 
+<%
+const birth = new Date("2008-12-19");
+const today = new Date();
+
+let age = today.getFullYear() - birth.getFullYear();
+const hasHadBirthday =
+    today.getMonth() > birth.getMonth() ||
+    (today.getMonth() === birth.getMonth() && today.getDate() >= birth.getDate());
+
+if (!hasHadBirthday) age--;
+%>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -50,7 +62,7 @@
             <div class="col-7 text-start pe-5">
                 <h1 class="my-5 display-3">Hallo!</h1>
                 <p>
-                    Mijn naam is Julian Verwoerd, ik ben 16 jaar en tweedejaars student Software Developer. Ik ben erg
+                    Mijn naam is Julian Verwoerd, ik ben <%= age %> jaar en tweedejaars student Software Developer. Ik ben erg
                     geïnteresseerd in technologie, design en programmeren. Tijdens mijn opleiding werk ik aan
                     verschillende projecten en leer ik hoe je van een idee een goed werkende app maakt.
                 </p>
