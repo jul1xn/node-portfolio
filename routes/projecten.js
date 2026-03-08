@@ -1,152 +1,184 @@
 const express = require('express');
 const router = express.Router();
 const constants = require('../constants');
-const fs = require('fs');
+const fs = require('fs/promises'); // ✅ promises versie
 const path = require('path');
 
+// Helper: check of een pad een directory is
+async function isDirectory(dirPath) {
+    try {
+        const stats = await fs.stat(dirPath);
+        return stats.isDirectory();
+    } catch {
+        return false;
+    }
+}
+
+// GET /projecten
 router.get('/', async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     let filter = req.query.filter || null;
-    if (filter === "C") { filter = "C#"; } // special case for C#
-    return await res.render('projecten/projecten', { title: 'Projecten', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, available_tech: constants.PROJECTEN_AVAILABLE_TECH, current_page: page, filter: filter });
+    if (filter === "C") filter = "C#"; // special case
+
+    return res.render('projecten/projecten', {
+        title: 'Projecten',
+        links: constants.NAVBAR_LINKS,
+        name: constants.WEBSITE_NAME,
+        short: constants.SHORT_NAME,
+        available_tech: constants.PROJECTEN_AVAILABLE_TECH,
+        current_page: page,
+        filter: filter
+    });
 });
 
-router.get('/:project', async (req, res) => {
-    const projectData = await getProject(req.params.project);
-    return await res.render('projecten/project', { title: projectData.title, links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME, project: req.params.project, data: projectData });
+// GET /projecten/:project
+router.get('/:project', async (req, res, next) => {
+    try {
+        const projectData = await getProject(req.params.project);
+        return res.render('projecten/project', {
+            title: projectData.title,
+            links: constants.NAVBAR_LINKS,
+            name: constants.WEBSITE_NAME,
+            short: constants.SHORT_NAME,
+            project: req.params.project,
+            data: projectData
+        });
+    } catch (err) {
+        next(err);
+    }
 });
 
+// GET /projecten/api/all
 router.get('/api/all', async (req, res) => {
-    let filter = req.query.filter || null; // string
-    if (filter === "C") { filter = "C#"; } // special case for C#
+    let filter = req.query.filter || null;
+    if (filter === "C") filter = "C#";
+
     const limit = parseInt(req.query.limit) || constants.PROJECTEN_PAGE_AANTAL;
-    const page = parseInt(req.query.page) - 1 || 0;
+    const page = (parseInt(req.query.page) - 1) || 0;
     const offset = page * limit;
 
     const dirPath = path.join(__dirname, "..", "projecten");
 
     try {
         // 1. Read all project folders
-        const folders = await fs.readdir(dirPath)
-            .filter(async name => await fs.stat(path.join(dirPath, name)).isDirectory());
-
-        // 2. Load each info.json and create objects
-        let projects = folders.map(async folder => {
-            try {
-                const project = await getProject(folder);
-                return { folder, ...project }; // include folder name too
-            } catch (err) {
-                console.error(`Skipping project '${folder}':`, err.message);
-                return null; // skip broken projects
-            }
-        }).filter(Boolean); // remove nulls
-
-        // 3. Apply filter by tech (case-insensitive)
-        if (filter) {
-            const filterLower = filter.toLowerCase();
-            projects = projects.filter(p => 
-                p.tech && p.tech.some(t => t.toLowerCase() === filterLower)
-            );
+        let allNames = await fs.readdir(dirPath);
+        let folders = [];
+        for (const name of allNames) {
+            const fullPath = path.join(dirPath, name);
+            if (await isDirectory(fullPath)) folders.push(name);
         }
 
-        // 4. Total count BEFORE pagination
-        const total = projects.length;
+        // 2. Load each info.json
+        let projects = [];
+        for (const folder of folders) {
+            try {
+                const project = await getProject(folder);
+                projects.push({ folder, ...project });
+            } catch (err) {
+                console.error(`Skipping project '${folder}':`, err.message);
+            }
+        }
 
-        // 5. Apply limit + offset
+        // 3. Apply filter
+        if (filter) {
+            const filterLower = filter.toLowerCase();
+            projects = projects.filter(p => p.tech && p.tech.some(t => t.toLowerCase() === filterLower));
+        }
+
+        // 4. Paginate
         const paginated = projects.slice(offset, offset + limit);
 
-        // 6. Return API response
-        return await res.json(paginated.map(p => p.folder));
+        return res.json(paginated.map(p => p.folder));
 
     } catch (err) {
         console.error(err);
-        return await res.status(500).json({ error: "Kon de projecten niet ophalen!" });
+        return res.status(500).json({ error: "Kon de projecten niet ophalen!" });
     }
 });
 
+// GET /projecten/api/carousel
 router.get('/api/carousel', async (req, res) => {
     const projectenRoot = path.join(__dirname, "..", "projecten");
 
     try {
-        // 1. Get all project folders
-        const projectFolders = await fs.readdir(projectenRoot)
-            .filter(async folder => await fs.stat(path.join(projectenRoot, folder)).isDirectory());
+        const allNames = await fs.readdir(projectenRoot);
+        let folders = [];
+        for (const name of allNames) {
+            if (await isDirectory(path.join(projectenRoot, name))) folders.push(name);
+        }
 
-        // 2. Collect thumbnails from info.json
-        let thumbnails = [];
-
-        projectFolders.forEach(async folder => {
+        // 2. Collect thumbnails
+        const thumbnails = [];
+        for (const folder of folders) {
             try {
-                const projectData = await getProject(folder); // your existing function
-                if (projectData.thumbnail) {
-                    // prepend project folder path to thumbnail
-                    thumbnails.push(`/projecten/api/${folder}/${projectData.thumbnail}`);
+                const data = await getProject(folder);
+                if (data.thumbnail) {
+                    thumbnails.push(`/projecten/api/${folder}/${data.thumbnail}`);
                 }
             } catch (err) {
                 console.error(`Skipping project '${folder}' for carousel:`, err.message);
             }
-        });
+        }
 
-        // 3. Shuffle array
+        // Shuffle
         for (let i = thumbnails.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [thumbnails[i], thumbnails[j]] = [thumbnails[j], thumbnails[i]];
         }
 
-        // 4. Take up to 5 thumbnails
-        const result = thumbnails.slice(0, 5);
-
-        return await res.json(result);
+        return res.json(thumbnails.slice(0, 5));
 
     } catch (err) {
         console.error("Carousel error:", err);
-        return await res.status(500).json({ error: "Kon carousel afbeeldingen niet ophalen!" });
+        return res.status(500).json({ error: "Kon carousel afbeeldingen niet ophalen!" });
     }
 });
 
+// GET /projecten/api/homepage
 router.get('/api/homepage', async (req, res) => {
-    return await res.json(constants.HOMEPAGE_PROJECTEN); // Altijd dezelfde projecten
+    return res.json(constants.HOMEPAGE_PROJECTEN);
 });
 
+// GET /projecten/api/pagination
 router.get('/api/pagination', async (req, res) => {
-    return await res.json({ itemsPerPage: constants.PROJECTEN_PAGE_AANTAL });
+    return res.json({ itemsPerPage: constants.PROJECTEN_PAGE_AANTAL });
 });
 
+// GET /projecten/api/:project
 router.get('/api/:project', async (req, res) => {
-    return await res.json(getProject(req.params.project));
+    try {
+        const data = await getProject(req.params.project);
+        return res.json(data);
+    } catch (err) {
+        return res.status(404).json({ error: "Project niet gevonden" });
+    }
 });
 
+// GET /projecten/api/:project/:file
 router.get('/api/:project/:file', async (req, res) => {
     const projectenRoot = path.join(__dirname, "..", "projecten", req.params.project);
     const requestedPath = path.join(projectenRoot, req.params.file);
-
     const normalized = path.normalize(requestedPath);
+
     if (!normalized.startsWith(projectenRoot)) {
         return res.status(400).json({ error: "Invalid path." });
     }
 
     try {
-        if (!fs.existsSync(normalized)) {
-            return await res.status(404).json({ error: "File not found." });
-        }
-
-        return await res.sendFile(normalized);
-
-    } catch (err) {
-        console.error(err);
-        return await res.status(500).json({ error: "Kon het project niet ophalen!" });
+        await fs.access(normalized); // check if exists
+        return res.sendFile(normalized);
+    } catch {
+        return res.status(404).json({ error: "File not found." });
     }
 });
 
+// Helper: read info.json
 async function getProject(projectName) {
-    const dirPath = path.join(__dirname, "..", "projecten", projectName, "info.json");
+    const filePath = path.join(__dirname, "..", "projecten", projectName, "info.json");
 
     try {
-        if (!fs.existsSync(dirPath)) {
-            throw new Error("Project bestand 'info.json' niet gevonden!");
-        }
-
-        const data = await fs.readFile(dirPath, 'utf8');
+        await fs.access(filePath); // check existence
+        const data = await fs.readFile(filePath, 'utf8');
         const arr = JSON.parse(data);
 
         if (!Array.isArray(arr) || arr.length === 0) {
@@ -159,6 +191,5 @@ async function getProject(projectName) {
         throw err;
     }
 }
-
 
 module.exports = router;

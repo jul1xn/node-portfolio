@@ -2,54 +2,70 @@ const express = require('express');
 const router = express.Router();
 const constants = require('../constants');
 const { sendContactEmail } = require('../mail');
-const axios = require("axios")
+const axios = require('axios');
 
-router.get('/', async (req, res) => {
-    return await res.render('general/index', { title: 'Home', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME });
-});
+// Async wrapper to handle errors and forward to next()
+const asyncHandler = fn => (req, res, next) => {
+    Promise.resolve(fn(req, res, next)).catch(next);
+};
 
-router.get('/over-mij', async (req, res) => {
-    return await res.render('general/overmij', { title: 'Over mij', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME });
-});
+// Home page
+router.get('/', asyncHandler(async (req, res) => {
+    await res.render('general/index', {
+        title: 'Home',
+        links: constants.NAVBAR_LINKS,
+        name: constants.WEBSITE_NAME,
+        short: constants.SHORT_NAME
+    });
+}));
 
+// About me page
+router.get('/over-mij', asyncHandler(async (req, res) => {
+    await res.render('general/overmij', {
+        title: 'Over mij',
+        links: constants.NAVBAR_LINKS,
+        name: constants.WEBSITE_NAME,
+        short: constants.SHORT_NAME
+    });
+}));
+
+// Contact page
 router.route('/contact')
-    .get(async (req, res) => {
+    .get(asyncHandler(async (req, res) => {
         const sent = req.query.sent === 'true';
-        return await res.render('general/contact', { error: req.query.error, site_key: constants.CLOUDFLARE_DATA.site_key, sent: sent, title: 'Contact', links: constants.NAVBAR_LINKS, name: constants.WEBSITE_NAME, short: constants.SHORT_NAME });
-    })
-    .post(async (req, res) => {
-        let token = null;
+        await res.render('general/contact', {
+            error: req.query.error,
+            site_key: constants.CLOUDFLARE_DATA.site_key,
+            sent,
+            title: 'Contact',
+            links: constants.NAVBAR_LINKS,
+            name: constants.WEBSITE_NAME,
+            short: constants.SHORT_NAME
+        });
+    }))
+    .post(asyncHandler(async (req, res) => {
+        const token = req.body["cf-turnstile-response"];
+        if (!token) return res.redirect("/contact?error=Captcha niet voltooid.");
 
-        try {
-            token = req.body["cf-turnstile-response"];
-        }
-        catch{}
-
-        if (!token) {
-            return await res.redirect("/contact?error=Captcha niet voltooid.");
-        }
-
+        // Cloudflare Turnstile validation
         const result = await axios.post(
             "https://challenges.cloudflare.com/turnstile/v0/siteverify",
             new URLSearchParams({
                 secret: constants.CLOUDFLARE_DATA.secret_key,
                 response: token,
-                remoteip: req.ip,
+                remoteip: req.ip
             })
         );
 
         if (!result.data.success) {
             console.log("Turnstile validation failed:", result.data);
-            return await res.redirect("/contact?error=Captcha validatie mislukt.");
+            return res.redirect("/contact?error=Captcha validatie mislukt.");
         }
 
-        sendContactEmail(
-            req.body.name,
-            req.body.email,
-            req.body.message
-        );
+        // Send email (non-blocking)
+        await sendContactEmail(req.body.name, req.body.email, req.body.message);
 
-        return await res.redirect('/contact?sent=true');
-    });
+        return res.redirect('/contact?sent=true');
+    }));
 
 module.exports = router;
