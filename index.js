@@ -1,5 +1,6 @@
 const express = require('express');
 const compression = require('compression');
+const constants = require('./constants');
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -24,6 +25,15 @@ app.use('/', generalRoutes);
 
 const projectenRoutes = require('./routes/projecten');
 app.use('/projecten', projectenRoutes);
+
+app.use((req, res) => {
+  res.status(404).render('general/error', {
+    title: '404 niet gevonden',
+    links: constants.NAVBAR_LINKS,
+    name: constants.WEBSITE_NAME,
+    short: constants.SHORT_NAME
+  });
+});
 
 app.listen(3000, () => {
   console.log('Server is running on http://localhost:3000');
