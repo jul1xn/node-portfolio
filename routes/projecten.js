@@ -73,7 +73,7 @@ router.get('/api/all', async (req, res) => {
         for (const folder of folders) {
             try {
                 const project = await getProject(folder);
-                projects.push({ folder, ...project });
+                projects.push({ folder, ...project }); // include folder name too
             } catch (err) {
                 console.error(`Skipping project '${folder}':`, err.message);
             }
@@ -85,7 +85,10 @@ router.get('/api/all', async (req, res) => {
             projects = projects.filter(p => p.tech && p.tech.some(t => t.toLowerCase() === filterLower));
         }
 
-        // 4. Paginate
+        // 4. Sort alphabetically by project title (case-insensitive)
+        projects.sort((a, b) => a.title.localeCompare(b.title, 'nl', { sensitivity: 'base' }));
+
+        // 5. Paginate
         const paginated = projects.slice(offset, offset + limit);
 
         return res.json(paginated.map(p => p.folder));
