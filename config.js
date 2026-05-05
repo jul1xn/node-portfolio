@@ -1,12 +1,14 @@
-const fs = require('fs');
-const secrets = JSON.parse(fs.readFileSync('./secrets.json', 'utf8'));
-
 const config = {
-    CLOUDFLARE_DATA: secrets.cloudflare,
-    ADMIN_EDIT_KEY: secrets.admin_edit_key,
-    MYSQL_CREDENTIALS: secrets.mysql_credentials,
-    EMAIL_CREDENTIALS: secrets.email_credentials,
-    EMAIL_TARGET: secrets.email_target,
+    CLOUDFLARE_DATA: {
+        site_key: process.env.CLOUDFLARE_SITE_KEY,
+        secret_key: process.env.CLOUDFLARE_SECRET_KEY
+    },
+    EMAIL_CREDENTIALS: {
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: process.env.SMTP_SECURE
+    },
+    EMAIL_TARGET: process.env.EMAIL_TARGET,
     NAVBAR_LINKS: [
         { name: "Home", url: "/" },
         { name: "Over mij", url: "/over-mij" },
