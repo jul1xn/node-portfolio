@@ -22,10 +22,6 @@ router.get('/', async (req, res) => {
 
     return res.render('projecten/projecten', {
         title: 'Projecten',
-        links: config.NAVBAR_LINKS,
-        name: config.WEBSITE_NAME,
-        short: config.SHORT_NAME,
-        available_tech: config.PROJECTEN_AVAILABLE_TECH,
         current_page: page,
         filter: filter
     });
@@ -37,9 +33,6 @@ router.get('/:project', async (req, res, next) => {
         const projectData = await getProject(req.params.project);
         return res.render('projecten/project', {
             title: projectData.title,
-            links: config.NAVBAR_LINKS,
-            name: config.WEBSITE_NAME,
-            short: config.SHORT_NAME,
             project: req.params.project,
             data: projectData
         });

@@ -8,6 +8,10 @@ const ENVIRONMENT = process.env.NODE_ENV ?? "development";
 
 app.use((req, res, next) => {
   res.locals.env = ENVIRONMENT;
+  res.locals.links = config.NAVBAR_LINKS;
+  res.locals.name = config.WEBSITE_NAME;
+  res.locals.short = config.SHORT_NAME;
+  res.locals.available_tech = config.PROJECTEN_AVAILABLE_TECH;
   next();
 })
 
@@ -35,12 +39,7 @@ const projectenRoutes = require('./routes/projecten');
 app.use('/projecten', projectenRoutes);
 
 app.use((req, res) => {
-  res.status(404).render('general/error', {
-    title: '404 niet gevonden',
-    links: config.NAVBAR_LINKS,
-    name: config.WEBSITE_NAME,
-    short: config.SHORT_NAME
-  });
+  res.status(404).render('general/error', { title: '404 niet gevonden' });
 });
 
 app.listen(process.env.PORT, () => {

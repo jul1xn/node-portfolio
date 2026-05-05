@@ -11,22 +11,12 @@ const asyncHandler = fn => (req, res, next) => {
 
 // Home page
 router.get('/', asyncHandler(async (req, res) => {
-    await res.render('general/index', {
-        title: 'Home',
-        links: config.NAVBAR_LINKS,
-        name: config.WEBSITE_NAME,
-        short: config.SHORT_NAME
-    });
+    await res.render('general/index', { title: 'Home'});
 }));
 
 // About me page
 router.get('/over-mij', asyncHandler(async (req, res) => {
-    await res.render('general/overmij', {
-        title: 'Over mij',
-        links: config.NAVBAR_LINKS,
-        name: config.WEBSITE_NAME,
-        short: config.SHORT_NAME
-    });
+    await res.render('general/overmij', { title: "Over mij" });
 }));
 
 // Contact page
@@ -37,10 +27,7 @@ router.route('/contact')
             error: req.query.error,
             site_key: config.CLOUDFLARE_DATA.site_key,
             sent,
-            title: 'Contact',
-            links: config.NAVBAR_LINKS,
-            name: config.WEBSITE_NAME,
-            short: config.SHORT_NAME
+            title: 'Contact'
         });
     }))
     .post(asyncHandler(async (req, res) => {
