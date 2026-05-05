@@ -16,6 +16,7 @@ if (descriptionParent && descriptionUrl) {
 function attachImageClicks() {
     document.querySelectorAll('#project-image').forEach(img => {
         img.addEventListener('click', () => {
+            if (umami) {umami.track('Opened image of ' + (img.getAttribute('data-title') ?? "?"))}
             window.open(img.src, '_blank');
         });
     });

@@ -18,10 +18,10 @@
                     </a>
                 </p>
                 <div class="d-inline-block">
-                    <a class="icon-link" href="https://www.linkedin.com/in/julian-v-84a02a356/" target="_blank">
+                    <a class="icon-link" href="https://www.linkedin.com/in/julian-v-84a02a356/" target="_blank" data-umami-event="Opened Linkedin social">
                         <i class="fa-brands fa-linkedin fa-lg"></i>
                     </a>
-                    <a class="icon-link" href="https://github.com/jul1xn" target="_blank">
+                    <a class="icon-link" href="https://github.com/jul1xn" target="_blank" data-umami-event="Opened Github social">
                         <i class="fa-brands fa-github fa-lg"></i>
                     </a>
                 </div>
@@ -31,7 +31,7 @@
                 <ul>
                     <% links.forEach(link=> { %>
                         <li>
-                            <a href="<%= link.url %>">
+                            <a href="<%= link.url %>" data-umami-event="Navigated to <%= link.name %> using footer">
                                 <%= link.name %>
                             </a>
                         </li>

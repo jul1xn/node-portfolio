@@ -62,7 +62,7 @@ async function loadProjects() {
     for (let i = 1; i <= totalPages; i++) {
         const pageItem = document.createElement('li');
         pageItem.className = 'page-item' + (i === currentPage ? ' active' : '');
-        pageItem.innerHTML = `<a class="page-link" href="/projecten?page=${i}">${i}</a>`;
+        pageItem.innerHTML = `<a class="page-link" href="/projecten?page=${i}" data-umami-event="Navigated to projects page ${i}">${i}</a>`;
         paginationContainer.appendChild(pageItem);
     }
 }
