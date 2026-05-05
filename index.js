@@ -1,6 +1,6 @@
 const express = require('express');
 const compression = require('compression');
-const constants = require('./constants');
+const config = require('./config');
 const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
@@ -37,9 +37,9 @@ app.use('/projecten', projectenRoutes);
 app.use((req, res) => {
   res.status(404).render('general/error', {
     title: '404 niet gevonden',
-    links: constants.NAVBAR_LINKS,
-    name: constants.WEBSITE_NAME,
-    short: constants.SHORT_NAME
+    links: config.NAVBAR_LINKS,
+    name: config.WEBSITE_NAME,
+    short: config.SHORT_NAME
   });
 });
 

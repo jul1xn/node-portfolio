@@ -1,7 +1,7 @@
 const fs = require('fs');
 const secrets = JSON.parse(fs.readFileSync('./secrets.json', 'utf8'));
 
-const constants = {
+const config = {
     CLOUDFLARE_DATA: secrets.cloudflare,
     ADMIN_EDIT_KEY: secrets.admin_edit_key,
     MYSQL_CREDENTIALS: secrets.mysql_credentials,
@@ -36,4 +36,4 @@ const constants = {
     ],
 }
 
-module.exports = constants;
+module.exports = config;

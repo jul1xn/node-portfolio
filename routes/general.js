@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const constants = require('../constants');
+const config = require('../config');
 const { sendContactEmail } = require('../mail');
 const axios = require('axios');
 
@@ -13,9 +13,9 @@ const asyncHandler = fn => (req, res, next) => {
 router.get('/', asyncHandler(async (req, res) => {
     await res.render('general/index', {
         title: 'Home',
-        links: constants.NAVBAR_LINKS,
-        name: constants.WEBSITE_NAME,
-        short: constants.SHORT_NAME
+        links: config.NAVBAR_LINKS,
+        name: config.WEBSITE_NAME,
+        short: config.SHORT_NAME
     });
 }));
 
@@ -23,9 +23,9 @@ router.get('/', asyncHandler(async (req, res) => {
 router.get('/over-mij', asyncHandler(async (req, res) => {
     await res.render('general/overmij', {
         title: 'Over mij',
-        links: constants.NAVBAR_LINKS,
-        name: constants.WEBSITE_NAME,
-        short: constants.SHORT_NAME
+        links: config.NAVBAR_LINKS,
+        name: config.WEBSITE_NAME,
+        short: config.SHORT_NAME
     });
 }));
 
@@ -35,12 +35,12 @@ router.route('/contact')
         const sent = req.query.sent === 'true';
         await res.render('general/contact', {
             error: req.query.error,
-            site_key: constants.CLOUDFLARE_DATA.site_key,
+            site_key: config.CLOUDFLARE_DATA.site_key,
             sent,
             title: 'Contact',
-            links: constants.NAVBAR_LINKS,
-            name: constants.WEBSITE_NAME,
-            short: constants.SHORT_NAME
+            links: config.NAVBAR_LINKS,
+            name: config.WEBSITE_NAME,
+            short: config.SHORT_NAME
         });
     }))
     .post(asyncHandler(async (req, res) => {
@@ -51,7 +51,7 @@ router.route('/contact')
         const result = await axios.post(
             "https://challenges.cloudflare.com/turnstile/v0/siteverify",
             new URLSearchParams({
-                secret: constants.CLOUDFLARE_DATA.secret_key,
+                secret: config.CLOUDFLARE_DATA.secret_key,
                 response: token,
                 remoteip: req.ip
             })

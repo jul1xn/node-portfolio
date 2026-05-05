@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const constants = require('../constants');
+const config = require('../config');
 const fs = require('fs/promises'); // ✅ promises versie
 const path = require('path');
 
@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
 
     return res.render('projecten/projecten', {
         title: 'Projecten',
-        links: constants.NAVBAR_LINKS,
-        name: constants.WEBSITE_NAME,
-        short: constants.SHORT_NAME,
-        available_tech: constants.PROJECTEN_AVAILABLE_TECH,
+        links: config.NAVBAR_LINKS,
+        name: config.WEBSITE_NAME,
+        short: config.SHORT_NAME,
+        available_tech: config.PROJECTEN_AVAILABLE_TECH,
         current_page: page,
         filter: filter
     });
@@ -37,9 +37,9 @@ router.get('/:project', async (req, res, next) => {
         const projectData = await getProject(req.params.project);
         return res.render('projecten/project', {
             title: projectData.title,
-            links: constants.NAVBAR_LINKS,
-            name: constants.WEBSITE_NAME,
-            short: constants.SHORT_NAME,
+            links: config.NAVBAR_LINKS,
+            name: config.WEBSITE_NAME,
+            short: config.SHORT_NAME,
             project: req.params.project,
             data: projectData
         });
@@ -53,7 +53,7 @@ router.get('/api/all', async (req, res) => {
     let filter = req.query.filter || null;
     if (filter === "C") filter = "C#";
 
-    const limit = parseInt(req.query.limit) || constants.PROJECTEN_PAGE_AANTAL;
+    const limit = parseInt(req.query.limit) || config.PROJECTEN_PAGE_AANTAL;
     const page = (parseInt(req.query.page) - 1) || 0;
     const offset = page * limit;
 
@@ -139,12 +139,12 @@ router.get('/api/carousel', async (req, res) => {
 
 // GET /projecten/api/homepage
 router.get('/api/homepage', async (req, res) => {
-    return res.json(constants.HOMEPAGE_PROJECTEN);
+    return res.json(config.HOMEPAGE_PROJECTEN);
 });
 
 // GET /projecten/api/pagination
 router.get('/api/pagination', async (req, res) => {
-    return res.json({ itemsPerPage: constants.PROJECTEN_PAGE_AANTAL });
+    return res.json({ itemsPerPage: config.PROJECTEN_PAGE_AANTAL });
 });
 
 // GET /projecten/api/:project
