@@ -2,6 +2,14 @@ const express = require('express');
 const compression = require('compression');
 const constants = require('./constants');
 const app = express();
+const dotenv = require('dotenv');
+dotenv.config();
+const ENVIRONMENT = process.env.NODE_ENV ?? "development";
+
+app.use((req, res, next) => {
+  res.locals.env = ENVIRONMENT ;
+  next();
+})
 
 app.set('view engine', 'ejs');
 app.use(
@@ -35,6 +43,6 @@ app.use((req, res) => {
   });
 });
 
-app.listen(3000, () => {
-  console.log('Server is running on http://localhost:3000');
+app.listen(3001, () => {
+  console.log('Server is running on http://localhost:3001');
 });
