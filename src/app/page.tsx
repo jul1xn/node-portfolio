@@ -1,6 +1,7 @@
 import Counter from "@/components/Counter";
 import ProjectCard from "@/components/ProjectCard";
 import Seperator from "@/components/Seperator";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -29,7 +30,8 @@ export default function Home() {
             Op deze website deel ik mijn projecten, vaardigheden en mijn groei als beginnende Developer. Neem
             gerust een kijkje en ontdek waar ik momenteel mee bezig ben!
           </p>
-          <Link href="/over-mij" className="bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
+          <Link href="/over-mij" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
+            <ArrowRight />
             Lees meer over mij
           </Link>
         </div>

@@ -59,7 +59,7 @@ export default async function Projecten({ searchParams }: Props) {
 
     return (
         <>
-            <h1 className="text-center font-light text-4xl mb-5">Alle projecten</h1>
+            <h1 className="text-center font-light text-5xl mb-5">Alle projecten</h1>
             <div className="mb-8 flex justify-center gap-2">
                 {FILTERS.map(filter => {
                     if (params.filter && params.filter === filter) {
