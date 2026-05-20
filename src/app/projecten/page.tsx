@@ -7,17 +7,20 @@ import { X } from 'lucide-react';
 export const FILTERS = [
     "Arduino",
     "C#",
-    "WinForms",
-    "CSS",
-    "HTML",
+    "C++",
+    "Css",
+    "Html",
+    "Java",
     "Javascript",
     "Lua",
-    "Java",
     "MySQL",
-    "Node.js",
     "PHP",
     "Python",
+    "React",
+    "SQL",
+    "Typescript",
     "Unity",
+    "WinForms",
 ]
 
 function getAllProjects(

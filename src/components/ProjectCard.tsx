@@ -26,7 +26,13 @@ export function getProjectInfo(id: string): ProjectInfo | null {
 
     const fileContents = fs.readFileSync(jsonPath, "utf8");
     const parsed = JSON.parse(fileContents) as ProjectInfo[];
-    return parsed?.[0] ?? null;
+    const final = parsed?.[0] ?? null;
+    if (final) {
+        final.tech = final.tech.sort((a, b) =>
+            a.localeCompare(b, undefined, { sensitivity: "base" })
+        );
+    }
+    return final;
 }
 
 export function getProjectLongDescription(id: string): string {
