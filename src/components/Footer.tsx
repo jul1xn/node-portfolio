@@ -1,14 +1,15 @@
-export default function Footer() {
+type Props = {
+    links: { label: string, url: string }[]
+};
+
+export default function Footer({ links }: Props) {
     return (
-        <footer className="bg-gray-900 text-gray-300">
+        <footer className="dark:bg-[#111111] text-gray-300">
             <div className="mx-auto max-w-7xl px-6 py-16 text-center">
                 <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm mb-10">
-                    <a href="#" className="hover:text-white transition">About</a>
-                    <a href="#" className="hover:text-white transition">Blog</a>
-                    <a href="#" className="hover:text-white transition">Jobs</a>
-                    <a href="#" className="hover:text-white transition">Press</a>
-                    <a href="#" className="hover:text-white transition">Accessibility</a>
-                    <a href="#" className="hover:text-white transition">Partners</a>
+                    {links?.map(link => (
+                        <a key={link.url} href={link.url} className="hover:text-white transition">{link.label}</a>
+                    ))}
                 </nav>
                 <div className="flex justify-center gap-8 mb-10">
 
@@ -50,7 +51,7 @@ export default function Footer() {
                 </div>
 
                 <p className="text-sm text-gray-500">
-                    © {new Date().getFullYear()} Your Company, Inc. All rights reserved.
+                    © {new Date().getFullYear()} Prowser Network. Alle rechten voorbehouden.
                 </p>
             </div>
         </footer>

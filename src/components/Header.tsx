@@ -4,14 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const links = [
-  { label: "Home", url: "/" },
-  { label: "Over mij", url: "/over-mij" },
-  { label: "Projecten", url: "/projecten" },
-  { label: "Contact", url: "/contact" },
-];
+type Props = {
+  links: { label: string, url: string }[]
+};
 
-export default function Header() {
+export default function Header({ links }: Props) {
   const pathname = usePathname();
 
   return (
@@ -28,15 +25,14 @@ export default function Header() {
       </div>
 
       <div className="flex items-center justify-end my-auto gap-12 text-xl px-5">
-        {links.map((link) => {
+        {links?.map((link) => {
           const isActive = pathname === link.url;
           return (
             <Link
               key={link.url}
               href={link.url}
-              className={`cursor-pointer transition-all hover:text-purple-800 hover:scale-105 ${
-                isActive ? "text-purple-900" : ""
-              }`}
+              className={`cursor-pointer transition-all hover:text-purple-800 hover:scale-105 ${isActive ? "text-purple-900" : ""
+                }`}
             >
               {link.label}
             </Link>
