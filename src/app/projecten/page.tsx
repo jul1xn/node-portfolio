@@ -72,7 +72,7 @@ export default async function Projecten({ searchParams }: Props) {
                     }
                     else {
                         return (
-                            <Link className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten?filter=${filter}`}>
+                            <Link className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten?filter=${encodeURIComponent(filter)}`}>
                                 {filter}
                             </Link>
                         )

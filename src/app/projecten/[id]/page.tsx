@@ -43,7 +43,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
                         </Link>
                     ))}
                 </div>
-                <div className="prose prose-invert max-w-none mb-5 space-y-5">
+                <div className="prose prose-invert max-w-none mt-5 mb-8 space-y-5">
                     <ReactMarkdown>
                         {description}
                     </ReactMarkdown>
