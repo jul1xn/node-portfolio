@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Portfolio - Julian Verwoerd",
@@ -22,6 +23,7 @@ export default function RootLayout({
         <main className="px-60 py-15 min-h-[calc(100vh-5rem)]">
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );
