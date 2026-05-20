@@ -14,12 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="nl"
       className="dark:bg-neutral-900 dark:text-white"
     >
       <body className="min-h-screen">
         <Header />
-        <main className="px-50 py-15 min-h-[calc(100vh-5rem)]">
+        <main className="px-60 py-15 min-h-[calc(100vh-5rem)]">
           {children}
         </main>
       </body>
