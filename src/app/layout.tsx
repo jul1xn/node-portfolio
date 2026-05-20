@@ -16,10 +16,10 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="dark:bg-neutral-800 dark:text-white"
+      className="dark:bg-neutral-900 dark:text-white"
     >
       <body className="min-h-screen">
-        <header className="dark:bg-neutral-900 w-full h-20 grid grid-cols-2 grid-rows-1 px-8">
+        <header className="dark:bg-black w-full h-20 grid grid-cols-2 grid-rows-1 px-8">
           <div className="flex items-center my-auto">
             <Image
               src="/logo_80.png"
@@ -31,21 +31,21 @@ export default function RootLayout({
             <label className="text-3xl">Portfolio - Julian Verwoerd</label>
           </div>
           <div className="flex items-center justify-end my-auto gap-12 text-xl px-5">
-            <Link href="/" className="cursor-pointer transition-colors hover:text-purple-800">
+            <Link href="/" className="cursor-pointer transition-all hover:text-purple-800 hover:scale-105">
               Home
             </Link>
-            <Link href="/over-mij" className="cursor-pointer transition-colors hover:text-purple-800">
+            <Link href="/over-mij" className="cursor-pointer transition-all hover:text-purple-800 hover:scale-105">
               Over mij
             </Link>
-            <Link href="/projecten" className="cursor-pointer transition-colors hover:text-purple-800">
+            <Link href="/projecten" className="cursor-pointer transition-all hover:text-purple-800 hover:scale-105">
               Projecten
             </Link>
-            <Link href="/contact" className="cursor-pointer transition-colors hover:text-purple-800">
+            <Link href="/contact" className="cursor-pointer transition-all hover:text-purple-800 hover:scale-105">
               Contact
             </Link>
           </div>
         </header>
-        <main className="px-50 py-10 min-h-[calc(100vh-5rem)]">
+        <main className="px-50 py-15 min-h-[calc(100vh-5rem)]">
           {children}
         </main>
       </body>
