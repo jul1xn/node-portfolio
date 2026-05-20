@@ -11,6 +11,6 @@
       { "url": "1.png", "description": "De home pagina van de website"}
     ],
     "thumbnail": "1.png",
-    "longHtml": "description.html"
+    "longHtml": "description.md"
   }
 ]

@@ -29,6 +29,28 @@ export function getProjectInfo(id: string): ProjectInfo | null {
     return parsed?.[0] ?? null;
 }
 
+export function getProjectLongDescription(id: string): string {
+    const project = getProjectInfo(id);
+
+    if (!project?.longHtml) {
+        return "";
+    }
+
+    const filePath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        project.longHtml
+    );
+
+    if (!fs.existsSync(filePath)) {
+        return "";
+    }
+
+    return fs.readFileSync(filePath, "utf8");
+}
+
 export default function ProjectCard({ id }: ProjectCardProps) {
     const project = getProjectInfo(id);
 
@@ -63,7 +85,7 @@ export default function ProjectCard({ id }: ProjectCardProps) {
 
                 <Link
                     href={`/projecten/${id}`}
-                    className="inline-flex rounded-full bg-purple-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-purple-600"
+                    className="inline-flex rounded-full bg-purple-700 px-5 py-3 font-semibold text-white transition hover:bg-purple-600"
                 >
                     Bekijk project
                 </Link>

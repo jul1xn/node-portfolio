@@ -11,6 +11,6 @@
       { "url": "20251121_145827.jpg", "description": "De PCB met de ESP32 en temperatuursensor."}
     ],
     "thumbnail": "20251121_145827.jpg",
-    "longHtml": "description.html"
+    "longHtml": "description.md"
   }
 ]
