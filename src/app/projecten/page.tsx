@@ -82,7 +82,10 @@ export default async function Projecten({ searchParams }: Props) {
                     }
                 })}
             </div>
-            <div className="grid grid-cols-3 gap-8">
+            <div className={projecten.length === 0 ? "" : "grid grid-cols-3 gap-8"}>
+                {projecten.length === 0 && (
+                    <p className="text-center">We konden geen projecten vinden voor dit filter. Probeer een andere categorie of bekijk alle projecten.</p>
+                )}
                 {projecten.map((project, index) => {
                     const colStart = (index % 3) + 1;
 
