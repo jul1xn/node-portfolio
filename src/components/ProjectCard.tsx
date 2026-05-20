@@ -17,7 +17,7 @@ type ProjectInfo = {
     longHtml?: string;
 };
 
-function getProjectInfo(id: string): ProjectInfo | null {
+export function getProjectInfo(id: string): ProjectInfo | null {
     const jsonPath = path.join(process.cwd(), "src", "projecten", id, "info.json");
 
     if (!fs.existsSync(jsonPath)) {
