@@ -65,7 +65,7 @@ export default function ProjectCard({ id }: ProjectCardProps) {
     }
 
     return (
-        <div className="min-h-108 overflow-hidden rounded-3xl border border-neutral-800 bg-[#0b0a14] shadow-xl transition-transform hover:scale-105">
+        <div className="min-h-108 overflow-hidden rounded-3xl border border-neutral-800 bg-[#111111] shadow-xl transition-transform hover:scale-105">
             <div className="h-64 w-full overflow-hidden bg-neutral-900">
                 <ImageWithSpinner
                     src={`/projecten/api/${id}/${project.thumbnail}`}
