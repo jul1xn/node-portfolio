@@ -1,4 +1,5 @@
 import Counter from "@/components/Counter";
+import ProjectCard from "@/components/ProjectCard";
 import Seperator from "@/components/Seperator";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ export default function Home() {
             Op deze website deel ik mijn projecten, vaardigheden en mijn groei als beginnende Developer. Neem
             gerust een kijkje en ontdek waar ik momenteel mee bezig ben!
           </p>
-          <Link href="/over-mij" className="bg-purple-950 text-white px-5 py-3 text-xl rounded-md cursor-pointer transition-colors hover:bg-purple-900">
+          <Link href="/over-mij" className="bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
             Lees meer over mij
           </Link>
         </div>
@@ -44,9 +45,11 @@ export default function Home() {
       </div>
       <Seperator />
       <div className="mt-10">
-        <h1 className="text-center font-light text-4xl">Uitgelichte projecten</h1>
-        <div>
-          {/* Hier komen projecten cards, met een component voor id */}
+        <h1 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h1>
+        <div className="grid grid-cols-3 grid-rows-1 gap-5">
+          <ProjectCard id="portfolio-website"/>
+          <ProjectCard id="school-examen-game"/>
+          <ProjectCard id="minecraft-clone"/>
         </div>
       </div>
     </>
