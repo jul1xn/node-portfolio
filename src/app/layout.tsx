@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
+import UmamiScript from "@/components/UmamiScript";
 import 'dotenv/config';
 import { FOOTER_LINKS, HEADER_LINKS, url } from "@/utils/site.config";
 
@@ -96,6 +97,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer links={FOOTER_LINKS} />
+        <UmamiScript/>
       </body>
     </html>
   );
