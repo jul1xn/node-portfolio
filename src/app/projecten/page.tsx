@@ -23,7 +23,7 @@ export const FILTERS = [
     "WinForms",
 ]
 
-function getAllProjects(
+export function getAllProjects(
     page: number = 1,
     limit: number = 12,
     filter: string | null = null
