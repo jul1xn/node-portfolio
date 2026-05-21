@@ -1,6 +1,7 @@
 import Counter from "@/components/Counter";
 import ProjectCard from "@/components/ProjectCard";
 import Seperator from "@/components/Seperator";
+import Terminal from "@/components/Terminal";
 import ViewFadeWrapper from "@/components/ViewFadeWrapper";
 import * as Brands from "@/utils/brands.utils";
 import { ArrowRight } from "lucide-react";
@@ -78,7 +79,7 @@ export default function Home() {
   return (
     <>
       <div className="grid grid-cols-2 grid-rows-1 mb-20">
-        <div className="text-start">
+        <div className="text-start me-15">
           <div className="flex pb-5 text-6xl">
             <h1 className="font-light">Hallo!</h1>
             <div className="px-3 animate__animated animate__swing animate__slow animate__delay-1s">
@@ -106,7 +107,7 @@ export default function Home() {
           </Link>
         </div>
         <div>
-          {/* Hier komt de images carousel */}
+          <Terminal/>
         </div>
       </div>
       <Seperator />
