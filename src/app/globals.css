@@ -1,0 +1,28 @@
+@import "tailwindcss";
+@import "animate.css";
+
+@keyframes scroll-brands {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-scroll-brands {
+    animation: scroll-brands 35s linear infinite;
+}
+
+.animate-scroll-brands:hover {
+    animation-play-state: paused;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}

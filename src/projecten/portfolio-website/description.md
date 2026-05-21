@@ -1,0 +1,5 @@
+Dit project is mijn eigen portfolio-website, gebouwd om mijn werk als Software Developer te laten zien en een professionele indruk achter te laten bij potentiële stagebedrijven. Hier presenteer ik wie ik ben, welke projecten ik maak en welke vaardigheden ik heb geleerd.
+
+Ik heb de website gemaakt met **HTML**, **CSS** en **JavaScript**, waarbij ik gebruik heb gemaakt van Bootstrap voor een nette, responsive layout. Ik begon met wireframes om de indeling en gebruikerservaring duidelijk te plannen, en werkte daarna stap voor stap aan de verschillende pagina's.
+
+Tijdens het bouwen heb ik veel aandacht besteed aan gebruiksvriendelijkheid: het menu is simpel, de teksten zijn overzichtelijk en de mobiele versie werkt net zo goed als op desktop. Dit project helpt me om mijn ontwikkelvaardigheden te laten zien en is een basis voor toekomstige projecten.
