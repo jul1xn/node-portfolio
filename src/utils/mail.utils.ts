@@ -4,8 +4,9 @@ import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const transport = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_SECURE
+    port: Number(process.env.SMTP_PORT),
+    secure: process.env.SMTP_SECURE === true,
+    requireTLS: process.env.SMTP_REQUIRE_TLS === true
 } as SMTPTransport.Options);
 
 type SendMailTo = {
