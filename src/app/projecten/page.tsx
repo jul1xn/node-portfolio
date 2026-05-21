@@ -3,25 +3,7 @@ import path from "path";
 import fs from "fs";
 import Link from "next/link";
 import { X } from 'lucide-react';
-
-export const FILTERS = [
-    "Arduino",
-    "C#",
-    "C++",
-    "Css",
-    "Html",
-    "Java",
-    "Javascript",
-    "Lua",
-    "MySQL",
-    "PHP",
-    "Python",
-    "React",
-    "SQL",
-    "Typescript",
-    "Unity",
-    "WinForms",
-]
+import { FILTERS } from "@/utils/site.config";
 
 export function getAllProjects(
     page: number = 1,

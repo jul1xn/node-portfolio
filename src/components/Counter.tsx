@@ -100,14 +100,7 @@ export default function Counter({
     return (
         <div
             ref={containerRef}
-            className={`
-                transition-opacity duration-500
-                ${
-                    hasStarted
-                        ? "animate__animated animate__fast animate__fadeIn opacity-100"
-                        : "opacity-0"
-                }
-            `}
+            className={`transition-opacity duration-500 ${hasStarted ? "animate__animated animate__fast animate__fadeIn opacity-100" : "opacity-0"}`}
             style={{
                 animationDelay: `${delay}ms`,
             }}

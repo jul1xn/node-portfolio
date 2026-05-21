@@ -3,77 +3,9 @@ import ProjectCard from "@/components/ProjectCard";
 import Seperator from "@/components/Seperator";
 import Terminal from "@/components/Terminal";
 import ViewFadeWrapper from "@/components/ViewFadeWrapper";
-import * as Brands from "@/utils/brands.utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-
-const brands = [
-  {
-    name: "Next.js",
-    href: "https://nextjs.org/",
-    Icon: Brands.Nextjs,
-  },
-  {
-    name: "Node.js",
-    href: "https://nodejs.org/",
-    Icon: Brands.Nodejs,
-  },
-  {
-    name: "TypeScript",
-    href: "https://www.typescriptlang.org/",
-    Icon: Brands.TypeScript,
-  },
-  {
-    name: "JavaScript",
-    href: "https://developer.mozilla.org/docs/Web/JavaScript",
-    Icon: Brands.JavaScript,
-  },
-  {
-    name: "Java",
-    href: "https://www.java.com/",
-    Icon: Brands.Java,
-  },
-  {
-    name: "C#",
-    href: "https://dotnet.microsoft.com/languages/csharp",
-    Icon: Brands.CS,
-  },
-  {
-    name: "C++",
-    href: "https://en.wikipedia.org/wiki/C%2B%2B",
-    Icon: Brands.CPP,
-  },
-  {
-    name: "Unity",
-    href: "https://unity.com/",
-    Icon: Brands.Unity,
-  },
-  {
-    name: "Lua",
-    href: "https://lua.org/",
-    Icon: Brands.Lua,
-  },
-  {
-    name: "PHP",
-    href: "https://www.php.net/",
-    Icon: Brands.Php,
-  },
-  {
-    name: "MySQL",
-    href: "https://www.mysql.com/",
-    Icon: Brands.MySQL,
-  },
-  {
-    name: "PostgreSQL",
-    href: "https://www.postgresql.org/",
-    Icon: Brands.PostgreSQL,
-  },
-  {
-    name: "Python",
-    href: "https://www.python.org/",
-    Icon: Brands.Python,
-  },
-]
+import { brands } from "@/utils/site.config";
 
 export default function Home() {
   return (

@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import 'dotenv/config';
+import { FOOTER_LINKS, HEADER_LINKS, url } from "@/utils/site.config";
 
 export const metadata: Metadata = {
   title: {
@@ -76,23 +77,8 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL("https://portfolio.prowser.nl")
+  metadataBase: new URL(url)
 };
-
-const HEADER_LINKS = [
-  { label: "Home", url: "/" },
-  { label: "Over mij", url: "/over-mij" },
-  { label: "Projecten", url: "/projecten" },
-  { label: "Contact", url: "/contact" },
-];
-
-const FOOTER_LINKS = [
-  { label: "Home", url: "/" },
-  { label: "Over mij", url: "/over-mij" },
-  { label: "CV", url: "/CV Julian.pdf" },
-  { label: "Projecten", url: "/projecten" },
-  { label: "Contact", url: "/contact" },
-];
 
 export default function RootLayout({
   children,
