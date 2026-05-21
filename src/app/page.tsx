@@ -57,7 +57,7 @@ export default function Home() {
           <ProjectCard id="minecraft-clone" />
         </div>
         <div className="my-5 mx-auto text-center align-center">
-          <Link href="/over-mij" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
+          <Link href="/projecten" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
             <ArrowRight />
             Bekijk alle projecten
           </Link>
