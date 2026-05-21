@@ -46,7 +46,7 @@ export default function Home() {
       <ViewFadeWrapper className="text-center grid grid-cols-3 grid-rows-1">
         <Counter text="Bekende talen" value={11} delay={0} />
         <Counter text="Jaar ervaring" value={new Date().getFullYear() - 2017} extension="+" delay={250} />
-        <Counter text="Regels geschreven" value={1000} extension="+" delay={500} />
+        <Counter text="Regels geschreven" value={10000} extension="+" delay={500} />
       </ViewFadeWrapper>
       <Seperator />
       <ViewFadeWrapper className="mt-10">
