@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
+import 'dotenv/config';
 
 export const metadata: Metadata = {
   title: "Portfolio - Julian Verwoerd",
