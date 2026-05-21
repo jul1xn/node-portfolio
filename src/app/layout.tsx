@@ -36,7 +36,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <Header links={HEADER_LINKS} />
-        <main className="px-60 py-15 min-h-[calc(100vh-5rem)]">
+        <main className="px-60 py-15 min-h-[calc(100vh-17rem)]">
           {children}
         </main>
         <Footer links={FOOTER_LINKS} />
