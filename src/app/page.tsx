@@ -1,6 +1,7 @@
 import Counter from "@/components/Counter";
 import ProjectCard from "@/components/ProjectCard";
 import Seperator from "@/components/Seperator";
+import ViewFadeWrapper from "@/components/ViewFadeWrapper";
 import * as Brands from "@/utils/brands.utils";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -109,13 +110,13 @@ export default function Home() {
         </div>
       </div>
       <Seperator />
-      <div className="text-center grid grid-cols-3 grid-rows-1">
+      <ViewFadeWrapper className="text-center grid grid-cols-3 grid-rows-1">
         <Counter text="Bekende talen" value={11} delay={0} />
         <Counter text="Jaar ervaring" value={new Date().getFullYear() - 2017} extension="+" delay={250} />
         <Counter text="Regels geschreven" value={1000} extension="+" delay={500} />
-      </div>
+      </ViewFadeWrapper>
       <Seperator />
-      <div className="mt-10">
+      <ViewFadeWrapper className="mt-10">
         <h1 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h1>
         <div className="grid grid-cols-3 grid-rows-1 gap-5">
           <ProjectCard id="portfolio-website" />
@@ -128,9 +129,9 @@ export default function Home() {
             Bekijk alle projecten
           </Link>
         </div>
-      </div>
+      </ViewFadeWrapper>
       <Seperator />
-      <div className="mb-3 mt-5">
+      <ViewFadeWrapper className="mb-3 mt-5">
         <h1 className="text-center font-light text-4xl mb-8">Tools en talen die ik gebruik</h1>
         <div className="relative w-full overflow-hidden">
           <div className="group flex w-max gap-10 animate-scroll-brands">
@@ -146,7 +147,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </div>
+      </ViewFadeWrapper>
     </>
   );
 }
