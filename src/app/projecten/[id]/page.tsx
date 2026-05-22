@@ -29,10 +29,10 @@ export default async function ProjectPage({ params }: { params: Params }) {
     }
 
     return (
-        <div className="grid grid-cols-2 grid-rows-1 gap-20">
+        <div className="grid grid-cols-1 grid-rows-2 xl:grid-cols-2 xl:grid-rows-1 gap-20">
             <div className="text-start">
                 <h1 className="font-light text-5xl mb-5">{project.title}</h1>
-                <div className="mb-3 flex gap-2">
+                <div className="mb-3 flex flex-wrap gap-2">
                     {project.tech.map(tech => (
                         <Link
                             key={tech}
@@ -48,7 +48,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
                         {description}
                     </ReactMarkdown>
                 </div>
-                <div className="flex gap-5">
+                <div className="flex flex-wrap gap-5">
                     {project.links?.map(link => (
                         <Link key={link.url} href={link.url} target="_blank" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
                             <SquareArrowOutUpRight size={22} />

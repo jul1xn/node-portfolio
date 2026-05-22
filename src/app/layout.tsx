@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import UmamiScript from "@/components/UmamiScript";
 import 'dotenv/config';
 import { FOOTER_LINKS, HEADER_LINKS, url } from "@/utils/site.config";
+import TailwindDebug from "@/components/TailwindDebug";
 
 export const metadata: Metadata = {
   title: {
@@ -93,11 +94,12 @@ export default function RootLayout({
     >
       <body className="min-h-screen">
         <Header links={HEADER_LINKS} />
-        <main className="px-60 py-15 min-h-[calc(100vh-17rem)]">
+        <main className="2xl:px-60 xl:px-30 lg:px-15 md:px-10 px-5 py-15 min-h-[calc(100vh-17rem)]">
           {children}
         </main>
         <Footer links={FOOTER_LINKS} />
         <UmamiScript/>
+        <TailwindDebug/>
       </body>
     </html>
   );

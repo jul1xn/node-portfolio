@@ -107,12 +107,12 @@ export default function Counter({
         >
             <p
                 ref={valueText}
-                className="mb-2 text-5xl font-light text-purple-700"
+                className="mb-2 text-7xl sm:text-5xl font-light text-purple-700"
             >
                 0{extension}
             </p>
 
-            <p className="text-white">
+            <p className="text-white text-2xl sm:text-base">
                 {text}
             </p>
         </div>

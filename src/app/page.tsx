@@ -10,9 +10,9 @@ import { brands } from "@/utils/site.config";
 export default function Home() {
   return (
     <>
-      <div className="grid grid-cols-2 grid-rows-1 mb-20">
-        <div className="text-start me-15">
-          <div className="flex pb-5 text-6xl">
+      <div className="grid grid-cols-1 md:grid-cols-2 grid-rows-1 mb-20">
+        <div className="text-center md:text-start md:me-15">
+          <div className="flex justify-center md:justify-start pb-5 text-6xl">
             <h1 className="font-light">Hallo!</h1>
             <div className="px-3 animate__animated animate__swing animate__slow animate__delay-1s">
               👋
@@ -38,12 +38,12 @@ export default function Home() {
             Lees meer over mij
           </Link>
         </div>
-        <div>
+        <div className="hidden md:inline">
           <Terminal/>
         </div>
       </div>
       <Seperator />
-      <ViewFadeWrapper className="text-center grid grid-cols-3 grid-rows-1">
+      <ViewFadeWrapper className="text-center grid grid-cols-1 sm:grid-cols-3 grid-rows-3 sm:grid-rows-1 gap-y-30">
         <Counter text="Bekende talen" value={11} delay={0} />
         <Counter text="Jaar ervaring" value={new Date().getFullYear() - 2017} extension="+" delay={250} />
         <Counter text="Regels geschreven" value={10000} extension="+" delay={500} />
@@ -51,7 +51,7 @@ export default function Home() {
       <Seperator />
       <ViewFadeWrapper className="mt-10">
         <h1 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h1>
-        <div className="grid grid-cols-3 grid-rows-1 gap-5">
+        <div className="grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-5">
           <ProjectCard id="portfolio-website" />
           <ProjectCard id="school-examen-game" />
           <ProjectCard id="minecraft-clone" />

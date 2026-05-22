@@ -11,7 +11,7 @@ export default function Footer({ links }: Props) {
     return (
         <footer className="bg-[#111111] text-gray-300">
             <div className="mx-auto max-w-7xl px-6 py-16 text-center">
-                <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm mb-10">
+                <nav className="flex flex-col md:flex-row justify-center gap-x-10 gap-y-3 text-sm mb-10">
                     {links?.map(link => (
                         <a key={link.url} href={link.url} className="hover:text-white transition">{link.label}</a>
                     ))}
