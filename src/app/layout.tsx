@@ -89,7 +89,7 @@ export default function RootLayout({
   return (
     <html
       lang="nl"
-      className="dark:bg-neutral-900 dark:text-white"
+      className="bg-neutral-900 text-white"
     >
       <body className="min-h-screen">
         <Header links={HEADER_LINKS} />

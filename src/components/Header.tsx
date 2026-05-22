@@ -12,7 +12,7 @@ export default function Header({ links }: Props) {
   const pathname = usePathname();
 
   return (
-    <header className="dark:bg-[#111111] w-full h-20 grid grid-cols-2 grid-rows-1 px-8">
+    <header className="bg-[#111111] w-full h-20 grid grid-cols-2 grid-rows-1 px-8">
       <div className="flex items-center my-auto">
         <Image
           src="/logo_80.png"

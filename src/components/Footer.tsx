@@ -9,7 +9,7 @@ type Props = {
 
 export default function Footer({ links }: Props) {
     return (
-        <footer className="dark:bg-[#111111] text-gray-300">
+        <footer className="bg-[#111111] text-gray-300">
             <div className="mx-auto max-w-7xl px-6 py-16 text-center">
                 <nav className="flex flex-wrap justify-center gap-x-10 gap-y-3 text-sm mb-10">
                     {links?.map(link => (
