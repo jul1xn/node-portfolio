@@ -79,7 +79,10 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  metadataBase: new URL(url)
+  metadataBase: new URL(url),
+  other: {
+    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ""
+  }
 };
 
 export default function RootLayout({
