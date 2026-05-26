@@ -21,17 +21,19 @@ export default function Header({ links }: Props) {
       <div className="h-20 grid lg:grid-cols-2 grid-cols-1 items-center">
 
         <div className="flex items-center w-full">
-          <Image
-            src="/logo_80.png"
-            alt="test"
-            width={45}
-            height={45}
-            className="me-5"
-          />
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo_80.png"
+              alt="test"
+              width={45}
+              height={45}
+              className="me-5"
+            />
 
-          <label className="text-3xl hidden sm:inline">
-            Portfolio - Julian Verwoerd
-          </label>
+            <span className="text-3xl hidden sm:inline">
+              Portfolio - Julian Verwoerd
+            </span>
+          </Link>
 
           <button
             onClick={() => setOpen(!open)}
