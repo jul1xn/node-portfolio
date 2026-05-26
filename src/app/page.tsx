@@ -52,7 +52,7 @@ export default function Home() {
       <ViewFadeWrapper className="mt-10">
         <h1 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h1>
         <div className="grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-5">
-          <ProjectCard id="portfolio-website" />
+          <ProjectCard id="portfolio-website-v2" />
           <ProjectCard id="school-examen-game" />
           <ProjectCard id="minecraft-clone" />
         </div>
