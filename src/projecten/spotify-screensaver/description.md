@@ -1,0 +1,7 @@
+Dit project is een desktop applicatie die ik heb gemaakt met **Electron**. De app laat het momenteel afgespeelde Spotify nummer zien als een soort screensaver of overlay op je scherm. Hierbij worden bijvoorbeeld de album cover, artiest en titel van het nummer weergegeven terwijl je muziek luistert. Het idee van het project kwam doordat ik een minimalistische muziekweergave wilde maken die goed zichtbaar is tijdens het gamen, programmeren of streamen.
+
+Voor dit project heb ik gebruik gemaakt van **Node.js**, **JavaScript**, **HTML** en **CSS**. De applicatie draait met Electron, waardoor ik webtechnieken kon gebruiken om een desktop app te bouwen. Daarnaast heb ik gewerkt met de **Spotify API** om informatie op te halen over het nummer dat wordt afgespeeld, zoals de artiest, album art en tracknaam. Ook heb ik een instellingenpagina gemaakt waarmee gebruikers bepaalde onderdelen van de app kunnen aanpassen.
+
+Tijdens het bouwen heb ik veel geleerd over hoe desktop applicaties werken met Electron en hoe frontend en backend met elkaar communiceren binnen één project. Ook heb ik ervaring opgedaan met API’s, authenticatie en het realtime updaten van data in de interface. Daarnaast heb ik beter leren werken met projectstructuur in Node.js en geleerd hoe je een applicatie overzichtelijk en gebruiksvriendelijk houdt.
+
+Het project staat volledig op GitHub zodat anderen kunnen bekijken hoe de applicatie is opgebouwd en hoe de koppeling met Spotify werkt.

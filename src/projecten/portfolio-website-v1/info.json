@@ -2,9 +2,8 @@
   {
     "title": "Portfolio Website v1",
     "shortDescription": "Mijn persoonlijke portfolio website gebouwd in Node.js",
-    "tech": ["Javascript", "Html", "Css"],
+    "tech": ["Node.js", "Javascript", "Html", "Css"],
     "links": [
-      { "name": "Bekijk site", "url": "https://portfolio.prowser.nl" },
       { "name": "Github", "url": "https://github.com/jul1xn/node-portfolio/tree/old-portfolio" }
     ],
     "images": [

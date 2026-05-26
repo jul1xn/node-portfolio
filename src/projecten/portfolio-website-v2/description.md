@@ -1,0 +1,7 @@
+Dit project is mijn tweede versie van mijn persoonlijke portfolio website. Ik heb deze website gemaakt om mijn projecten, skills en informatie over mezelf op een professionele manier te laten zien. Het doel van de website is om een moderne en overzichtelijke plek te hebben waar mensen mijn werk kunnen bekijken, zoals stagebedrijven of andere developers.
+
+De website is gebouwd met **Next.js**, **React** en **TypeScript**. Voor de styling heb ik gebruik gemaakt van moderne frontend-technieken en responsive design, zodat de website goed werkt op zowel desktop als mobiel. Daarnaast draait het project volledig via Node.js en is de code beschikbaar op GitHub zodat anderen kunnen zien hoe het project is opgebouwd.
+
+Tijdens het maken van dit project heb ik veel gewerkt met componenten en herbruikbare code. Ik heb pagina’s opgesplitst in losse onderdelen zodat de website makkelijker uitbreidbaar en onderhoudbaar blijft. Ook heb ik aandacht besteed aan performance en gebruikerservaring, bijvoorbeeld door snelle pagina-overgangen en een duidelijke navigatie toe te voegen.
+
+Met dit project heb ik veel geleerd over het werken met een moderne React/Next.js workflow. Ik heb mijn kennis van **TypeScript** verbeterd, geleerd hoe routing en rendering in Next.js werken en beter leren nadenken over de structuur van een groot frontend project. Daarnaast heb ik ervaring opgedaan met het online deployen van een website en het beheren van een project via GitHub.

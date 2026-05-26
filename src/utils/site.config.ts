@@ -93,6 +93,7 @@ export const FILTERS = [
     "Javascript",
     "Lua",
     "MySQL",
+    "Node.js",
     "PHP",
     "Python",
     "React",
