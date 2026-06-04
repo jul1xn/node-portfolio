@@ -24,8 +24,8 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     }
     
     return {
-        title: project.name,
-        description: project.description,
+        title: project.title,
+        description: project.shortDescription,
     };
 }
 
