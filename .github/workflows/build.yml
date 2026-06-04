@@ -32,16 +32,15 @@ jobs:
           NEXT_PUBLIC_UMAMI_WEBSITE_ID: ${{ secrets.NEXT_PUBLIC_UMAMI_WEBSITE_ID }}
 
       # Stap 1: Bestanden uploaden via SFTP
-      - name: Upload files via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: SFTP Deploy
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
         with:
           server: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
-          ssh-key: ${{ secrets.SERVER_SSH_KEY }}
+          ssh_private_key: ${{ secrets.SERVER_SSH_KEY }}
           port: 22
-          protocol: sftp
-          local-dir: .next/ # Gebruik '.' voor een volledige Node-app, of 'out' bij 'output: export'
-          server-dir: /home/node-portfolio/node-portfolio/.next/ # Het doelpad op jouw server
+          local_path: .next/* # Gebruik '.' voor een volledige Node-app, of 'out' bij 'output: export'
+          remote_path: /home/node-portfolio/node-portfolio/.next/ # Het doelpad op jouw server
 
       # Stap 2: SSH-commando uitvoeren op dezelfde server
       - name: Execute remote SSH command
