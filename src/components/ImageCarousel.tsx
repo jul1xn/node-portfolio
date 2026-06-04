@@ -82,7 +82,7 @@ export default function ImageCarousel({ projectId, images }: Props) {
                 <div className="mt-4 flex justify-center gap-2">
                     {images.map((_, index) => (
                         <button
-                            key={index}
+                            key={_.url}
                             onClick={() => setCurrent(index)}
                             className={`h-3 w-3 rounded-full transition ${
                                 current === index

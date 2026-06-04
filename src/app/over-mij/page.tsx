@@ -1,6 +1,13 @@
 import { SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Over mij",
+  description:
+    "Meer informatie over Julian Verwoerd. 17 jaar software developer student uit Veenendaal. Expertise in backend, fullstack, game development en IoT projecten.",
+};
 
 export default function AboutMe() {
     return (
