@@ -4,6 +4,13 @@ import fs from "fs";
 import Link from "next/link";
 import { X } from 'lucide-react';
 import { FILTERS } from "@/utils/site.config";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projecten",
+  description:
+    "Bekijk mijn software en game development projecten. Van webapps en backends tot game development met Unity, Arduino, ESP32 en meer.",
+};
 
 export function getAllProjects(
     page: number = 1,

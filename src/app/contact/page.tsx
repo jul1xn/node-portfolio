@@ -1,5 +1,11 @@
 import StickyBanner from "@/components/StickerBanner";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Neem contact op met Julian Verwoerd. Stuur een bericht of ontdek hoe je mij kunt bereiken voor samenwerking en vragen.",
+};
 
 type Props = {
     searchParams: Promise<{

@@ -6,9 +6,27 @@ import {
 import { ArrowRight, SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
+import type { Metadata } from "next";
 
 type Params = {
     id: string;
+}
+
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
+    const resolvedParams = await params as Params;
+    const project = getProjectInfo(resolvedParams.id);
+    
+    if (!project) {
+        return {
+            title: "Project niet gevonden",
+            description: "Dit project kon niet worden gevonden.",
+        };
+    }
+    
+    return {
+        title: project.name,
+        description: project.description,
+    };
 }
 
 export default async function ProjectPage({ params }: { params: Params }) {
