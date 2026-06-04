@@ -66,8 +66,8 @@ export default function TerminalBox() {
   return (
     <div className="w-full h-full rounded-lg bg-black text-green-500 font-mono p-4 shadow-lg">
       <div className="space-y-1">
-        {output.map((l, i) => (
-          <p key={i}>{l}</p>
+        {output.map(l => (
+          <p key={l}>{l}</p>
         ))}
 
         {lineIndex < lines.length && (
