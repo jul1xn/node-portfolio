@@ -1,21 +1,22 @@
-name: Test SSH Server Connection
+name: Test SSH Connection
 
 on:
-  push:
-    branches: [ main ]
-  workflow_dispatch: # Allows manual triggering from the Actions tab
+  workflow_dispatch:
 
 jobs:
-  test-connection:
+  test-ssh:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Execute Test Command over SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Test SSH Connection
+        uses: appleboy/ssh-action@v1.2.2
         with:
           host: ${{ secrets.SERVER_HOST }}
           username: ${{ secrets.SERVER_USER }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 22
+          port: ${{ secrets.SERVER_PORT }}
           script: |
-            echo "Successfully connected to $(hostname)"
+            echo "SSH connection successful!"
             whoami
+            hostname
+            pwd
