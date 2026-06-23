@@ -1,7 +1,8 @@
 import ImageCarousel from "@/components/ImageCarousel";
-import { ArrowRight, SquareArrowOutUpRight, Save, Trash2, Plus, Upload } from "lucide-react";
+import { ArrowRight, SquareArrowOutUpRight, Save, Trash2, Plus } from "lucide-react";
 import Link from "next/link";
 import { getProjectInfo, getProjectLongDescription } from "@/utils/projects";
+import ImageUploadForm from "@/components/admin/ImageUploadForm";
 
 type Params = {
     id: string;
@@ -164,7 +165,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                             type="submit"
                                             className="text-neutral-500 cursor-pointer hover:text-red-400 transition"
                                         >
-                                            <Trash2 size={14}/>
+                                            <Trash2 size={14} />
                                         </button>
                                     </form>
                                 </div>
@@ -210,7 +211,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                     type="submit"
                                     className="rounded-md cursor-pointer border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900 inline-flex items-center gap-2"
                                 >
-                                    <Plus size={14}/>
+                                    <Plus size={14} />
                                     Link toevoegen
                                 </button>
                             </div>
@@ -235,55 +236,9 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                         </div>
 
 
-                        <form
-                            action="/admin/api/projects/upload-image"
-                            method="POST"
-                            encType="multipart/form-data"
-                            className="space-y-4"
-                        >
-                            <input
-                                type="hidden"
-                                name="projectId"
-                                value={resolvedParams.id}
-                            />
-
-                            <div className="border border-dashed border-neutral-800 hover:border-neutral-700 rounded-md p-6 text-center cursor-pointer transition group">
-                                <input
-                                    type="file"
-                                    name="image"
-                                    id="file-upload"
-                                    className="hidden"
-                                    accept="image/*"
-                                    required
-                                />
-
-                                <label
-                                    htmlFor="file-upload"
-                                    className="cursor-pointer block"
-                                >
-                                    <Upload
-                                        size={20}
-                                        className="mx-auto mb-2 text-neutral-500 group-hover:text-neutral-400"
-                                    />
-
-                                    <span className="text-sm text-neutral-400 block">
-                                        Klik om een afbeelding te kiezen
-                                    </span>
-
-                                    <span className="text-xs text-neutral-600 block mt-1">
-                                        PNG of JPG, maximaal 5 MB
-                                    </span>
-                                </label>
-                            </div>
-
-
-                            <button
-                                type="submit"
-                                className="w-full cursor-pointer rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900"
-                            >
-                                Afbeelding uploaden
-                            </button>
-                        </form>
+                        <ImageUploadForm 
+                            projectId={resolvedParams.id}
+                        />
 
 
                         {project.images && project.images.length > 0 && (
