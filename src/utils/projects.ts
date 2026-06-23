@@ -382,3 +382,71 @@ export function deleteProjectImage(
         return false;
     }
 }
+
+export function updateProjectTech(
+    id: string,
+    tech: string[]
+): boolean {
+
+    const jsonPath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        "info.json"
+    );
+
+
+    if (!fs.existsSync(jsonPath)) {
+        return false;
+    }
+
+
+    try {
+
+        const fileContents = fs.readFileSync(
+            jsonPath,
+            "utf8"
+        );
+
+
+        const projects = JSON.parse(fileContents) as ProjectInfo[];
+
+
+        if (!projects[0]) {
+            return false;
+        }
+
+
+        projects[0].tech = tech.sort(
+            (a, b) =>
+                a.localeCompare(
+                    b,
+                    undefined,
+                    {
+                        sensitivity: "base"
+                    }
+                )
+        );
+
+
+        fs.writeFileSync(
+            jsonPath,
+            JSON.stringify(projects, null, 4),
+            "utf8"
+        );
+
+
+        return true;
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed updating project tech:",
+            error
+        );
+
+        return false;
+    }
+}

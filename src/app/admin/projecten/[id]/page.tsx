@@ -3,6 +3,8 @@ import { ArrowRight, SquareArrowOutUpRight, Save, Trash2, Plus } from "lucide-re
 import Link from "next/link";
 import { getProjectInfo, getProjectLongDescription } from "@/utils/projects";
 import ImageUploadForm from "@/components/admin/ImageUploadForm";
+import TechEditor from "@/components/admin/TechEditor";
+import { FILTERS } from "@/utils/site.config";
 
 type Params = {
     id: string;
@@ -38,7 +40,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                 <div>
                     <div className="flex items-center gap-2 text-sm text-neutral-400 mb-1">
                         <Link
-                            href="/admin/projecten"
+                            href="/admin/dashboard"
                             className="hover:text-neutral-200 transition-colors"
                         >
                             Projecten
@@ -113,6 +115,28 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                 </button>
                             </div>
                         </form>
+                    </div>
+
+                    {/* Technologies */}
+                    <div className="border border-neutral-800 bg-neutral-950 rounded-md p-5">
+
+                        <div className="mb-4">
+                            <h2 className="text-lg font-medium text-white">
+                                Technologieën
+                            </h2>
+
+                            <p className="text-sm text-neutral-400">
+                                Kies de technieken die bij dit project horen.
+                            </p>
+                        </div>
+
+
+                        <TechEditor
+                            projectId={resolvedParams.id}
+                            currentTech={project.tech}
+                            availableTech={FILTERS}
+                        />
+
                     </div>
 
 
@@ -236,7 +260,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                         </div>
 
 
-                        <ImageUploadForm 
+                        <ImageUploadForm
                             projectId={resolvedParams.id}
                         />
 
