@@ -361,6 +361,11 @@ export function deleteProjectImage(
             return false;
         }
 
+        // check if the thumbnail is equal to the deleted file
+        if (projects[0].thumbnail && projects[0].thumbnail === imageUrl) {
+            projects[0].thumbnail = "";
+        }
+
 
         fs.writeFileSync(
             jsonPath,
