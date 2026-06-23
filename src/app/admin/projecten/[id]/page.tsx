@@ -84,7 +84,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
 
                         <form
-                            action="/api/admin/projects/update-description"
+                            action="/admin/api/projects/update-description"
                             method="POST"
                             className="space-y-4"
                         >
@@ -105,7 +105,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                             <div className="flex justify-end">
                                 <button
                                     type="submit"
-                                    className="rounded-full bg-purple-700 px-5 py-2.5 text-white transition hover:bg-purple-600 inline-flex items-center gap-2"
+                                    className="rounded-full cursor-pointer bg-purple-700 px-5 py-2.5 text-white transition hover:bg-purple-600 inline-flex items-center gap-2"
                                 >
                                     <Save size={14} />
                                     Opslaan

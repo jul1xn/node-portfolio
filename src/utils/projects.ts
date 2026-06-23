@@ -77,3 +77,39 @@ export function getProjectLongDescription(id: string): string {
 
     return fs.readFileSync(filePath, "utf8");
 }
+
+export function updateProjectLongDescription(
+    id: string,
+    description: string
+): boolean {
+    const project = getProjectInfo(id);
+
+    if (!project?.longHtml) {
+        return false;
+    }
+
+    const filePath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        project.longHtml
+    );
+
+    try {
+        fs.writeFileSync(
+            filePath,
+            description,
+            "utf8"
+        );
+
+        return true;
+    } catch (error) {
+        console.error(
+            "Failed to update project description:",
+            error
+        );
+
+        return false;
+    }
+}
