@@ -179,7 +179,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
 
                         <form
-                            action="/api/admin/projects/add-link"
+                            action="/admin/api/projects/add-link"
                             method="POST"
                             className="grid grid-cols-1 sm:grid-cols-3 gap-2"
                         >
@@ -208,7 +208,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                             <div className="sm:col-span-3 flex justify-end">
                                 <button
                                     type="submit"
-                                    className="rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900 inline-flex items-center gap-2"
+                                    className="rounded-md cursor-pointer border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900 inline-flex items-center gap-2"
                                 >
                                     <Plus size={14}/>
                                     Link toevoegen
