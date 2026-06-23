@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from 'next/image';
 
 type Props = {
   src: string;
@@ -42,7 +43,9 @@ export default function ImageWithSpinner({ src, alt = "", className = "" }: Prop
       {errored ? (
         <div className="flex items-center justify-center h-full w-full bg-neutral-800 text-neutral-400">Afbeelding niet gevonden</div>
       ) : (
-        <img
+        <Image
+          width={400}
+          height={300}
           ref={imgRef}
           src={src}
           alt={alt}

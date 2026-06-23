@@ -1,5 +1,3 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import ImageWithSpinner from "./ImageWithSpinner";
 import { getProjectInfo } from "@/utils/projects";

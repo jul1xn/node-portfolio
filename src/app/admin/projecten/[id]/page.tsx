@@ -295,7 +295,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                         key={index}
                                         className="flex items-center justify-between bg-neutral-950 p-2 rounded-md text-sm"
                                     >
-                                        <span className="truncate max-w-[180px] font-mono text-neutral-400">
+                                        <span className="truncate max-w-45 font-mono text-neutral-400">
                                             {img.url}
                                         </span>
 
