@@ -1,5 +1,8 @@
+import CreateProjectModal from "@/components/admin/CreateProjectModal";
 import ProjectCard from "@/components/admin/ProjectCard";
 import { getAllProjects } from "@/utils/projects";
+
+export const dynamic = "force-dynamic";
 
 export default function AdminDashboardPage() {
     const projecten = getAllProjects();
@@ -10,9 +13,13 @@ export default function AdminDashboardPage() {
                 Admin dashboard
             </h1>
 
-            <h2 className="mt-8 mb-4 text-2xl">
-                Projecten
-            </h2>
+            <div className="mt-8 mb-4 flex items-center justify-between gap-4">
+                <h2 className="text-2xl">
+                    Projecten
+                </h2>
+
+                <CreateProjectModal />
+            </div>
 
             <div className="flex flex-col gap-3">
                 {projecten.map(project => (
@@ -20,5 +27,5 @@ export default function AdminDashboardPage() {
                 ))}
             </div>
         </div>
-    )
+    );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getProjectInfo } from "@/utils/projects";
 import { FiArrowRight } from "react-icons/fi";
+import DeleteProjectButton from "@/components/admin/DeleteProjectButton";
 
 type ProjectCardProps = {
     id: string;
@@ -14,18 +15,11 @@ export default function ProjectCard({ id }: ProjectCardProps) {
     }
 
     return (
-        <Link
-            href={`/admin/projecten/${id}`}
-            className="
-                block rounded-md 
-                border border-neutral-800 
-                bg-neutral-900/50 
-                px-4 py-3 
-                transition 
-                hover:border-neutral-700 hover:bg-neutral-900
-            "
-        >
-            <div className="flex items-center justify-between">
+        <div className="flex items-stretch gap-3 rounded-md border border-neutral-800 bg-neutral-900/50 transition hover:border-neutral-700 hover:bg-neutral-900">
+            <Link
+                href={`/admin/projecten/${id}`}
+                className="group flex flex-1 items-center justify-between px-4 py-3"
+            >
                 <div>
                     <h3 className="text-lg font-medium">
                         {project.title}
@@ -37,14 +31,13 @@ export default function ProjectCard({ id }: ProjectCardProps) {
                 </div>
 
                 <FiArrowRight
-                    className="
-                        h-4 w-4
-                        text-neutral-500
-                        transition-transform duration-200
-                        group-hover:translate-x-1
-                    "
+                    className="h-4 w-4 text-neutral-500 transition-transform duration-200 group-hover:translate-x-1"
                 />
+            </Link>
+
+            <div className="flex items-center pr-3">
+                <DeleteProjectButton projectId={id} projectTitle={project.title} />
             </div>
-        </Link>
+        </div>
     );
 }

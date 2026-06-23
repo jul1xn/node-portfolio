@@ -7,6 +7,8 @@ import TechEditor from "@/components/admin/TechEditor";
 import ThumbnailEditor from "@/components/admin/ThumbnailEditor";
 import { FILTERS } from "@/utils/site.config";
 
+export const dynamic = "force-dynamic";
+
 type Params = {
     id: string;
 }

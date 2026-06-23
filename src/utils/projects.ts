@@ -11,6 +11,21 @@ type ProjectInfo = {
     longHtml?: string;
 };
 
+const projectIdPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
+
+function getProjectDirectory(id: string) {
+    return path.resolve(
+        process.cwd(),
+        "src",
+        "projecten",
+        id
+    );
+}
+
+function isValidProjectId(id: string) {
+    return projectIdPattern.test(id);
+}
+
 export function getAllProjects(
     page: number = 1,
     limit: number = 12,
@@ -521,6 +536,87 @@ export function updateProjectThumbnail(
             error
         );
 
+        return false;
+    }
+}
+
+export function createProjectFolder(
+    id: string,
+    title: string,
+    shortDescription: string
+): boolean {
+
+    if (
+        !isValidProjectId(id) ||
+        !title.trim() ||
+        !shortDescription.trim()
+    ) {
+        return false;
+    }
+
+    const projectDirectory = getProjectDirectory(id);
+
+    if (fs.existsSync(projectDirectory)) {
+        return false;
+    }
+
+    try {
+        fs.mkdirSync(projectDirectory, { recursive: true });
+
+        const template: ProjectInfo[] = [
+            {
+                title: title.trim(),
+                shortDescription: shortDescription.trim(),
+                tech: [],
+                links: [],
+                images: [],
+                thumbnail: "",
+                longHtml: "description.md"
+            }
+        ];
+
+        fs.writeFileSync(
+            path.join(projectDirectory, "info.json"),
+            JSON.stringify(template, null, 4),
+            "utf8"
+        );
+
+        fs.writeFileSync(
+            path.join(projectDirectory, "description.md"),
+            "",
+            "utf8"
+        );
+
+        return true;
+    } catch (error) {
+        console.error("Failed creating project folder:", error);
+        return false;
+    }
+}
+
+export function deleteProjectFolder(id: string): boolean {
+
+    if (!isValidProjectId(id)) {
+        return false;
+    }
+
+    const projectDirectory = getProjectDirectory(id);
+    const baseDirectory = getProjectDirectory("");
+    const relative = path.relative(baseDirectory, projectDirectory);
+
+    if (relative.startsWith("..") || path.isAbsolute(relative)) {
+        return false;
+    }
+
+    if (!fs.existsSync(projectDirectory)) {
+        return false;
+    }
+
+    try {
+        fs.rmSync(projectDirectory, { recursive: true, force: true });
+        return true;
+    } catch (error) {
+        console.error("Failed deleting project folder:", error);
         return false;
     }
 }
