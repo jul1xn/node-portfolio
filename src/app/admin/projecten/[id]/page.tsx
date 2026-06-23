@@ -145,7 +145,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                     </div>
 
                                     <form
-                                        action="/api/admin/projects/delete-link"
+                                        action="/admin/api/projects/delete-link"
                                         method="POST"
                                     >
                                         <input
@@ -162,7 +162,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
                                         <button
                                             type="submit"
-                                            className="text-neutral-500 hover:text-red-400 transition"
+                                            className="text-neutral-500 cursor-pointer hover:text-red-400 transition"
                                         >
                                             <Trash2 size={14}/>
                                         </button>

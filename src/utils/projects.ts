@@ -178,3 +178,71 @@ export function addProjectLink(
         return false;
     }
 }
+
+export function deleteProjectLink(
+    id: string,
+    url: string
+): boolean {
+
+    const jsonPath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        "info.json"
+    );
+
+
+    if (!fs.existsSync(jsonPath)) {
+        return false;
+    }
+
+
+    try {
+        const fileContents = fs.readFileSync(
+            jsonPath,
+            "utf8"
+        );
+
+
+        const projects = JSON.parse(fileContents) as ProjectInfo[];
+
+
+        if (!projects[0]?.links) {
+            return false;
+        }
+
+
+        const originalLength = projects[0].links.length;
+
+
+        projects[0].links = projects[0].links.filter(
+            link => link.url !== url
+        );
+
+
+        // Nothing was removed
+        if (projects[0].links.length === originalLength) {
+            return false;
+        }
+
+
+        fs.writeFileSync(
+            jsonPath,
+            JSON.stringify(projects, null, 4),
+            "utf8"
+        );
+
+
+        return true;
+
+    } catch (error) {
+
+        console.error(
+            "Failed deleting project link:",
+            error
+        );
+
+        return false;
+    }
+}
