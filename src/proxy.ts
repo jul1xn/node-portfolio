@@ -6,6 +6,7 @@ export function proxy(req: NextRequest) {
     if (
         req.nextUrl.pathname.startsWith("/admin") &&
         req.nextUrl.pathname !== "/admin/login" &&
+        req.nextUrl.pathname !== "/admin" &&
         token !== process.env.ADMIN_SECRET
     ) {
         return NextResponse.redirect(
