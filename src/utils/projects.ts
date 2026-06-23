@@ -455,3 +455,72 @@ export function updateProjectTech(
         return false;
     }
 }
+
+export function updateProjectThumbnail(
+    id: string,
+    thumbnail: string
+): boolean {
+
+    const jsonPath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        "info.json"
+    );
+
+
+    if (!fs.existsSync(jsonPath)) {
+        return false;
+    }
+
+
+    try {
+
+        const fileContents = fs.readFileSync(
+            jsonPath,
+            "utf8"
+        );
+
+
+        const projects = JSON.parse(fileContents) as ProjectInfo[];
+
+
+        if (!projects[0]) {
+            return false;
+        }
+
+
+        const imageExists = projects[0].images?.some(
+            image => image.url === thumbnail
+        );
+
+
+        if (thumbnail && !imageExists) {
+            return false;
+        }
+
+
+        projects[0].thumbnail = thumbnail;
+
+
+        fs.writeFileSync(
+            jsonPath,
+            JSON.stringify(projects, null, 4),
+            "utf8"
+        );
+
+
+        return true;
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed updating project thumbnail:",
+            error
+        );
+
+        return false;
+    }
+}

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { getProjectInfo, getProjectLongDescription } from "@/utils/projects";
 import ImageUploadForm from "@/components/admin/ImageUploadForm";
 import TechEditor from "@/components/admin/TechEditor";
+import ThumbnailEditor from "@/components/admin/ThumbnailEditor";
 import { FILTERS } from "@/utils/site.config";
 
 type Params = {
@@ -247,6 +248,24 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
                 {/* Images */}
                 <div className="space-y-6">
+
+                    <div className="border border-neutral-800 bg-neutral-950 rounded-md p-5">
+                        <div className="mb-4">
+                            <h2 className="text-lg font-medium text-white">
+                                Thumbnail
+                            </h2>
+
+                            <p className="text-sm text-neutral-400">
+                                Kies welke afbeelding als thumbnail wordt gebruikt.
+                            </p>
+                        </div>
+
+                        <ThumbnailEditor
+                            projectId={resolvedParams.id}
+                            currentThumbnail={project.thumbnail}
+                            images={project.images}
+                        />
+                    </div>
 
                     <div className="border border-neutral-800 bg-neutral-950 rounded-md p-5">
                         <div className="mb-4">
