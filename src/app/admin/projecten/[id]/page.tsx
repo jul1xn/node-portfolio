@@ -236,7 +236,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
 
                         <form
-                            action="/api/admin/projects/upload-image"
+                            action="/admin/api/projects/upload-image"
                             method="POST"
                             encType="multipart/form-data"
                             className="space-y-4"
@@ -279,7 +279,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
                             <button
                                 type="submit"
-                                className="w-full rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900"
+                                className="w-full cursor-pointer rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900"
                             >
                                 Afbeelding uploaden
                             </button>

@@ -246,3 +246,71 @@ export function deleteProjectLink(
         return false;
     }
 }
+
+export function addProjectImage(
+    id: string,
+    imageUrl: string,
+    description: string = ""
+): boolean {
+
+    const jsonPath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        "info.json"
+    );
+
+
+    if (!fs.existsSync(jsonPath)) {
+        return false;
+    }
+
+
+    try {
+
+        const fileContents = fs.readFileSync(
+            jsonPath,
+            "utf8"
+        );
+
+
+        const projects = JSON.parse(fileContents) as ProjectInfo[];
+
+
+        if (!projects[0]) {
+            return false;
+        }
+
+
+        if (!projects[0].images) {
+            projects[0].images = [];
+        }
+
+
+        projects[0].images.push({
+            url: imageUrl,
+            description
+        });
+
+
+        fs.writeFileSync(
+            jsonPath,
+            JSON.stringify(projects, null, 4),
+            "utf8"
+        );
+
+
+        return true;
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed adding project image:",
+            error
+        );
+
+        return false;
+    }
+}
