@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createRedirectUrl } from "@/utils/redirect-url";
 
 export function proxy(req: NextRequest) {
     const token = req.cookies.get("admin_token")?.value;
@@ -10,7 +11,10 @@ export function proxy(req: NextRequest) {
         token !== process.env.ADMIN_SECRET
     ) {
         return NextResponse.redirect(
-            new URL("/admin/login?error=Log+eerst+in+om+deze+pagina+te+bekijken", req.url)
+            createRedirectUrl(
+                req,
+                "/admin/login?error=Log+eerst+in+om+deze+pagina+te+bekijken"
+            )
         );
     }
 

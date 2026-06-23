@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { createRedirectUrl } from "@/utils/redirect-url";
 
 export async function POST(req: NextRequest) {
     const formData = await req.formData();
@@ -6,12 +7,12 @@ export async function POST(req: NextRequest) {
 
     if (key !== process.env.ADMIN_SECRET) {
         return NextResponse.redirect(
-            new URL("/admin/login?error=Ongeldige+inloggegevens", req.url)
+            createRedirectUrl(req, "/admin/login?error=Ongeldige+inloggegevens")
         );
     }
 
     const response = NextResponse.redirect(
-        new URL("/admin/dashboard", req.url)
+        createRedirectUrl(req, "/admin/dashboard")
     );
 
     response.cookies.set("admin_token", key, {
