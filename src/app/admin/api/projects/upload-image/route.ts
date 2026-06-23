@@ -50,11 +50,6 @@ export async function POST(req: Request) {
         );
     }
 
-
-    /*
-        Save location
-    */
-
     const projectDirectory = path.join(
         process.cwd(),
         "src",
@@ -63,15 +58,9 @@ export async function POST(req: Request) {
     );
 
 
-    const imageDirectory = path.join(
-        projectDirectory,
-        "images"
-    );
-
-
-    if (!fs.existsSync(imageDirectory)) {
+    if (!fs.existsSync(projectDirectory)) {
         fs.mkdirSync(
-            imageDirectory,
+            projectDirectory,
             {
                 recursive: true
             }
@@ -86,7 +75,7 @@ export async function POST(req: Request) {
 
 
     const filePath = path.join(
-        imageDirectory,
+        projectDirectory,
         filename
     );
 
@@ -99,20 +88,9 @@ export async function POST(req: Request) {
         Buffer.from(bytes)
     );
 
-
-
-    /*
-        URL exposed to browser
-    */
-
-    const imageUrl =
-        `images/${filename}`;
-
-
-
     const success = addProjectImage(
         projectId,
-        imageUrl,
+        filename,
         typeof description === "string"
             ? description
             : ""
