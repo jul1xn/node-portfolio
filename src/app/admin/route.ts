@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
 
     if (key !== process.env.ADMIN_SECRET) {
         return NextResponse.redirect(
-            new URL("/admin/login?error=Invalid+key", req.url)
+            new URL("/admin/login?error=Ongeldige+inloggegevens", req.url)
         );
     }
 

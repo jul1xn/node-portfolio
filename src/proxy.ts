@@ -9,7 +9,7 @@ export function proxy(req: NextRequest) {
         token !== process.env.ADMIN_SECRET
     ) {
         return NextResponse.redirect(
-            new URL("/admin/login?error=Unauthorized", req.url)
+            new URL("/admin/login?error=Log+eerst+in+om+deze+pagina+te+bekijken", req.url)
         );
     }
 
