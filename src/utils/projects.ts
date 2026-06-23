@@ -314,3 +314,71 @@ export function addProjectImage(
         return false;
     }
 }
+
+export function deleteProjectImage(
+    id: string,
+    imageUrl: string
+): boolean {
+
+    const jsonPath = path.join(
+        process.cwd(),
+        "src",
+        "projecten",
+        id,
+        "info.json"
+    );
+
+
+    if (!fs.existsSync(jsonPath)) {
+        return false;
+    }
+
+
+    try {
+        const fileContents = fs.readFileSync(
+            jsonPath,
+            "utf8"
+        );
+
+
+        const projects = JSON.parse(fileContents) as ProjectInfo[];
+
+
+        if (!projects[0]?.images) {
+            return false;
+        }
+
+
+        const originalLength = projects[0].images.length;
+
+
+        projects[0].images = projects[0].images.filter(
+            image => image.url !== imageUrl
+        );
+
+
+        if (projects[0].images.length === originalLength) {
+            return false;
+        }
+
+
+        fs.writeFileSync(
+            jsonPath,
+            JSON.stringify(projects, null, 4),
+            "utf8"
+        );
+
+
+        return true;
+
+
+    } catch (error) {
+
+        console.error(
+            "Failed deleting project image metadata:",
+            error
+        );
+
+        return false;
+    }
+}

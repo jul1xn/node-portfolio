@@ -257,7 +257,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                                         </span>
 
                                         <form
-                                            action="/api/admin/projects/delete-image"
+                                            action="/admin/api/projects/delete-image"
                                             method="POST"
                                         >
                                             <input
@@ -274,7 +274,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
                                             <button
                                                 type="submit"
-                                                className="text-neutral-500 hover:text-red-400 transition"
+                                                className="text-neutral-500 hover:text-red-400 cursor-pointer transition"
                                             >
                                                 Verwijderen
                                             </button>
