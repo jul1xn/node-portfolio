@@ -1,43 +1,15 @@
-import ProjectCard, { getProjectInfo } from "@/components/ProjectCard";
-import path from "path";
-import fs from "fs";
+import ProjectCard from "@/components/ProjectCard";
 import Link from "next/link";
 import { X } from 'lucide-react';
 import { FILTERS } from "@/utils/site.config";
 import type { Metadata } from "next";
+import { getAllProjects } from "@/utils/projects";
 
 export const metadata: Metadata = {
   title: "Projecten",
   description:
     "Bekijk mijn software en game development projecten. Van webapps en backends tot game development met Unity, Arduino, ESP32 en meer.",
 };
-
-export function getAllProjects(
-    page: number = 1,
-    limit: number = 12,
-    filter: string | null = null
-) {
-    const directories =
-        fs.readdirSync(path.join(process.cwd(), "src", "projecten"), {
-            withFileTypes: true,
-        })
-            .filter(dire => dire.isDirectory())
-            .map(dir => dir.name);
-
-    const projects: string[] = [];
-
-    directories.forEach(dir => {
-        const projectData = getProjectInfo(dir);
-
-        if (projectData) {
-            if (!filter || projectData.tech.includes(filter)) {
-                projects.push(dir);
-            }
-        }
-    });
-
-    return projects;
-}
 
 type Props = {
     searchParams: Promise<{

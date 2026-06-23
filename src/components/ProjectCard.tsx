@@ -1,61 +1,10 @@
-import fs from "fs";
-import path from "path";
 import Link from "next/link";
 import ImageWithSpinner from "./ImageWithSpinner";
+import { getProjectInfo } from "@/utils/projects";
 
 type ProjectCardProps = {
     id: string;
 };
-
-type ProjectInfo = {
-    title: string;
-    shortDescription: string;
-    tech: string[];
-    links?: { name: string; url: string }[];
-    images?: { url: string; description: string }[];
-    thumbnail?: string;
-    longHtml?: string;
-};
-
-export function getProjectInfo(id: string): ProjectInfo | null {
-    const jsonPath = path.join(process.cwd(), "src", "projecten", id, "info.json");
-
-    if (!fs.existsSync(jsonPath)) {
-        return null;
-    }
-
-    const fileContents = fs.readFileSync(jsonPath, "utf8");
-    const parsed = JSON.parse(fileContents) as ProjectInfo[];
-    const final = parsed?.[0] ?? null;
-    if (final) {
-        final.tech = final.tech.sort((a, b) =>
-            a.localeCompare(b, undefined, { sensitivity: "base" })
-        );
-    }
-    return final;
-}
-
-export function getProjectLongDescription(id: string): string {
-    const project = getProjectInfo(id);
-
-    if (!project?.longHtml) {
-        return "";
-    }
-
-    const filePath = path.join(
-        process.cwd(),
-        "src",
-        "projecten",
-        id,
-        project.longHtml
-    );
-
-    if (!fs.existsSync(filePath)) {
-        return "";
-    }
-
-    return fs.readFileSync(filePath, "utf8");
-}
 
 export default function ProjectCard({ id }: ProjectCardProps) {
     const project = getProjectInfo(id);

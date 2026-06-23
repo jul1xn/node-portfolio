@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getAllProjects } from "./projecten/page";
 import { url } from "@/utils/site.config";
+import { getAllProjects } from "@/utils/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = url; // change this later

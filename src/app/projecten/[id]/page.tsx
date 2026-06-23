@@ -1,12 +1,9 @@
 import ImageCarousel from "@/components/ImageCarousel";
-import {
-    getProjectInfo,
-    getProjectLongDescription
-} from "@/components/ProjectCard";
 import { ArrowRight, SquareArrowOutUpRight } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
 import type { Metadata } from "next";
+import { getProjectInfo, getProjectLongDescription } from "@/utils/projects";
 
 type Params = {
     id: string;
