@@ -1,6 +1,6 @@
 import * as Brands from "@/utils/brands.utils";
 
-export const url = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+export const url = process.env.NEXT_PUBLIC_SITE_URL;
 export const brands = [
   {
     name: "Next.js",
