@@ -3,24 +3,24 @@ import * as Brands from "@/utils/brands.utils";
 export const url = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 export const brands = [
   {
-    name: "Next.js",
-    href: "https://nextjs.org/",
-    Icon: Brands.Nextjs,
-  },
-  {
-    name: "Node.js",
-    href: "https://nodejs.org/",
-    Icon: Brands.Nodejs,
-  },
-  {
-    name: "TypeScript",
-    href: "https://www.typescriptlang.org/",
-    Icon: Brands.TypeScript,
+    name: "C#",
+    href: "https://dotnet.microsoft.com/languages/csharp",
+    Icon: Brands.CSharp,
   },
   {
     name: "JavaScript",
     href: "https://developer.mozilla.org/docs/Web/JavaScript",
-    Icon: Brands.JavaScript,
+    Icon: Brands.Javascript,
+  },
+  {
+    name: "TypeScript",
+    href: "https://www.typescriptlang.org/",
+    Icon: Brands.Typescript,
+  },
+  {
+    name: "Python",
+    href: "https://www.python.org/",
+    Icon: Brands.Python,
   },
   {
     name: "Java",
@@ -28,29 +28,29 @@ export const brands = [
     Icon: Brands.Java,
   },
   {
-    name: "C#",
-    href: "https://dotnet.microsoft.com/languages/csharp",
-    Icon: Brands.CS,
+    name: ".NET",
+    href: "https://dotnet.microsoft.com/",
+    Icon: Brands.Dotnet,
   },
   {
-    name: "C++",
-    href: "https://en.wikipedia.org/wiki/C%2B%2B",
-    Icon: Brands.CPP,
+    name: "Node.js",
+    href: "https://nodejs.org/",
+    Icon: Brands.Nodejs,
   },
   {
-    name: "Unity",
-    href: "https://unity.com/",
-    Icon: Brands.Unity,
+    name: "Express.js",
+    href: "https://expressjs.com/",
+    Icon: Brands.Expressjs,
   },
   {
-    name: "Lua",
-    href: "https://lua.org/",
-    Icon: Brands.Lua,
+    name: "React",
+    href: "https://react.dev/",
+    Icon: Brands.React,
   },
   {
-    name: "PHP",
-    href: "https://www.php.net/",
-    Icon: Brands.Php,
+    name: "Prisma",
+    href: "https://prisma.io/",
+    Icon: Brands.Prisma,
   },
   {
     name: "MySQL",
@@ -63,9 +63,19 @@ export const brands = [
     Icon: Brands.PostgreSQL,
   },
   {
-    name: "Python",
-    href: "https://www.python.org/",
-    Icon: Brands.Python,
+    name: "Docker",
+    href: "https://www.docker.com/",
+    Icon: Brands.Docker,
+  },
+  {
+    name: "Github",
+    href: "https://github.com/",
+    Icon: Brands.Github,
+  },
+  {
+    name: "Linux",
+    href: "https://www.linux.org/",
+    Icon: Brands.Linux,
   },
 ]
 export const HEADER_LINKS = [

@@ -67,15 +67,15 @@ export default function Home() {
       <ViewFadeWrapper className="mb-3 mt-5">
         <h1 className="text-center font-light text-4xl mb-8">Tools en talen die ik gebruik</h1>
         <div className="relative w-full overflow-hidden">
-          <div className="group flex w-max gap-10 animate-scroll-brands">
+          <div className="group flex w-max gap-15 animate-scroll-brands">
             {[...brands, ...brands].map((brand, index) => (
               <Link
                 key={`${brand.name}-${index}`}
                 href={brand.href}
                 target="_blank"
-                className="shrink-0 transition-opacity group-hover:opacity-50 hover:opacity-100!"
+                className="shrink-0 transition-opacity group-hover:opacity-50 hover:opacity-100! flex justify-center items-center"
               >
-                <brand.Icon className="h-30 w-30" />
+                <brand.Icon />
               </Link>
             ))}
           </div>
