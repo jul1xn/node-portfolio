@@ -9,11 +9,11 @@ import TailwindDebug from "@/components/TailwindDebug";
 
 export const metadata: Metadata = {
   title: {
-    default: "Portfolio - Julian Verwoerd | Software Developer",
+    default: "Julian Verwoerd | Software Developer Portfolio",
     template: "%s | Julian Verwoerd",
   },
   description:
-    "Portfolio van Julian Verwoerd, 17 jaar en software developer student uit Veenendaal. Zelflerende developer met ervaring in backend en fullstack development. Bouwt projecten met Next.js, .NET, C#, Java, Unity, Arduino en ESP32. Van webapps tot game development en IoT projecten met MQTT en Home Assistant integratie.",
+    "Portfolio van Julian Verwoerd, software developer uit Nederland. Bekijk projecten in Next.js, Java, C#, .NET, Unity, Minecraft plugins en IoT met ESP32 en Arduino.",
 
   keywords: [
     "Julian Verwoerd",
@@ -56,9 +56,13 @@ export const metadata: Metadata = {
     "software portfolio",
   ],
 
-  authors: [{ name: "Julian Verwoerd" }],
+  category: "Technology",
+  authors: [{ name: "Julian Verwoerd", url: "https://portfolio.prowser.nl" }],
   creator: "Julian Verwoerd",
+  publisher: "Julian Verwoerd",
 
+  applicationName: "Julian Verwoerd Portfolio",
+  referrer: "origin-when-cross-origin",
   openGraph: {
     type: "website",
     locale: "nl_NL",
@@ -78,10 +82,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   metadataBase: new URL(url),
-  other: {
-    "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ""
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ""
   }
 };
 
@@ -101,8 +113,8 @@ export default function RootLayout({
           {children}
         </main>
         <Footer links={FOOTER_LINKS} />
-        <UmamiScript/>
-        <TailwindDebug/>
+        <UmamiScript />
+        <TailwindDebug />
       </body>
     </html>
   );

@@ -27,6 +27,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
 
                 <Link
                     href="/admin/projecten"
+                    rel="nofollow"
                     className="inline-flex items-center gap-2 rounded-full bg-purple-700 px-5 py-2.5 text-white transition hover:bg-purple-600"
                 >
                     <ArrowRight />
@@ -43,6 +44,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                 <div>
                     <div className="flex items-center gap-2 text-sm text-neutral-400 mb-1">
                         <Link
+                            rel="nofollow"
                             href="/admin/dashboard"
                             className="hover:text-neutral-200 transition-colors"
                         >
@@ -62,6 +64,7 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                 </div>
 
                 <Link
+                    rel="nofollow"
                     href={`/projecten/${resolvedParams.id}`}
                     target="_blank"
                     className="inline-flex items-center gap-1.5 rounded-md border border-neutral-800 bg-neutral-950 px-3 py-2 text-neutral-300 transition hover:bg-neutral-900"

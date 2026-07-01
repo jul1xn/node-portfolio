@@ -50,7 +50,7 @@ export default function Home() {
       </ViewFadeWrapper>
       <Seperator />
       <ViewFadeWrapper className="mt-10">
-        <h1 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h1>
+        <h2 className="text-center font-light text-4xl mb-8">Uitgelichte projecten</h2>
         <div className="grid grid-cols-1 grid-rows-3 lg:grid-cols-3 lg:grid-rows-1 gap-5">
           <ProjectCard id="portfolio-website-v2" />
           <ProjectCard id="school-examen-game" />
@@ -65,7 +65,7 @@ export default function Home() {
       </ViewFadeWrapper>
       <Seperator />
       <ViewFadeWrapper className="mb-3 mt-5">
-        <h1 className="text-center font-light text-4xl mb-8">Tools en talen die ik gebruik</h1>
+        <h2 className="text-center font-light text-4xl mb-8">Tools en talen die ik gebruik</h2>
         <div className="relative w-full overflow-hidden">
           <div className="group flex w-max gap-15 animate-scroll-brands">
             {[...brands, ...brands].map((brand, index) => (
@@ -73,6 +73,7 @@ export default function Home() {
                 key={`${brand.name}-${index}`}
                 href={brand.href}
                 target="_blank"
+                rel="nofollow"
                 className="shrink-0 transition-opacity group-hover:opacity-50 hover:opacity-100! flex justify-center items-center"
               >
                 <brand.Icon />

@@ -55,6 +55,7 @@ export default function AboutMe() {
                     opnemen!
                 </p>
                 <Link
+                    rel="nofollow"
                     href="/CV Julian.pdf"
                     className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900"
                 >
