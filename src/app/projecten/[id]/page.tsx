@@ -50,6 +50,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
                 <div className="mb-3 flex flex-wrap gap-2">
                     {project.tech.map(tech => (
                         <Link
+                            rel="nofollow"
                             key={tech}
                             href={`/projecten?filter=${encodeURIComponent(tech)}`}
                             className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-white transition hover:bg-neutral-700"
@@ -65,7 +66,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
                 </div>
                 <div className="flex flex-wrap gap-5">
                     {project.links?.map(link => (
-                        <Link key={link.url} href={link.url} target="_blank" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
+                        <Link rel="nofollow" key={link.url} href={link.url} target="_blank" className="inline-flex items-center gap-2 bg-purple-700 text-white px-5 py-3 text-xl rounded-full cursor-pointer transition-colors hover:bg-purple-900">
                             <SquareArrowOutUpRight size={22} />
                             {link.name}
                         </Link>

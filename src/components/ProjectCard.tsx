@@ -29,6 +29,7 @@ export default function ProjectCard({ id }: ProjectCardProps) {
                 <div className="mb-4 flex flex-wrap gap-2">
                     {project.tech.map((tag) => (
                         <Link
+                            rel="nofollow"
                             key={tag}
                             href={`/projecten?filter=${encodeURIComponent(tag)}`}
                             className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-sm text-white transition hover:bg-neutral-700"

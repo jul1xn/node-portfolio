@@ -17,6 +17,7 @@ export default function ProjectCard({ id }: ProjectCardProps) {
     return (
         <div className="flex items-stretch gap-3 rounded-md border border-neutral-800 bg-neutral-900/50 transition hover:border-neutral-700 hover:bg-neutral-900">
             <Link
+                rel="nofollow"
                 href={`/admin/projecten/${id}`}
                 className="group flex flex-1 items-center justify-between px-4 py-3"
             >

@@ -24,7 +24,7 @@ export default function Header({ links }: Props) {
           <Link href="/" className="flex items-center">
             <Image
               src="/logo_80.png"
-              alt="test"
+              alt="Logo"
               width={45}
               height={45}
               className="me-5"

@@ -28,7 +28,7 @@ export default async function Projecten({ searchParams }: Props) {
                 {FILTERS.map(filter => {
                     if (params.filter && params.filter === filter) {
                         return (
-                            <Link className="inline-flex items-center rounded-full bg-neutral-600 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten`}>
+                            <Link rel="nofollow" className="inline-flex items-center rounded-full bg-neutral-600 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten`}>
                                 <X className="me-1" />
                                 {filter}
                             </Link>
@@ -36,7 +36,7 @@ export default async function Projecten({ searchParams }: Props) {
                     }
                     else {
                         return (
-                            <Link className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten?filter=${encodeURIComponent(filter)}`}>
+                            <Link rel="nofollow" className="inline-flex items-center rounded-full bg-neutral-800 px-3 py-1 text-sm text-white transition hover:bg-neutral-700" key={filter} href={`/projecten?filter=${encodeURIComponent(filter)}`}>
                                 {filter}
                             </Link>
                         )
