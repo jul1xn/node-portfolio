@@ -2,7 +2,7 @@
   {
     "title": "Java PaperMC Hardcore Extras Plugin",
     "shortDescription": "Mijn eerste Minecraft Java plugin die servers uitbreidt met levens, deathbans en extra controle voor server eigenaren.",
-    "tech": ["Java"],
+    "tech": ["Minecraft", "Backend", "Java"],
     "links": [
       { "name": "Modrinth (Download)", "url": "https://modrinth.com/plugin/hardcore-extras" },
       { "name": "Github", "url": "https://github.com/jul1xn/hardcore-extras" }

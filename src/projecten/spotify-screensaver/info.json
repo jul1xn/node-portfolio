@@ -2,7 +2,7 @@
   {
     "title": "Spotify Screensaver",
     "shortDescription": "Een Electron app die het momenteel afgespeelde Spotify nummer als een screensaver laat zien.",
-    "tech": ["Node.js", "Javascript", "Html", "Css"],
+    "tech": ["Desktop", "Frontend", "Backend"],
     "links": [
       { "name": "Github", "url": "https://github.com/jul1xn/spotify-screensaver/" }
     ],

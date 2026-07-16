@@ -2,7 +2,7 @@
   {
     "title": "Portfolio Website v1",
     "shortDescription": "Mijn persoonlijke portfolio website gebouwd in Node.js",
-    "tech": ["Node.js", "Javascript", "Html", "Css"],
+    "tech": ["Web", "Frontend", "Backend", "API"],
     "links": [
       { "name": "Github", "url": "https://github.com/jul1xn/node-portfolio/tree/old-portfolio" }
     ],

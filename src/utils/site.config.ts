@@ -94,21 +94,23 @@ export const FOOTER_LINKS = [
 ];
 
 export const FILTERS = [
-    "Arduino",
-    "C#",
-    "C++",
-    "Css",
-    "Html",
-    "Java",
-    "Javascript",
-    "Lua",
-    "MySQL",
-    "Node.js",
-    "PHP",
-    "Python",
-    "React",
-    "SQL",
-    "Typescript",
+    "Web",
+    "Desktop",
+    "Game",
+    "Minecraft",
+    "Embedded",
+
+    "Frontend",
+    "Backend",
+    "Database",
+    "API",
+
     "Unity",
-    "WinForms",
+    "React",
+
+    "C#",
+    "Java",
+    "C++",
+    "TypeScript",
+    "Python",
 ]

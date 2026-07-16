@@ -2,7 +2,7 @@
   {
     "title": "RDW Kentekencheck App",
     "shortDescription": "App waarmee je kentekens kunt checken met behulp van de RDW API, gemaakt in WinForms.",
-    "tech": ["C#", "WinForms"],
+    "tech": ["Desktop", "API", "C#"],
     "links": [
       { "name": "Download", "url": "https://github.com/jul1xn/school-rdw-kentekencheck/releases/download/v1.0.0/publish.zip" },
       { "name": "Github", "url": "https://github.com/jul1xn/school-rdw-kentekencheck" }

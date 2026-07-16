@@ -2,7 +2,7 @@
   {
     "title": "Local Multiplayer Game",
     "shortDescription": "Een 2 player local multiplayer game gemaakt in Unity.",
-    "tech": ["Unity", "C#"],
+    "tech": ["Game", "Unity", "C#"],
     "links": [
       { "name": "Github", "url": "https://github.com/jul1xn/school-local-multiplayer-game" }
     ],

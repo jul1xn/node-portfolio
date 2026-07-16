@@ -2,7 +2,7 @@
   {
     "title": "ETS2 Lightbox Maker App",
     "shortDescription": "Een App waarmee je een lightbox mod kan genereren voor Euro Truck Simulator 2.",
-    "tech": ["WinForms", "C#"],
+    "tech": ["Desktop", "C#"],
     "links": [
       { "name": "Download", "url": "https://github.com/jul1xn/etslightboxmaker/releases/download/v1.0.0/release.zip" },
       { "name": "Github", "url": "https://github.com/jul1xn/etslightboxmaker" }
