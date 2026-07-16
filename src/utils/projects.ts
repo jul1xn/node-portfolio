@@ -28,29 +28,33 @@ function isValidProjectId(id: string) {
 
 export function getAllProjects(
     page: number = 1,
-    limit: number = 12,
+    limit: number = 9,
     filter: string | null = null
 ) {
-    const directories =
-        fs.readdirSync(path.join(process.cwd(), "src", "projecten"), {
+    const directories = fs
+        .readdirSync(path.join(process.cwd(), "src", "projecten"), {
             withFileTypes: true,
         })
-            .filter(dire => dire.isDirectory())
-            .map(dir => dir.name);
+        .filter((dir) => dir.isDirectory())
+        .map((dir) => dir.name);
 
-    const projects: string[] = [];
-
-    directories.forEach(dir => {
+    const filteredProjects = directories.filter((dir) => {
         const projectData = getProjectInfo(dir);
 
-        if (projectData) {
-            if (!filter || projectData.tech.includes(filter)) {
-                projects.push(dir);
-            }
-        }
+        if (!projectData) return false;
+        if (filter && !projectData.tech.includes(filter)) return false;
+
+        return true;
     });
 
-    return projects;
+    const pages = Math.ceil(filteredProjects.length / limit);
+    const start = (page - 1) * limit;
+    const projects = filteredProjects.slice(start, start + limit);
+
+    return {
+        projects,
+        pages,
+    };
 }
 
 export function getProjectInfo(id: string): ProjectInfo | null {
