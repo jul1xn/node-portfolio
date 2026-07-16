@@ -1,15 +1,24 @@
-[
-  {
+{
     "title": "Portfolio Website v1",
     "shortDescription": "Mijn persoonlijke portfolio website gebouwd in Node.js",
-    "tech": ["Web", "Frontend", "Backend", "API"],
+    "tech": [
+        "Web",
+        "Frontend",
+        "Backend",
+        "API"
+    ],
     "links": [
-      { "name": "Github", "url": "https://github.com/jul1xn/node-portfolio/tree/old-portfolio" }
+        {
+            "name": "Github",
+            "url": "https://github.com/jul1xn/node-portfolio/tree/old-portfolio"
+        }
     ],
     "images": [
-      { "url": "1.png", "description": "De home pagina van de website"}
+        {
+            "url": "1.png",
+            "description": "De home pagina van de website"
+        }
     ],
     "thumbnail": "1.png",
     "longHtml": "description.md"
-  }
-]
+}

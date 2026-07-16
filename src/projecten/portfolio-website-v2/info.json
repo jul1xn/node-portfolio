@@ -1,18 +1,33 @@
-[
-  {
+{
     "title": "Portfolio Website v2",
     "shortDescription": "Mijn persoonlijke portfolio website gebouwd met Next.js & Typescript",
-    "tech": ["Web", "Frontend", "React", "Typescript"],
+    "tech": [
+        "Web",
+        "Frontend",
+        "React",
+        "Typescript"
+    ],
     "links": [
-      { "name": "Bekijk site", "url": "https://portfolio.prowser.nl" },
-      { "name": "Github", "url": "https://github.com/jul1xn/node-portfolio/" }
+        {
+            "name": "Bekijk site",
+            "url": "https://portfolio.prowser.nl"
+        },
+        {
+            "name": "Github",
+            "url": "https://github.com/jul1xn/node-portfolio/"
+        }
     ],
     "images": [
-      { "url": "1.png"},
-      { "url": "2.png"},
-      { "url": "3.png"}
+        {
+            "url": "1.png"
+        },
+        {
+            "url": "2.png"
+        },
+        {
+            "url": "3.png"
+        }
     ],
     "thumbnail": "1.png",
     "longHtml": "description.md"
-  }
-]
+}
