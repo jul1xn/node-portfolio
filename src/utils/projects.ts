@@ -28,29 +28,33 @@ function isValidProjectId(id: string) {
 
 export function getAllProjects(
     page: number = 1,
-    limit: number = 12,
+    limit: number = 9,
     filter: string | null = null
 ) {
-    const directories =
-        fs.readdirSync(path.join(process.cwd(), "src", "projecten"), {
+    const directories = fs
+        .readdirSync(path.join(process.cwd(), "src", "projecten"), {
             withFileTypes: true,
         })
-            .filter(dire => dire.isDirectory())
-            .map(dir => dir.name);
+        .filter((dir) => dir.isDirectory())
+        .map((dir) => dir.name);
 
-    const projects: string[] = [];
-
-    directories.forEach(dir => {
+    const filteredProjects = directories.filter((dir) => {
         const projectData = getProjectInfo(dir);
 
-        if (projectData) {
-            if (!filter || projectData.tech.includes(filter)) {
-                projects.push(dir);
-            }
-        }
+        if (!projectData) return false;
+        if (filter && !projectData.tech.includes(filter)) return false;
+
+        return true;
     });
 
-    return projects;
+    const pages = Math.ceil(filteredProjects.length / limit);
+    const start = (page - 1) * limit;
+    const projects = filteredProjects.slice(start, start + limit);
+
+    return {
+        projects,
+        pages,
+    };
 }
 
 export function getProjectInfo(id: string): ProjectInfo | null {
@@ -61,8 +65,8 @@ export function getProjectInfo(id: string): ProjectInfo | null {
     }
 
     const fileContents = fs.readFileSync(jsonPath, "utf8");
-    const parsed = JSON.parse(fileContents) as ProjectInfo[];
-    const final = parsed?.[0] ?? null;
+    const parsed = JSON.parse(fileContents) as ProjectInfo;
+    const final = parsed ?? null;
     if (final) {
         final.tech = final.tech.sort((a, b) =>
             a.localeCompare(b, undefined, { sensitivity: "base" })
@@ -155,20 +159,20 @@ export function addProjectLink(
             "utf8"
         );
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]) {
+        if (!projects) {
             return false;
         }
 
 
-        if (!projects[0].links) {
-            projects[0].links = [];
+        if (!projects.links) {
+            projects.links = [];
         }
 
 
-        projects[0].links.push({
+        projects.links.push({
             name,
             url
         });
@@ -220,24 +224,24 @@ export function deleteProjectLink(
         );
 
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]?.links) {
+        if (!projects?.links) {
             return false;
         }
 
 
-        const originalLength = projects[0].links.length;
+        const originalLength = projects.links.length;
 
 
-        projects[0].links = projects[0].links.filter(
+        projects.links = projects.links.filter(
             link => link.url !== url
         );
 
 
         // Nothing was removed
-        if (projects[0].links.length === originalLength) {
+        if (projects.links.length === originalLength) {
             return false;
         }
 
@@ -290,20 +294,20 @@ export function addProjectImage(
         );
 
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]) {
+        if (!projects) {
             return false;
         }
 
 
-        if (!projects[0].images) {
-            projects[0].images = [];
+        if (!projects.images) {
+            projects.images = [];
         }
 
 
-        projects[0].images.push({
+        projects.images.push({
             url: imageUrl,
             description
         });
@@ -356,29 +360,29 @@ export function deleteProjectImage(
         );
 
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]?.images) {
+        if (!projects?.images) {
             return false;
         }
 
 
-        const originalLength = projects[0].images.length;
+        const originalLength = projects.images.length;
 
 
-        projects[0].images = projects[0].images.filter(
+        projects.images = projects.images.filter(
             image => image.url !== imageUrl
         );
 
 
-        if (projects[0].images.length === originalLength) {
+        if (projects.images.length === originalLength) {
             return false;
         }
 
         // check if the thumbnail is equal to the deleted file
-        if (projects[0].thumbnail && projects[0].thumbnail === imageUrl) {
-            projects[0].thumbnail = "";
+        if (projects.thumbnail && projects.thumbnail === imageUrl) {
+            projects.thumbnail = "";
         }
 
 
@@ -430,15 +434,15 @@ export function updateProjectTech(
         );
 
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]) {
+        if (!projects) {
             return false;
         }
 
 
-        projects[0].tech = tech.sort(
+        projects.tech = tech.sort(
             (a, b) =>
                 a.localeCompare(
                     b,
@@ -498,15 +502,15 @@ export function updateProjectThumbnail(
         );
 
 
-        const projects = JSON.parse(fileContents) as ProjectInfo[];
+        const projects = JSON.parse(fileContents) as ProjectInfo;
 
 
-        if (!projects[0]) {
+        if (!projects) {
             return false;
         }
 
 
-        const imageExists = projects[0].images?.some(
+        const imageExists = projects.images?.some(
             image => image.url === thumbnail
         );
 
@@ -516,7 +520,7 @@ export function updateProjectThumbnail(
         }
 
 
-        projects[0].thumbnail = thumbnail;
+        projects.thumbnail = thumbnail;
 
 
         fs.writeFileSync(
@@ -563,17 +567,16 @@ export function createProjectFolder(
     try {
         fs.mkdirSync(projectDirectory, { recursive: true });
 
-        const template: ProjectInfo[] = [
-            {
-                title: title.trim(),
-                shortDescription: shortDescription.trim(),
-                tech: [],
-                links: [],
-                images: [],
-                thumbnail: "",
-                longHtml: "description.md"
-            }
-        ];
+        const template: ProjectInfo =
+        {
+            title: title.trim(),
+            shortDescription: shortDescription.trim(),
+            tech: [],
+            links: [],
+            images: [],
+            thumbnail: "",
+            longHtml: "description.md"
+        };
 
         fs.writeFileSync(
             path.join(projectDirectory, "info.json"),

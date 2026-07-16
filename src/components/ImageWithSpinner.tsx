@@ -7,9 +7,12 @@ type Props = {
   src: string;
   alt?: string;
   className?: string;
+  width?: number;
+  height?: number;
+  loading?: "eager" | "lazy" | undefined;
 };
 
-export default function ImageWithSpinner({ src, alt = "", className = "" }: Props) {
+export default function ImageWithSpinner({ src, alt = "", className = "", width = 400, height = 300, loading = undefined }: Props) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
   const imgRef = useRef<HTMLImageElement | null>(null);
@@ -44,14 +47,15 @@ export default function ImageWithSpinner({ src, alt = "", className = "" }: Prop
         <div className="flex items-center justify-center h-full w-full bg-neutral-800 text-neutral-400">Afbeelding niet gevonden</div>
       ) : (
         <Image
-          width={400}
-          height={300}
+          width={width}
+          height={height}
           ref={imgRef}
           src={src}
           alt={alt}
           className={`h-full w-full object-cover transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
           onLoad={() => setLoaded(true)}
           onError={() => setErrored(true)}
+          loading={loading}
         />
       )}
     </div>
