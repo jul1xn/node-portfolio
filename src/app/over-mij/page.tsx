@@ -70,6 +70,8 @@ export default function AboutMe() {
                     alt="Foto van Julian"
                     fill
                     sizes={"1000x1000"}
+                    loading="eager"
+                    preload={true}
                 />
             </div>
         </div>

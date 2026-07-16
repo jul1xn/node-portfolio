@@ -21,6 +21,9 @@ export default function ImageCard({ src, description }: Props) {
                         src={src}
                         alt={description ?? "Project foto"}
                         className="h-full w-full object-cover cursor-zoom-in"
+                        width={1280}
+                        height={900}
+                        loading="eager"
                     />
                 </a>
             </div>

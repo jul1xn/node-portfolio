@@ -20,6 +20,9 @@ export default function ProjectCard({ id }: ProjectCardProps) {
                     src={`/projecten/api/${id}/${project.thumbnail}`}
                     alt={`Preview van ${project.title}`}
                     className="h-full w-full"
+                    width={500}
+                    height={400}
+                    loading="lazy"
                 />
             </div>
             <div className="p-6">
