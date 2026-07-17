@@ -120,5 +120,5 @@ export default function Pagination({ filter, maxPages, currentPage }: Props) {
                 </div>
             </nav>
         </>
-    )
+    );
 }

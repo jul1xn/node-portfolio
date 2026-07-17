@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 type Props = {
   src: string;
@@ -37,7 +37,7 @@ export default function ImageWithSpinner({ src, alt = "", className = "", width 
         <div className="absolute inset-0 flex items-center justify-center">
           <div
             className="h-full w-full bg-neutral-800 animate-pulse"
-            style={{ animationDuration: '2500ms' }}
+            style={{ animationDuration: "2500ms" }}
             aria-hidden
           />
         </div>

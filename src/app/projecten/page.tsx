@@ -48,5 +48,5 @@ export default async function Projecten({ searchParams }: Props) {
                 currentPage={currentPage}
             />
         </>
-    )
+    );
 }

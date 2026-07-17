@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Upload } from "lucide-react";
 
 export default function ImageUploadForm({
-    projectId
+    projectId,
 }: {
     projectId: string;
 }) {

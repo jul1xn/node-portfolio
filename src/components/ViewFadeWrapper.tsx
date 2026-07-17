@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 type Props = {
     children: React.ReactNode
@@ -15,37 +15,37 @@ export default function ViewFadeWrapper({
     delay = "",
     once = true,
 }: Props) {
-    const ref = useRef<HTMLDivElement | null>(null)
-    const [visible, setVisible] = useState(false)
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [visible, setVisible] = useState(false);
 
     useEffect(() => {
-        const element = ref.current
+        const element = ref.current;
 
-        if (!element) return
+        if (!element) return;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setVisible(true)
+                    setVisible(true);
 
                     if (once) {
-                        observer.unobserve(element)
+                        observer.unobserve(element);
                     }
                 } else if (!once) {
-                    setVisible(false)
+                    setVisible(false);
                 }
             },
             {
                 threshold: 0.15,
-            }
-        )
+            },
+        );
 
-        observer.observe(element)
+        observer.observe(element);
 
         return () => {
-            observer.disconnect()
-        }
-    }, [once])
+            observer.disconnect();
+        };
+    }, [once]);
 
     return (
         <div
@@ -58,5 +58,5 @@ export default function ViewFadeWrapper({
         >
             {children}
         </div>
-    )
+    );
 }

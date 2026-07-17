@@ -22,7 +22,7 @@ export default function FilterBar({ active }: Props) {
         setCanScrollLeft(el.scrollLeft > 0);
 
         setCanScrollRight(
-            el.scrollLeft < el.scrollWidth - el.clientWidth - 1
+            el.scrollLeft < el.scrollWidth - el.clientWidth - 1,
         );
     };
 

@@ -1,4 +1,4 @@
-import StickyBanner from '@/components/StickerBanner';
+import StickyBanner from "@/components/StickerBanner";
 
 type Props = {
     searchParams: Promise<{

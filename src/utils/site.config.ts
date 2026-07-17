@@ -77,7 +77,7 @@ export const brands = [
     href: "https://www.linux.org/",
     Icon: Brands.Linux,
   },
-]
+];
 export const HEADER_LINKS = [
   { label: "Home", url: "/" },
   { label: "Over mij", url: "/over-mij" },
@@ -113,4 +113,4 @@ export const FILTERS = [
     "C++",
     "TypeScript",
     "Python",
-]
+];

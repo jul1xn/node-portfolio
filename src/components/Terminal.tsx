@@ -10,7 +10,7 @@ const lines = [
   "[ok] loading curiosity engine: always active",
   "[ok] optimizing problem-solving routines",
   "[ok] connecting 'how does this work under the hood?' module",
-  "[success] system ready: let's ship something interesting!"
+  "[success] system ready: let's ship something interesting!",
 ];
 
 const randomDelay = () => 1000 + Math.random() * 900;

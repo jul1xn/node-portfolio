@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { X } from "lucide-react";
+import { useEffect, useState } from "react";
 
 type Props = {
     text: string
@@ -12,26 +12,26 @@ export default function StickyBanner({
     text,
     type = "success",
 }: Props) {
-    const [visible, setVisible] = useState(false)
-    const [mounted, setMounted] = useState(true)
+    const [visible, setVisible] = useState(false);
+    const [mounted, setMounted] = useState(true);
 
     useEffect(() => {
         const timeout = setTimeout(() => {
-            setVisible(true)
-        }, 10)
+            setVisible(true);
+        }, 10);
 
-        return () => clearTimeout(timeout)
-    }, [])
+        return () => clearTimeout(timeout);
+    }, []);
 
     function closeBanner() {
-        setVisible(false)
+        setVisible(false);
 
         setTimeout(() => {
-            setMounted(false)
-        }, 300)
+            setMounted(false);
+        }, 300);
     }
 
-    if (!mounted) return null
+    if (!mounted) return null;
 
     return (
         <div
@@ -74,5 +74,5 @@ export default function StickyBanner({
                 </button>
             </div>
         </div>
-    )
+    );
 }

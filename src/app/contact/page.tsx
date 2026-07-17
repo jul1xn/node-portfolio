@@ -121,5 +121,5 @@ export default async function ContactSection({ searchParams }: Props) {
                 <StickyBanner type="error" text={params.error}/>
             )}
         </div>
-    )
+    );
 }

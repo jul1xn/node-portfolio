@@ -21,8 +21,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Invalid parameters",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
@@ -35,8 +35,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "File must be an image",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
@@ -45,8 +45,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Image too large",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
         process.cwd(),
         "src",
         "projecten",
-        projectId
+        projectId,
     );
 
 
@@ -62,8 +62,8 @@ export async function POST(req: Request) {
         fs.mkdirSync(
             projectDirectory,
             {
-                recursive: true
-            }
+                recursive: true,
+            },
         );
     }
 
@@ -76,7 +76,7 @@ export async function POST(req: Request) {
 
     const filePath = path.join(
         projectDirectory,
-        filename
+        filename,
     );
 
 
@@ -85,7 +85,7 @@ export async function POST(req: Request) {
 
     fs.writeFileSync(
         filePath,
-        Buffer.from(bytes)
+        Buffer.from(bytes),
     );
 
     const success = addProjectImage(
@@ -93,7 +93,7 @@ export async function POST(req: Request) {
         filename,
         typeof description === "string"
             ? description
-            : ""
+            : "",
     );
 
 
@@ -105,8 +105,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Failed saving image metadata",
             {
-                status: 500
-            }
+                status: 500,
+            },
         );
     }
 
@@ -115,10 +115,10 @@ export async function POST(req: Request) {
     return NextResponse.redirect(
         new URL(
             `/admin/projecten/${projectId}`,
-            req.url
+            req.url,
         ),
         {
-            status: 303
-        }
+            status: 303,
+        },
     );
 }

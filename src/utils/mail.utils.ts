@@ -1,6 +1,6 @@
-import nodemailer from 'nodemailer';
-import Mail from 'nodemailer/lib/mailer';
-import SMTPTransport from 'nodemailer/lib/smtp-transport';
+import nodemailer from "nodemailer";
+import Mail from "nodemailer/lib/mailer";
+import SMTPTransport from "nodemailer/lib/smtp-transport";
 
 const transport = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
@@ -23,6 +23,6 @@ export const sendMail = async (properties: SendMailTo) => {
         to: receipients,
         subject,
         html: message,
-        text: message
-    })
-}
+        text: message,
+    });
+};

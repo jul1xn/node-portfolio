@@ -7,12 +7,12 @@ export async function POST(req: NextRequest) {
 
     if (key !== process.env.ADMIN_SECRET) {
         return NextResponse.redirect(
-            createRedirectUrl(req, "/admin/login?error=Ongeldige+inloggegevens")
+            createRedirectUrl(req, "/admin/login?error=Ongeldige+inloggegevens"),
         );
     }
 
     const response = NextResponse.redirect(
-        createRedirectUrl(req, "/admin/dashboard")
+        createRedirectUrl(req, "/admin/dashboard"),
     );
 
     response.cookies.set("admin_token", key, {
