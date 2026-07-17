@@ -19,6 +19,6 @@ export async function POST(req: Request) {
 
     return NextResponse.redirect(
         new URL("/admin/dashboard", req.url),
-        { status: 303 }
+        { status: 303 },
     );
 }

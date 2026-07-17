@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import UmamiScript from "@/components/UmamiScript";
-import 'dotenv/config';
+import "dotenv/config";
 import { FOOTER_LINKS, HEADER_LINKS, url } from "@/utils/site.config";
 import TailwindDebug from "@/components/TailwindDebug";
 
@@ -93,8 +93,8 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(url),
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || ""
-  }
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
+  },
 };
 
 export default function RootLayout({

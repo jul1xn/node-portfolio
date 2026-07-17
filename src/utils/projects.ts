@@ -18,7 +18,7 @@ function getProjectDirectory(id: string) {
         process.cwd(),
         "src",
         "projecten",
-        id
+        id,
     );
 }
 
@@ -29,7 +29,7 @@ function isValidProjectId(id: string) {
 export function getAllProjects(
     page: number = 1,
     limit: number = 9,
-    filter: string | null = null
+    filter: string | null = null,
 ) {
     const directories = fs
         .readdirSync(path.join(process.cwd(), "src", "projecten"), {
@@ -69,7 +69,7 @@ export function getProjectInfo(id: string): ProjectInfo | null {
     const final = parsed ?? null;
     if (final) {
         final.tech = final.tech.sort((a, b) =>
-            a.localeCompare(b, undefined, { sensitivity: "base" })
+            a.localeCompare(b, undefined, { sensitivity: "base" }),
         );
     }
     return final;
@@ -87,7 +87,7 @@ export function getProjectLongDescription(id: string): string {
         "src",
         "projecten",
         id,
-        project.longHtml
+        project.longHtml,
     );
 
     if (!fs.existsSync(filePath)) {
@@ -99,7 +99,7 @@ export function getProjectLongDescription(id: string): string {
 
 export function updateProjectLongDescription(
     id: string,
-    description: string
+    description: string,
 ): boolean {
     const project = getProjectInfo(id);
 
@@ -112,21 +112,21 @@ export function updateProjectLongDescription(
         "src",
         "projecten",
         id,
-        project.longHtml
+        project.longHtml,
     );
 
     try {
         fs.writeFileSync(
             filePath,
             description,
-            "utf8"
+            "utf8",
         );
 
         return true;
     } catch (error) {
         console.error(
             "Failed to update project description:",
-            error
+            error,
         );
 
         return false;
@@ -136,7 +136,7 @@ export function updateProjectLongDescription(
 export function addProjectLink(
     id: string,
     name: string,
-    url: string
+    url: string,
 ): boolean {
 
     const jsonPath = path.join(
@@ -144,7 +144,7 @@ export function addProjectLink(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -156,7 +156,7 @@ export function addProjectLink(
     try {
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
         const projects = JSON.parse(fileContents) as ProjectInfo;
@@ -174,14 +174,14 @@ export function addProjectLink(
 
         projects.links.push({
             name,
-            url
+            url,
         });
 
 
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -191,7 +191,7 @@ export function addProjectLink(
 
         console.error(
             "Failed adding project link:",
-            error
+            error,
         );
 
         return false;
@@ -200,7 +200,7 @@ export function addProjectLink(
 
 export function deleteProjectLink(
     id: string,
-    url: string
+    url: string,
 ): boolean {
 
     const jsonPath = path.join(
@@ -208,7 +208,7 @@ export function deleteProjectLink(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -220,7 +220,7 @@ export function deleteProjectLink(
     try {
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
 
@@ -236,7 +236,7 @@ export function deleteProjectLink(
 
 
         projects.links = projects.links.filter(
-            link => link.url !== url
+            link => link.url !== url,
         );
 
 
@@ -249,7 +249,7 @@ export function deleteProjectLink(
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -259,7 +259,7 @@ export function deleteProjectLink(
 
         console.error(
             "Failed deleting project link:",
-            error
+            error,
         );
 
         return false;
@@ -269,7 +269,7 @@ export function deleteProjectLink(
 export function addProjectImage(
     id: string,
     imageUrl: string,
-    description: string = ""
+    description: string = "",
 ): boolean {
 
     const jsonPath = path.join(
@@ -277,7 +277,7 @@ export function addProjectImage(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -290,7 +290,7 @@ export function addProjectImage(
 
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
 
@@ -309,14 +309,14 @@ export function addProjectImage(
 
         projects.images.push({
             url: imageUrl,
-            description
+            description,
         });
 
 
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -327,7 +327,7 @@ export function addProjectImage(
 
         console.error(
             "Failed adding project image:",
-            error
+            error,
         );
 
         return false;
@@ -336,7 +336,7 @@ export function addProjectImage(
 
 export function deleteProjectImage(
     id: string,
-    imageUrl: string
+    imageUrl: string,
 ): boolean {
 
     const jsonPath = path.join(
@@ -344,7 +344,7 @@ export function deleteProjectImage(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -356,7 +356,7 @@ export function deleteProjectImage(
     try {
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
 
@@ -372,7 +372,7 @@ export function deleteProjectImage(
 
 
         projects.images = projects.images.filter(
-            image => image.url !== imageUrl
+            image => image.url !== imageUrl,
         );
 
 
@@ -389,7 +389,7 @@ export function deleteProjectImage(
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -400,7 +400,7 @@ export function deleteProjectImage(
 
         console.error(
             "Failed deleting project image metadata:",
-            error
+            error,
         );
 
         return false;
@@ -409,7 +409,7 @@ export function deleteProjectImage(
 
 export function updateProjectTech(
     id: string,
-    tech: string[]
+    tech: string[],
 ): boolean {
 
     const jsonPath = path.join(
@@ -417,7 +417,7 @@ export function updateProjectTech(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -430,7 +430,7 @@ export function updateProjectTech(
 
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
 
@@ -448,16 +448,16 @@ export function updateProjectTech(
                     b,
                     undefined,
                     {
-                        sensitivity: "base"
-                    }
-                )
+                        sensitivity: "base",
+                    },
+                ),
         );
 
 
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -468,7 +468,7 @@ export function updateProjectTech(
 
         console.error(
             "Failed updating project tech:",
-            error
+            error,
         );
 
         return false;
@@ -477,7 +477,7 @@ export function updateProjectTech(
 
 export function updateProjectThumbnail(
     id: string,
-    thumbnail: string
+    thumbnail: string,
 ): boolean {
 
     const jsonPath = path.join(
@@ -485,7 +485,7 @@ export function updateProjectThumbnail(
         "src",
         "projecten",
         id,
-        "info.json"
+        "info.json",
     );
 
 
@@ -498,7 +498,7 @@ export function updateProjectThumbnail(
 
         const fileContents = fs.readFileSync(
             jsonPath,
-            "utf8"
+            "utf8",
         );
 
 
@@ -511,7 +511,7 @@ export function updateProjectThumbnail(
 
 
         const imageExists = projects.images?.some(
-            image => image.url === thumbnail
+            image => image.url === thumbnail,
         );
 
 
@@ -526,7 +526,7 @@ export function updateProjectThumbnail(
         fs.writeFileSync(
             jsonPath,
             JSON.stringify(projects, null, 4),
-            "utf8"
+            "utf8",
         );
 
 
@@ -537,7 +537,7 @@ export function updateProjectThumbnail(
 
         console.error(
             "Failed updating project thumbnail:",
-            error
+            error,
         );
 
         return false;
@@ -547,7 +547,7 @@ export function updateProjectThumbnail(
 export function createProjectFolder(
     id: string,
     title: string,
-    shortDescription: string
+    shortDescription: string,
 ): boolean {
 
     if (
@@ -575,19 +575,19 @@ export function createProjectFolder(
             links: [],
             images: [],
             thumbnail: "",
-            longHtml: "description.md"
+            longHtml: "description.md",
         };
 
         fs.writeFileSync(
             path.join(projectDirectory, "info.json"),
             JSON.stringify(template, null, 4),
-            "utf8"
+            "utf8",
         );
 
         fs.writeFileSync(
             path.join(projectDirectory, "description.md"),
             "",
-            "utf8"
+            "utf8",
         );
 
         return true;

@@ -8,7 +8,7 @@ type ImageItem = {
 export default function ThumbnailEditor({
     projectId,
     currentThumbnail,
-    images
+    images,
 }: {
     projectId: string;
     currentThumbnail?: string;

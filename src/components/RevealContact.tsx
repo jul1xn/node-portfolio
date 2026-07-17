@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
 type Props = {
-    type: 'email' | 'phone'
+    type: "email" | "phone"
     className?: string
     children: React.ReactNode
 }
@@ -11,27 +11,27 @@ type Props = {
 export default function RevealContact({
     type,
     className,
-    children
+    children,
 }: Props) {
-    const [revealed, setRevealed] = useState(false)
+    const [revealed, setRevealed] = useState(false);
 
-    const email = process.env.NEXT_PUBLIC_EMAIL || ''
-    const phone = process.env.NEXT_PUBLIC_PHONE || ''
+    const email = process.env.NEXT_PUBLIC_EMAIL || "";
+    const phone = process.env.NEXT_PUBLIC_PHONE || "";
 
     const handleClick = () => {
         if (!revealed) {
-            setRevealed(true)
-            return
+            setRevealed(true);
+            return;
         }
 
-        if (type === 'email') {
-            window.location.href = `mailto:${email}`
+        if (type === "email") {
+            window.location.href = `mailto:${email}`;
         }
 
-        if (type === 'phone') {
-            window.location.href = `tel:${phone}`
+        if (type === "phone") {
+            window.location.href = `tel:${phone}`;
         }
-    }
+    };
 
     return (
         <button
@@ -41,10 +41,10 @@ export default function RevealContact({
             type="button"
         >
             {revealed ? (
-                type === 'email' ? email : phone
+                type === "email" ? email : phone
             ) : (
                 children
             )}
         </button>
-    )
+    );
 }

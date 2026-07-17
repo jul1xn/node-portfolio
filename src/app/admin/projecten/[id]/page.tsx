@@ -351,5 +351,5 @@ export default async function AdminProjectPage({ params }: { params: Params }) {
                 </div>
             </div>
         </div>
-    )
+    );
 }

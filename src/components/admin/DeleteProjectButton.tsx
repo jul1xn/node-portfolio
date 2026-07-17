@@ -5,7 +5,7 @@ import { Trash2 } from "lucide-react";
 
 export default function DeleteProjectButton({
     projectId,
-    projectTitle
+    projectTitle,
 }: {
     projectId: string;
     projectTitle: string;
@@ -13,7 +13,7 @@ export default function DeleteProjectButton({
 
     function confirmDelete(event: FormEvent<HTMLFormElement>) {
         const confirmed = window.confirm(
-            `Weet je zeker dat je "${projectTitle}" wilt verwijderen? Dit verwijdert de hele projectmap.`
+            `Weet je zeker dat je "${projectTitle}" wilt verwijderen? Dit verwijdert de hele projectmap.`,
         );
 
         if (!confirmed) {

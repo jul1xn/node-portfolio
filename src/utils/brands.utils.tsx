@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 export const CSharp = () => {
   return <Image
@@ -6,8 +6,8 @@ export const CSharp = () => {
     alt="C#"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Javascript = () => {
   return <Image
@@ -15,8 +15,8 @@ export const Javascript = () => {
     alt="JavaScript"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Typescript = () => {
   return <Image
@@ -24,8 +24,8 @@ export const Typescript = () => {
     alt="TypeScript"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Python = () => {
   return <Image
@@ -33,8 +33,8 @@ export const Python = () => {
     alt="Python"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Java = () => {
   return <Image
@@ -42,8 +42,8 @@ export const Java = () => {
     alt="Java"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Dotnet = () => {
   return <Image
@@ -51,8 +51,8 @@ export const Dotnet = () => {
     alt=".NET"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Nodejs = () => {
   return <Image
@@ -60,8 +60,8 @@ export const Nodejs = () => {
     alt="Node.js"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Expressjs = () => {
   return <Image
@@ -69,8 +69,8 @@ export const Expressjs = () => {
     alt="Express.js"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const React = () => {
   return <Image
@@ -78,8 +78,8 @@ export const React = () => {
     alt="React"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Prisma = () => {
   return <Image
@@ -87,8 +87,8 @@ export const Prisma = () => {
     alt="Prisma"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const MySQL = () => {
   return <Image
@@ -96,8 +96,8 @@ export const MySQL = () => {
     alt="MySQL"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const PostgreSQL = () => {
   return <Image
@@ -105,8 +105,8 @@ export const PostgreSQL = () => {
     alt="PostgreSQL"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Docker = () => {
   return <Image
@@ -114,8 +114,8 @@ export const Docker = () => {
     alt="Docker"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Github = () => {
   return <Image
@@ -123,8 +123,8 @@ export const Github = () => {
     alt="GitHub"
     width={120}
     height={120}
-  />
-}
+  />;
+};
 
 export const Linux = () => {
   return <Image
@@ -132,5 +132,5 @@ export const Linux = () => {
     alt="Linux"
     width={120}
     height={120}
-  />
-}
+  />;
+};

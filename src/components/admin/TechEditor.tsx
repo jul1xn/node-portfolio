@@ -7,7 +7,7 @@ import { Trash2, Plus, Save } from "lucide-react";
 export default function TechEditor({
     projectId,
     currentTech,
-    availableTech
+    availableTech,
 }: {
     projectId: string;
     currentTech: string[];
@@ -15,7 +15,7 @@ export default function TechEditor({
 }) {
 
     const [selectedTech, setSelectedTech] = useState(
-        currentTech
+        currentTech,
     );
 
 
@@ -31,7 +31,7 @@ export default function TechEditor({
         ) {
             setSelectedTech([
                 ...selectedTech,
-                newTech
+                newTech,
             ]);
         }
 
@@ -43,8 +43,8 @@ export default function TechEditor({
 
         setSelectedTech(
             selectedTech.filter(
-                t => t !== tech
-            )
+                t => t !== tech,
+            ),
         );
     }
 
@@ -123,7 +123,7 @@ export default function TechEditor({
                     {availableTech
                         .filter(
                             tech =>
-                                !selectedTech.includes(tech)
+                                !selectedTech.includes(tech),
                         )
                         .map(tech => (
                             <option

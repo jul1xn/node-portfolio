@@ -20,8 +20,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Invalid parameters",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
@@ -33,7 +33,7 @@ export async function POST(req: Request) {
         "src",
         "projecten",
         projectId,
-        filename
+        filename,
     );
 
 
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
 
     const success = deleteProjectImage(
         projectId,
-        imageName
+        imageName,
     );
 
 
@@ -62,8 +62,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Failed deleting image metadata",
             {
-                status: 500
-            }
+                status: 500,
+            },
         );
     }
 
@@ -72,10 +72,10 @@ export async function POST(req: Request) {
     return NextResponse.redirect(
         new URL(
             `/admin/projecten/${projectId}`,
-            req.url
+            req.url,
         ),
         {
-            status: 303
-        }
+            status: 303,
+        },
     );
 }

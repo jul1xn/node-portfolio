@@ -27,6 +27,6 @@ export async function POST(req: Request) {
 
     return NextResponse.redirect(
         new URL(`/admin/projecten/${projectId}`, req.url),
-        { status: 303 }
+        { status: 303 },
     );
 }

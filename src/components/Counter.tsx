@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react";
 
 type CounterProps = {
     value: number
@@ -17,85 +17,85 @@ export default function Counter({
     animateTime = 2000,
     delay = 0,
 }: CounterProps) {
-    const containerRef = useRef<HTMLDivElement>(null)
-    const valueText = useRef<HTMLParagraphElement>(null)
+    const containerRef = useRef<HTMLDivElement>(null);
+    const valueText = useRef<HTMLParagraphElement>(null);
 
-    const [hasStarted, setHasStarted] = useState(false)
+    const [hasStarted, setHasStarted] = useState(false);
 
     useEffect(() => {
-        const element = containerRef.current
+        const element = containerRef.current;
 
-        if (!element) return
+        if (!element) return;
 
         const observer = new IntersectionObserver(
             ([entry]) => {
                 if (entry.isIntersecting) {
-                    setHasStarted(true)
-                    observer.unobserve(element)
+                    setHasStarted(true);
+                    observer.unobserve(element);
                 }
             },
             {
                 threshold: 0.25,
-            }
-        )
+            },
+        );
 
-        observer.observe(element)
+        observer.observe(element);
 
         return () => {
-            observer.disconnect()
-        }
-    }, [])
+            observer.disconnect();
+        };
+    }, []);
 
     useEffect(() => {
-        if (!hasStarted) return
+        if (!hasStarted) return;
 
-        const endNumber = value
-        const power = 2
+        const endNumber = value;
+        const power = 2;
 
-        let startTime: number | null = null
-        let frameId: number | null = null
-        let timeoutId: number | null = null
+        let startTime: number | null = null;
+        let frameId: number | null = null;
+        let timeoutId: number | null = null;
 
         const animate = (currentTime: number) => {
             if (startTime === null) {
-                startTime = currentTime
+                startTime = currentTime;
             }
 
-            const elapsed = currentTime - startTime
-            const t = Math.min(elapsed / animateTime, 1)
+            const elapsed = currentTime - startTime;
+            const t = Math.min(elapsed / animateTime, 1);
 
             const currentValue = Math.floor(
-                endNumber * (1 - Math.pow(1 - t, power))
-            )
+                endNumber * (1 - Math.pow(1 - t, power)),
+            );
 
             if (valueText.current) {
                 valueText.current.textContent =
-                    currentValue.toString() + extension
+                    currentValue.toString() + extension;
             }
 
             if (t < 1) {
-                frameId = requestAnimationFrame(animate)
+                frameId = requestAnimationFrame(animate);
             } else if (valueText.current) {
                 valueText.current.textContent =
-                    endNumber.toString() + extension
+                    endNumber.toString() + extension;
             }
-        }
+        };
 
         const startAnimation = () => {
             if (valueText.current) {
-                valueText.current.textContent = "0" + extension
+                valueText.current.textContent = "0" + extension;
             }
 
-            frameId = requestAnimationFrame(animate)
-        }
+            frameId = requestAnimationFrame(animate);
+        };
 
-        timeoutId = window.setTimeout(startAnimation, delay)
+        timeoutId = window.setTimeout(startAnimation, delay);
 
         return () => {
-            if (timeoutId) clearTimeout(timeoutId)
-            if (frameId) cancelAnimationFrame(frameId)
-        }
-    }, [hasStarted, value, animateTime, extension, delay])
+            if (timeoutId) clearTimeout(timeoutId);
+            if (frameId) cancelAnimationFrame(frameId);
+        };
+    }, [hasStarted, value, animateTime, extension, delay]);
 
     return (
         <div
@@ -116,5 +116,5 @@ export default function Counter({
                 {text}
             </p>
         </div>
-    )
+    );
 }

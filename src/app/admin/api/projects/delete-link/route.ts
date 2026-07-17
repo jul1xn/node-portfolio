@@ -18,15 +18,15 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Invalid parameters",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
 
     const success = deleteProjectLink(
         projectId,
-        url
+        url,
     );
 
 
@@ -34,8 +34,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Failed deleting link",
             {
-                status: 500
-            }
+                status: 500,
+            },
         );
     }
 
@@ -43,10 +43,10 @@ export async function POST(req: Request) {
     return NextResponse.redirect(
         new URL(
             `/admin/projecten/${projectId}`,
-            req.url
+            req.url,
         ),
         {
-            status: 303
-        }
+            status: 303,
+        },
     );
 }

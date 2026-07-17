@@ -13,8 +13,8 @@ export function proxy(req: NextRequest) {
         return NextResponse.redirect(
             createRedirectUrl(
                 req,
-                "/admin/login?error=Log+eerst+in+om+deze+pagina+te+bekijken"
-            )
+                "/admin/login?error=Log+eerst+in+om+deze+pagina+te+bekijken",
+            ),
         );
     }
 

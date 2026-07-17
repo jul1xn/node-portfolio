@@ -9,7 +9,7 @@ type Params = {
 
 export async function GET(
   _req: Request,
-  { params }: { params: Promise<Params> }
+  { params }: { params: Promise<Params> },
 ) {
   try {
     const { id, file } = await params;
@@ -17,7 +17,7 @@ export async function GET(
     if (!id || !file) {
       return NextResponse.json(
         { message: "Missing parameters" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -32,7 +32,7 @@ export async function GET(
       "src",
       "projecten",
       id,
-      safeFile
+      safeFile,
     );
 
     if (!fs.existsSync(filePath)) {

@@ -82,5 +82,5 @@ export default async function ProjectPage({ params }: { params: Params }) {
                 )}
             </div>
         </div>
-    )
+    );
 }

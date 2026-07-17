@@ -6,6 +6,7 @@ export const dynamic = "force-dynamic";
 
 export default function AdminDashboardPage() {
     const projecten = getAllProjects();
+    const projects = projecten.projects;
 
     return (
         <div className="mx-auto max-w-4xl">
@@ -22,7 +23,7 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="flex flex-col gap-3">
-                {projecten.map(project => (
+                {projects.map(project => (
                     <ProjectCard key={project} id={project} />
                 ))}
             </div>

@@ -17,8 +17,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Invalid parameters",
             {
-                status: 400
-            }
+                status: 400,
+            },
         );
     }
 
@@ -26,8 +26,8 @@ export async function POST(req: Request) {
     const success = updateProjectTech(
         projectId,
         tech.filter(
-            item => typeof item === "string"
-        ) as string[]
+            item => typeof item === "string",
+        ) as string[],
     );
 
 
@@ -35,8 +35,8 @@ export async function POST(req: Request) {
         return new NextResponse(
             "Failed updating tech",
             {
-                status: 500
-            }
+                status: 500,
+            },
         );
     }
 
@@ -44,10 +44,10 @@ export async function POST(req: Request) {
     return NextResponse.redirect(
         new URL(
             `/admin/projecten/${projectId}`,
-            req.url
+            req.url,
         ),
         {
-            status: 303
-        }
+            status: 303,
+        },
     );
 }

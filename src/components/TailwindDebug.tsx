@@ -1,6 +1,6 @@
 export default function TailwindDebug() {
     if (process.env.NODE_ENV !== "development") {
-        return <></>
+        return <></>;
     }
 
     return (
@@ -12,5 +12,5 @@ export default function TailwindDebug() {
             <span className="hidden xl:inline 2xl:hidden">xl (1280px+)</span>
             <span className="hidden 2xl:inline">2xl (1536px+)</span>
         </div>
-    )
+    );
 }

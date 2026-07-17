@@ -5,7 +5,7 @@ import { getAllProjects } from "@/utils/projects";
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = url; // change this later
     const projects = getAllProjects();
-    const projectRoutes = projects.map(project => ({
+    const projectRoutes = projects.projects.map(project => ({
         url: `${baseUrl}/projecten/${project}`,
         lastModified: new Date(),
         changeFrequency: "monthly" as const,
@@ -37,6 +37,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
             changeFrequency: "yearly",
             priority: 0.5,
         },
-        ...projectRoutes
+        ...projectRoutes,
     ];
 }
